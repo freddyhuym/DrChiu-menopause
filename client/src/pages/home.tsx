@@ -231,26 +231,124 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="pt-6 space-y-3">
-                <h3 className="text-xl font-bold text-foreground mb-4">專業經歷</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    前大型醫學中心 婦產科主治醫師
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    台灣更年期醫學會 會員
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    女性身心整合照護 專家
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-primary" />
-                    美容醫學專科認證 醫師
-                  </li>
-                </ul>
+              <div className="pt-8 grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-4">專科資格</h3>
+                  <ul className="space-y-2 text-muted-foreground text-base">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      中華民國專科醫師證書：內科專科醫師
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      中華民國內分泌新陳代謝專科醫師
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-4">專業領域</h3>
+                  <ul className="space-y-2 text-muted-foreground text-base">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      體重管理與肥胖治療
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      代謝症候群診斷與治療
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      更年期及荷爾蒙調控
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      健康促進與慢性病預防
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      醫學營養與運動處方
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-4">學歷</h3>
+                  <ul className="space-y-2 text-muted-foreground text-base">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      國立國防大學醫學系 醫學士
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      台北市新光醫院 內科部住院醫師訓練
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      台北市新光醫院 內分泌新陳代謝科專科醫師訓練
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-4">經歷</h3>
+                  <ul className="space-y-2 text-muted-foreground text-base">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      新竹縣東元醫院 內分泌新陳代謝科主治醫師
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      前 麗之美時尚診所 醫美主治醫師
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      曜妍診所 醫美抗老主治醫師
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      EXOSILK 膠絲醫學保養品
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      功能醫學健康集團醫師
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      新陳代謝內分泌專科醫師
+                    </li>
+                     <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      健康好生活節目醫師
+                    </li>
+                  </ul>
+                </div>
+
+                 <div className="md:col-span-2">
+                  <h3 className="text-xl font-bold text-foreground mb-4">特色與優勢</h3>
+                  <ul className="space-y-2 text-muted-foreground text-base grid md:grid-cols-2 gap-x-8 gap-y-2">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      十餘年內科與代謝疾病臨床經驗
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      擅長整合飲食、運動、藥物及儀器輔助的多元減重計畫
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      重視客製化治療與長期追蹤
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      善於以科學數據輔助病人理解與改變生活型態
+                    </li>
+                    <li className="flex items-start gap-2 md:col-span-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                      熟悉自費減重藥物與健保慢性病治療之差異與搭配
+                    </li>
+                  </ul>
+                </div>
               </div>
             </motion.div>
           </div>
