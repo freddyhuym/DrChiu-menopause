@@ -292,35 +292,6 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">經歷</h3>
-                  <ul className="space-y-2 text-muted-foreground text-base">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      前 麗之美時尚診所 醫美主治醫師
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      曜妍診所 醫美抗老主治醫師
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      EXOSILK 膠絲醫學保養品
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      功能醫學健康集團醫師
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      新陳代謝內分泌專科醫師
-                    </li>
-                     <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      健康好生活節目醫師
-                    </li>
-                  </ul>
-                </div>
 
                  <div className="md:col-span-2">
                   <h3 className="text-xl font-bold text-foreground mb-4">特色與優勢</h3>
