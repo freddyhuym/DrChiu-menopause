@@ -183,7 +183,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="py-20 md:py-32 bg-white relative">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -194,26 +194,32 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
                 關於 <span className="text-gold-gradient">邱文瑾醫師</span>
               </h2>
-              <div className="w-20 h-1 bg-gold-gradient mb-6 mx-auto" />
+              <div className="w-20 h-1 bg-gold-gradient mb-12 mx-auto" />
               
-              <div className="relative w-48 h-64 mx-auto mb-8 rounded-2xl overflow-hidden shadow-xl border-4 border-white/50">
-                <img 
-                  src={ABOUT_IMAGE} 
-                  alt="邱文瑾醫師" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
+                <div className="relative w-full md:w-1/3 shrink-0">
+                   <div className="relative mx-auto rounded-2xl overflow-hidden shadow-xl border-4 border-white/50 aspect-[3/4] max-w-sm">
+                    <img 
+                      src={ABOUT_IMAGE} 
+                      alt="邱文瑾醫師" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
 
-              <div className="space-y-4 text-muted-foreground text-lg leading-relaxed text-center max-w-3xl mx-auto">
-                <p>
-                  身為女性，我深刻理解每一個生命階段的轉變所帶來的挑戰與不安。
-                  更年期是身體機能的轉捩點，但不應是生活品質的終點。
-                </p>
-                <p>
-                  我致力於打造一個隱密、舒適且專業的診療空間，結合實證醫學與全人照護的理念，
-                  為每一位女性量身打造專屬的健康管理計畫。從荷爾蒙調理、營養諮詢到心理支持，
-                  我們全方位守護您的健康。
-                </p>
+                <div className="md:w-2/3 space-y-6 text-left">
+                  <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+                    <p>
+                      身為女性，我深刻理解每一個生命階段的轉變所帶來的挑戰與不安。
+                      更年期是身體機能的轉捩點，但不應是生活品質的終點。
+                    </p>
+                    <p>
+                      我致力於打造一個隱密、舒適且專業的診療空間，結合實證醫學與全人照護的理念，
+                      為每一位女性量身打造專屬的健康管理計畫。從荷爾蒙調理、營養諮詢到心理支持，
+                      我們全方位守護您的健康。
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className="pt-8 grid gap-6">
