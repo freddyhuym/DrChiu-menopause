@@ -21,17 +21,18 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
+import aboutImage from '@assets/dr_1765436654368.jpg';
 
 // Image Assets
 const HERO_IMAGE = "/attached_assets/dr_1765436104223.jpg";
-const ABOUT_IMAGE = "/attached_assets/dr_1765436654368.jpg";
 const PROCESS_IMAGE = "/attached_assets/dr_1765436104223.jpg";
-
-import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
 
 export default function Home() {
   const { toast } = useToast();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const ABOUT_IMAGE = aboutImage;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
