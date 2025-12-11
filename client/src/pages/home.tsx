@@ -23,9 +23,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 // Image Assets
-const HERO_IMAGE = "/attached_assets/邱院長(8)_1765434830526.jpg";
-const ABOUT_IMAGE = "/attached_assets/邱院長(8)_1765434830526.jpg";
-const PROCESS_IMAGE = "/attached_assets/邱院長(8)_1765434830526.jpg";
+const HERO_IMAGE = "/attached_assets/邱院長(8)_1765435460574.jpg";
+const ABOUT_IMAGE = "/attached_assets/邱院長(8)_1765435460574.jpg";
+const PROCESS_IMAGE = "/attached_assets/邱院長(8)_1765435460574.jpg";
 
 import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
 
@@ -427,7 +427,7 @@ export default function Home() {
             
             <div className="relative h-full min-h-[400px] rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="/attached_assets/邱院長(8)_1765434830526.jpg" 
+                src="/attached_assets/邱院長(8)_1765435460574.jpg" 
                 alt="專業諮詢" 
                 className="w-full h-full object-cover"
               />
