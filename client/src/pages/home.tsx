@@ -196,7 +196,7 @@ export default function Home() {
               </h2>
               <div className="w-20 h-1 bg-gold-gradient mb-12 mx-auto" />
               
-              <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
+              <div className="flex flex-col md:flex-row gap-12 items-center md:items-center">
                 <div className="relative w-full md:w-1/3 shrink-0">
                    <div className="relative mx-auto rounded-2xl overflow-hidden shadow-xl border-4 border-white/50 aspect-[3/4] max-w-sm">
                     <img 
@@ -207,7 +207,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="md:w-2/3 space-y-6 text-left">
+                <div className="md:w-2/3 space-y-6 text-left md:pt-12">
                   <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                     <p>
                       身為女性，我深刻理解每一個生命階段的轉變所帶來的挑戰與不安。
