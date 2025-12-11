@@ -28,7 +28,7 @@ const ABOUT_IMAGE = "/attached_assets/dr_1765436654368.jpg";
 const PROCESS_IMAGE = "/attached_assets/dr_1765436104223.jpg";
 
 import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
-import clinicBg from '@assets/stock_images/modern_white_medical_f035f384.jpg';
+import clinicBg from '@assets/stock_images/elegant_high_ceiling_a11037b0.jpg';
 
 export default function Home() {
   const { toast } = useToast();
