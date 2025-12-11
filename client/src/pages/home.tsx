@@ -24,7 +24,7 @@ import { useToast } from "@/hooks/use-toast";
 
 // Image Assets
 const HERO_IMAGE = "/attached_assets/dr_1765436104223.jpg";
-const ABOUT_IMAGE = "/attached_assets/dr_1765436104223.jpg";
+const ABOUT_IMAGE = "/attached_assets/dr_1765436654368.jpg";
 const PROCESS_IMAGE = "/attached_assets/dr_1765436104223.jpg";
 
 import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
@@ -189,6 +189,14 @@ export default function Home() {
               </h2>
               <div className="w-20 h-1 bg-gold-gradient mb-6 mx-auto" />
               
+              <div className="relative w-48 h-64 mx-auto mb-8 rounded-2xl overflow-hidden shadow-xl border-4 border-white/50">
+                <img 
+                  src={ABOUT_IMAGE} 
+                  alt="邱文瑾醫師" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed text-center max-w-3xl mx-auto">
                 <p>
                   身為女性，我深刻理解每一個生命階段的轉變所帶來的挑戰與不安。
