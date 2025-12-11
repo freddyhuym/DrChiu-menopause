@@ -12,7 +12,10 @@ import {
   Sparkles, 
   MessageCircle,
   Menu,
-  X
+  X,
+  Award,
+  GraduationCap,
+  Stethoscope
 } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -233,89 +236,86 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="pt-8 grid md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">專科資格</h3>
-                  <ul className="space-y-2 text-muted-foreground text-base">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      中華民國專科醫師證書：內科專科醫師
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      中華民國內分泌新陳代謝專科醫師
-                    </li>
+              <div className="pt-8 grid gap-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Qualifications */}
+                  <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
+                    <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
+                      <Award className="w-5 h-5 text-gold" /> 專科資格
+                    </h3>
+                    <ul className="space-y-3 text-muted-foreground text-base">
+                      <li className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                        中華民國專科醫師證書：<br/>內科專科醫師
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                        中華民國內分泌新陳代謝<br/>專科醫師
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Education */}
+                  <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
+                    <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
+                      <GraduationCap className="w-5 h-5 text-gold" /> 學歷
+                    </h3>
+                    <ul className="space-y-3 text-muted-foreground text-base">
+                      <li className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                        國立國防大學醫學系 醫學士
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                        台北市新光醫院 <br/>內科部住院醫師訓練
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                        台北市新光醫院 <br/>內分泌新陳代謝科專科醫師訓練
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Expertise */}
+                <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
+                  <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
+                    <Stethoscope className="w-5 h-5 text-gold" /> 專業領域
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 text-muted-foreground text-base">
+                    {[
+                      "體重管理與肥胖治療",
+                      "代謝症候群診斷與治療",
+                      "更年期及荷爾蒙調控",
+                      "健康促進與慢性病預防",
+                      "醫學營養與運動處方"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">專業領域</h3>
-                  <ul className="space-y-2 text-muted-foreground text-base">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      體重管理與肥胖治療
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      代謝症候群診斷與治療
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      更年期及荷爾蒙調控
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      健康促進與慢性病預防
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      醫學營養與運動處方
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">學歷</h3>
-                  <ul className="space-y-2 text-muted-foreground text-base">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      國立國防大學醫學系 醫學士
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      台北市新光醫院 內科部住院醫師訓練
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      台北市新光醫院 內分泌新陳代謝科專科醫師訓練
-                    </li>
-                  </ul>
-                </div>
-
-
-                 <div className="md:col-span-2">
-                  <h3 className="text-xl font-bold text-foreground mb-4">特色與優勢</h3>
-                  <ul className="space-y-2 text-muted-foreground text-base grid md:grid-cols-2 gap-x-8 gap-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      十餘年內科與代謝疾病臨床經驗
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      擅長整合飲食、運動、藥物及儀器輔助的多元減重計畫
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      重視客製化治療與長期追蹤
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      善於以科學數據輔助病人理解與改變生活型態
-                    </li>
-                    <li className="flex items-start gap-2 md:col-span-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      熟悉自費減重藥物與健保慢性病治療之差異與搭配
-                    </li>
+                {/* Features */}
+                <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
+                  <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
+                    <Sparkles className="w-5 h-5 text-gold" /> 特色與優勢
+                  </h3>
+                  <ul className="grid gap-3 text-muted-foreground text-base">
+                    {[
+                      "十餘年內科與代謝疾病臨床經驗",
+                      "擅長整合飲食、運動、藥物及儀器輔助的多元減重計畫",
+                      "重視客製化治療與長期追蹤",
+                      "善於以科學數據輔助病人理解與改變生活型態",
+                      "熟悉自費減重藥物與健保慢性病治療之差異與搭配"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
