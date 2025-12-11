@@ -122,10 +122,10 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-soft-gradient">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="space-y-6 md:space-y-8"
             >
@@ -141,12 +141,12 @@ export default function Home() {
                   </svg>
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 更年期不是終點，而是另一段美麗旅程的起點。
                 邱文瑾醫師以專業醫療與溫暖同理，陪伴您度過這段轉變期，
                 找回身心平衡，綻放自信光彩。
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
                 <Button 
                   size="lg" 
                   className="bg-gold-gradient text-white text-lg rounded-full px-8 py-6 h-auto shadow-lg shadow-primary/20 transition-all hover:scale-105 border-0"
@@ -165,24 +165,6 @@ export default function Home() {
                 </Button>
               </div>
             </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                <img 
-                  src={HERO_IMAGE} 
-                  alt="邱文瑾醫師" 
-                  className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              {/* Decorative Elements */}
-              <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary/50 rounded-full blur-3xl -z-10" />
-              <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10" />
-            </motion.div>
           </div>
         </div>
       </section>
@@ -190,41 +172,20 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="py-20 md:py-32 bg-white relative">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="max-w-4xl mx-auto">
             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="order-2 md:order-1 relative"
+              className="space-y-6"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[3/4] md:aspect-auto">
-                 <img 
-                  src={ABOUT_IMAGE} 
-                  alt="邱文瑾醫師看診" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-border/50 max-w-xs hidden md:block">
-                <p className="font-serif italic text-primary text-lg">
-                  "傾聽您的聲音，<br/>療癒您的身心。"
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="order-1 md:order-2 space-y-6"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
                 關於 <span className="text-gold-gradient">邱文瑾醫師</span>
               </h2>
-              <div className="w-20 h-1 bg-gold-gradient mb-6" />
+              <div className="w-20 h-1 bg-gold-gradient mb-6 mx-auto" />
               
-              <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+              <div className="space-y-4 text-muted-foreground text-lg leading-relaxed text-center max-w-3xl mx-auto">
                 <p>
                   身為女性，我深刻理解每一個生命階段的轉變所帶來的挑戰與不安。
                   更年期是身體機能的轉捩點，但不應是生活品質的終點。
@@ -378,12 +339,12 @@ export default function Home() {
       {/* Symptoms Section */}
       <section id="symptoms" className="py-20 md:py-32 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
                 常見症狀與治療
               </h2>
-              <p className="text-muted-foreground text-lg">
+              <p className="text-muted-foreground text-lg text-center max-w-2xl mx-auto">
                 如果您正在經歷以下困擾，請不要獨自忍受。
                 專業的醫療協助可以幫助您改善生活品質。
               </p>
@@ -425,18 +386,6 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="relative h-full min-h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="/attached_assets/dr_1765436104223.jpg" 
-                alt="專業諮詢" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
-                <p className="text-white text-xl font-serif italic">
-                  "找回身體的主導權，重拾自信光采。"
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -477,10 +426,7 @@ export default function Home() {
           </div>
 
           <div className="mt-16 text-center">
-             <div className="inline-flex items-center gap-8 bg-white/10 backdrop-blur-md p-2 rounded-full pr-8">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/30">
-                  <img src={PROCESS_IMAGE} alt="邱醫師" className="w-full h-full object-cover" />
-                </div>
+             <div className="inline-flex items-center gap-8 bg-white/10 backdrop-blur-md p-6 rounded-full px-8">
                 <p className="text-lg font-serif">
                   準備好開始改變了嗎？我們隨時在這裡為您服務。
                 </p>
