@@ -369,9 +369,8 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
                 常見症狀與治療
               </h2>
-              <p className="text-muted-foreground text-lg text-center max-w-2xl mx-auto">
-                如果您正在經歷以下困擾，請不要獨自忍受。
-                專業的醫療協助可以幫助您改善生活品質。
+              <p className="text-muted-foreground text-lg text-center w-full mx-auto">
+                如果您正在經歷以下困擾，請不要獨自忍受。專業的醫療協助可以幫助您改善生活品質。
               </p>
               
               <div className="grid grid-cols-2 gap-4">
