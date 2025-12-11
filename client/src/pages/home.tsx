@@ -24,7 +24,7 @@ const HERO_IMAGE = "/attached_assets/邱院長(3)_1765433809366.jpg";
 const ABOUT_IMAGE = "/attached_assets/邱院長(1)_1765433809360.jpg";
 const PROCESS_IMAGE = "/attached_assets/邱院長(5)_1765433809368.jpg";
 
-import stockImage from '@assets/stock_images/asian_middle_aged_wo_5b55df03.jpg';
+import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
 
 export default function Home() {
   const { toast } = useToast();
