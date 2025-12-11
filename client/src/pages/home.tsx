@@ -28,6 +28,7 @@ const ABOUT_IMAGE = "/attached_assets/dr_1765436654368.jpg";
 const PROCESS_IMAGE = "/attached_assets/dr_1765436104223.jpg";
 
 import stockImage from '@assets/stock_images/modern_medical_clini_5b6146a0.jpg';
+import clinicBg from '@assets/stock_images/modern_white_medical_f035f384.jpg';
 
 export default function Home() {
   const { toast } = useToast();
@@ -120,12 +121,22 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-50 via-rose-100/50 to-amber-50">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10" />
+          <img 
+            src={clinicBg} 
+            alt="Clinic Interior" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-10">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-200/30 rounded-full blur-[100px]" />
           <div className="absolute top-[10%] right-[-5%] w-[30%] h-[30%] bg-amber-200/30 rounded-full blur-[80px]" />
         </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 md:px-6 relative z-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
