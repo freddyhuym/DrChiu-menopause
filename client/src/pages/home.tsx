@@ -120,7 +120,11 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-soft-gradient">
+      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pink-50 via-rose-100/50 to-amber-50">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-200/30 rounded-full blur-[100px]" />
+          <div className="absolute top-[10%] right-[-5%] w-[30%] h-[30%] bg-amber-200/30 rounded-full blur-[80px]" />
+        </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div 
@@ -129,11 +133,11 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="space-y-6 md:space-y-8"
             >
-              <div className="inline-block px-4 py-1.5 rounded-full bg-white border border-primary/20 text-primary text-sm tracking-wide font-medium shadow-sm">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-pink-200 text-pink-700 text-sm tracking-wide font-medium shadow-sm">
                 專屬女性的溫柔照護
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
-                擁抱蛻變，<br />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground flex flex-col md:flex-row gap-2 md:gap-4 justify-center items-center flex-wrap">
+                <span>擁抱蛻變，</span>
                 <span className="text-gold-gradient relative">
                   優雅重生
                   <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary -z-10 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
