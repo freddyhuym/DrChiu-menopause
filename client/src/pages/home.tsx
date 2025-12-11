@@ -24,6 +24,8 @@ const HERO_IMAGE = "/attached_assets/邱院長(3)_1765433809366.jpg";
 const ABOUT_IMAGE = "/attached_assets/邱院長(1)_1765433809360.jpg";
 const PROCESS_IMAGE = "/attached_assets/邱院長(5)_1765433809368.jpg";
 
+import stockImage from '@assets/stock_images/asian_middle_aged_wo_5b55df03.jpg';
+
 export default function Home() {
   const { toast } = useToast();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -474,7 +476,7 @@ export default function Home() {
 
       {/* Consultation Process */}
       <section id="process" className="py-20 md:py-32 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] opacity-10 bg-cover bg-center" />
+        <div className="absolute inset-0 opacity-10 bg-cover bg-center" style={{ backgroundImage: `url(${stockImage})` }} />
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">專屬諮詢流程</h2>
