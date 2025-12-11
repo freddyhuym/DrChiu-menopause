@@ -297,10 +297,6 @@ export default function Home() {
                   <ul className="space-y-2 text-muted-foreground text-base">
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                      新竹縣東元醫院 內分泌新陳代謝科主治醫師
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                       前 麗之美時尚診所 醫美主治醫師
                     </li>
                     <li className="flex items-start gap-2">
