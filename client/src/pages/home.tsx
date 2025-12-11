@@ -53,7 +53,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border/40 shadow-sm">
         <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-bold text-primary tracking-wider">
+            <span className="text-xl md:text-2xl font-bold text-gold-gradient tracking-wider">
               邱文瑾醫師
             </span>
             <span className="hidden md:inline-block text-sm text-muted-foreground border-l border-border pl-2 ml-2">
@@ -67,14 +67,14 @@ export default function Home() {
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.id)}
-                className="text-sm font-medium hover:text-primary transition-colors relative group"
+                className="text-sm font-medium hover:text-gold transition-colors relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full" />
               </button>
             ))}
             <Button 
-              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6"
+              className="bg-gold-gradient text-white rounded-full px-6 border-0"
               onClick={() => scrollToSection('contact')}
             >
               立即預約
@@ -131,7 +131,7 @@ export default function Home() {
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">
                 擁抱蛻變，<br />
-                <span className="text-primary relative">
+                <span className="text-gold-gradient relative">
                   優雅重生
                   <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary -z-10 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
@@ -146,7 +146,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
                   size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-white text-lg rounded-full px-8 py-6 h-auto shadow-lg shadow-primary/20 transition-all hover:scale-105"
+                  className="bg-gold-gradient text-white text-lg rounded-full px-8 py-6 h-auto shadow-lg shadow-primary/20 transition-all hover:scale-105 border-0"
                   onClick={() => scrollToSection('contact')}
                 >
                   預約諮詢
@@ -217,9 +217,9 @@ export default function Home() {
               className="order-1 md:order-2 space-y-6"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                關於 <span className="text-primary">邱文瑾醫師</span>
+                關於 <span className="text-gold-gradient">邱文瑾醫師</span>
               </h2>
-              <div className="w-20 h-1 bg-primary mb-6" />
+              <div className="w-20 h-1 bg-gold-gradient mb-6" />
               
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
