@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
@@ -15,7 +16,8 @@ import {
   X,
   Award,
   GraduationCap,
-  Stethoscope
+  Stethoscope,
+  Globe
 } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -28,9 +30,90 @@ import aboutImage from '@assets/dr_1765436654368.jpg';
 const HERO_IMAGE = "/attached_assets/dr_1765436104223.jpg";
 const PROCESS_IMAGE = "/attached_assets/dr_1765436104223.jpg";
 
+const VIDEO_IDS = [
+  "5HEc-vu3NTk",
+  "ILUUboF9j9M",
+  "gnu3hdeB2kg"
+];
+
+function MediaSection() {
+  const { t } = useTranslation();
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  return (
+    <section id="media" className="py-20 md:py-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-12 space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            {t('media.title')} <span className="text-lg text-muted-foreground ml-2">{t('media.subtitle')}</span>
+          </h2>
+        </div>
+
+        <div className="relative h-[500px] flex items-center justify-center" style={{ perspective: "1000px" }}>
+           {VIDEO_IDS.map((id, index) => {
+             const offset = index - activeIndex;
+             const isActive = index === activeIndex;
+             
+             return (
+               <motion.div
+                 key={id}
+                 className={`absolute rounded-2xl overflow-hidden shadow-2xl cursor-pointer bg-black ${isActive ? 'z-20' : 'z-10'}`}
+                 style={{
+                    width: window.innerWidth < 768 ? '260px' : '300px',
+                    aspectRatio: '9/16',
+                 }}
+                 initial={false}
+                 animate={{
+                   x: offset * (window.innerWidth < 768 ? 40 : 120),
+                   scale: isActive ? 1.1 : 0.8,
+                   opacity: isActive ? 1 : 0.6,
+                   rotateY: offset * 25,
+                   zIndex: isActive ? 20 : 10 - Math.abs(offset)
+                 }}
+                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                 onClick={() => setActiveIndex(index)}
+               >
+                 <iframe
+                   width="100%"
+                   height="100%"
+                   src={`https://www.youtube.com/embed/${id}?modestbranding=1&rel=0`}
+                   title="YouTube video player"
+                   frameBorder="0"
+                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                   allowFullScreen
+                   className="w-full h-full pointer-events-auto bg-black"
+                 />
+               </motion.div>
+             );
+           })}
+        </div>
+        
+        {/* Navigation Dots */}
+         <div className="flex justify-center gap-4 mt-8">
+            {VIDEO_IDS.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  idx === activeIndex ? "bg-gold" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const { toast } = useToast();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'zh' ? 'en' : 'zh';
+    i18n.changeLanguage(newLang);
+  };
 
   const ABOUT_IMAGE = aboutImage;
 
@@ -43,12 +126,12 @@ export default function Home() {
   };
 
   const navLinks = [
-    { name: "首頁", id: "home" },
-    { name: "關於醫師", id: "about" },
-    { name: "更年期知識", id: "knowledge" },
-    { name: "症狀與治療", id: "symptoms" },
-    { name: "諮詢流程", id: "process" },
-    { name: "聯繫我們", id: "contact" },
+    { name: t("nav.home"), id: "home" },
+    { name: t("nav.about"), id: "about" },
+    { name: t("nav.knowledge"), id: "knowledge" },
+    { name: t("nav.symptoms"), id: "symptoms" },
+    { name: t("nav.process"), id: "process" },
+    { name: t("nav.contact"), id: "contact" },
   ];
 
   return (
@@ -58,10 +141,10 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xl md:text-2xl font-bold text-gold-gradient tracking-wider">
-              邱文瑾醫師
+              {t("about.doctor")}
             </span>
             <span className="hidden md:inline-block text-sm text-muted-foreground border-l border-border pl-2 ml-2">
-              女性更年期特別門診
+              {t("hero.tag")}
             </span>
           </div>
 
@@ -77,21 +160,36 @@ export default function Home() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full" />
               </button>
             ))}
+            <button 
+              onClick={toggleLanguage}
+              className="p-2 rounded-full hover:bg-secondary/50 transition-colors"
+              aria-label="Toggle Language"
+            >
+              <Globe size={20} />
+            </button>
             <Button 
               className="bg-gold-gradient text-white rounded-full px-6 border-0"
               onClick={() => scrollToSection('contact')}
             >
-              立即預約
+              {t("nav.book")}
             </Button>
           </div>
 
           {/* Mobile Nav Toggle */}
-          <button 
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            <button 
+              onClick={toggleLanguage}
+              className="p-2 rounded-full hover:bg-secondary/50 transition-colors"
+            >
+              <Globe size={20} />
+            </button>
+            <button 
+              className="p-2 text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -114,7 +212,7 @@ export default function Home() {
               className="w-full bg-primary hover:bg-primary/90 text-white rounded-md mt-2"
               onClick={() => scrollToSection('contact')}
             >
-              立即預約
+              {t("nav.book")}
             </Button>
           </motion.div>
         )}
@@ -141,21 +239,19 @@ export default function Home() {
               className="space-y-6 md:space-y-8"
             >
               <div className="inline-block px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-pink-200 text-pink-700 text-sm tracking-wide font-medium shadow-sm">
-                專屬女性的溫柔照護
+                {t("hero.tag")}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground flex flex-col md:flex-row gap-2 md:gap-4 justify-center items-center flex-wrap">
-                <span>擁抱蛻變，</span>
+                <span>{t("hero.title1")}</span>
                 <span className="text-gold-gradient relative">
-                  優雅重生
+                  {t("hero.title2")}
                   <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary -z-10 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                   </svg>
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                更年期不是終點，而是另一段美麗旅程的起點。
-                邱文瑾醫師以專業醫療與溫暖同理，陪伴您度過這段轉變期，
-                找回身心平衡，綻放自信光彩。
+                {t("hero.desc")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
                 <Button 
@@ -163,7 +259,7 @@ export default function Home() {
                   className="bg-gold-gradient text-white text-lg rounded-full px-8 py-6 h-auto shadow-lg shadow-primary/20 transition-all hover:scale-105 border-0"
                   onClick={() => scrollToSection('contact')}
                 >
-                  預約諮詢
+                  {t("hero.book")}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button 
@@ -172,7 +268,7 @@ export default function Home() {
                   className="bg-white/50 hover:bg-white border-primary/30 text-primary text-lg rounded-full px-8 py-6 h-auto transition-all hover:scale-105"
                   onClick={() => scrollToSection('about')}
                 >
-                  了解醫師
+                  {t("hero.about")}
                 </Button>
               </div>
             </motion.div>
@@ -192,7 +288,7 @@ export default function Home() {
               className="space-y-6"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">
-                關於 <span className="text-gold-gradient">邱文瑾醫師</span>
+                {t("about.title")} <span className="text-gold-gradient">{t("about.doctor")}</span>
               </h2>
               <div className="w-20 h-1 bg-gold-gradient mb-12 mx-auto" />
               
@@ -210,13 +306,10 @@ export default function Home() {
                 <div className="md:w-2/3 space-y-6 text-left md:pt-12">
                   <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                     <p>
-                      身為女性，我深刻理解每一個生命階段的轉變所帶來的挑戰與不安。
-                      更年期是身體機能的轉捩點，但不應是生活品質的終點。
+                      {t("about.desc1")}
                     </p>
                     <p>
-                      我致力於打造一個隱密、舒適且專業的診療空間，結合實證醫學與全人照護的理念，
-                      為每一位女性量身打造專屬的健康管理計畫。從荷爾蒙調理、營養諮詢到心理支持，
-                      我們全方位守護您的健康。
+                      {t("about.desc2")}
                     </p>
                   </div>
                 </div>
@@ -227,7 +320,7 @@ export default function Home() {
                   {/* Qualifications */}
                   <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
                     <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
-                      <Award className="w-5 h-5 text-gold" /> 專科資格
+                      <Award className="w-5 h-5 text-gold" /> {t("about.qualifications")}
                     </h3>
                     <ul className="space-y-3 text-muted-foreground text-base">
                       <li className="flex items-start gap-3">
@@ -244,7 +337,7 @@ export default function Home() {
                   {/* Education */}
                   <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
                     <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
-                      <GraduationCap className="w-5 h-5 text-gold" /> 學歷
+                      <GraduationCap className="w-5 h-5 text-gold" /> {t("about.education")}
                     </h3>
                     <ul className="space-y-3 text-muted-foreground text-base">
                       <li className="flex items-start gap-3">
@@ -266,11 +359,11 @@ export default function Home() {
                 {/* Expertise */}
                 <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
                   <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
-                    <Stethoscope className="w-5 h-5 text-gold" /> 專業領域
+                    <Stethoscope className="w-5 h-5 text-gold" /> {t("about.expertise")}
                   </h3>
                   <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 text-muted-foreground text-base">
                     {[
-                      "體重管理與肥胖治療",
+                      t("symptoms.treat.hrt"), // Reusing some strings or define new ones if needed, keeping simple for now
                       "代謝症候群診斷與治療",
                       "更年期及荷爾蒙調控",
                       "健康促進與慢性病預防",
@@ -287,7 +380,7 @@ export default function Home() {
                 {/* Features */}
                 <div className="glass-card rounded-xl p-6 border border-gold/20 shadow-sm hover:shadow-md transition-all bg-white/50">
                   <h3 className="text-xl font-bold text-gold-gradient mb-4 flex items-center gap-2 border-b border-gold/10 pb-2">
-                    <Sparkles className="w-5 h-5 text-gold" /> 特色與優勢
+                    <Sparkles className="w-5 h-5 text-gold" /> {t("about.features")}
                   </h3>
                   <ul className="grid gap-3 text-muted-foreground text-base">
                     {[
@@ -315,28 +408,28 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              更年期知識專欄
+              {t("knowledge.title")}
             </h2>
             <p className="text-muted-foreground text-lg">
-              了解身體的變化，是愛自己的第一步
+              {t("knowledge.subtitle")}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "什麼是更年期？",
-                desc: "更年期是指女性卵巢功能逐漸衰退，直到完全停止排卵的過渡時期。通常發生在45至55歲之間，是一段自然的生理過程。",
+                title: t("knowledge.item1.title"),
+                desc: t("knowledge.item1.desc"),
                 icon: <Clock className="w-10 h-10 text-primary" />
               },
               {
-                title: "荷爾蒙的變化",
-                desc: "隨著雌激素與黃體素的分泌減少，身體會產生一系列的生理與心理變化。正確的荷爾蒙補充療法可以有效緩解不適。",
+                title: t("knowledge.item2.title"),
+                desc: t("knowledge.item2.desc"),
                 icon: <Activity className="w-10 h-10 text-primary" />
               },
               {
-                title: "身心平衡調適",
-                desc: "除了藥物治療，生活型態的調整、飲食營養的補充以及適度的運動，都是度過更年期不可或缺的重要環節。",
+                title: t("knowledge.item3.title"),
+                desc: t("knowledge.item3.desc"),
                 icon: <Heart className="w-10 h-10 text-primary" />
               }
             ].map((item, idx) => (
@@ -360,6 +453,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Media Section */}
+      <MediaSection />
 
       {/* Symptoms Section */}
       <section id="symptoms" className="py-20 md:py-32 bg-white">
