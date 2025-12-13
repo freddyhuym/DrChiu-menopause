@@ -38,8 +38,8 @@ const resources = {
       "knowledge.item3.title": "Physical & Mental Balance",
       "knowledge.item3.desc": "In addition to medication, lifestyle adjustments, nutritional supplementation, and moderate exercise are all indispensable parts of getting through menopause.",
 
-      "media.title": "Media",
-      "media.subtitle": "Video Zone",
+      "media.title": "Video Gallery",
+      "media.subtitle": "Watch & Learn",
 
       "symptoms.title": "Common Symptoms & Treatment",
       "symptoms.desc": "If you are experiencing the following troubles, please do not endure them alone. Professional medical assistance can help you improve your quality of life.",
@@ -119,8 +119,8 @@ const resources = {
       "knowledge.item3.title": "身心平衡調適",
       "knowledge.item3.desc": "除了藥物治療，生活型態的調整、飲食營養的補充以及適度的運動，都是度過更年期不可或缺的重要環節。",
 
-      "media.title": "Media",
-      "media.subtitle": "影音專區",
+      "media.title": "影音專區",
+      "media.subtitle": "",
 
       "symptoms.title": "常見症狀與治療",
       "symptoms.desc": "如果您正在經歷以下困擾，請不要獨自忍受。專業的醫療協助可以幫助您改善生活品質。",

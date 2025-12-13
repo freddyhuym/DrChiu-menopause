@@ -40,12 +40,21 @@ function MediaSection() {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(1);
 
+  const handleDragEnd = (event: any, info: any) => {
+    if (info.offset.x > 100) {
+      setActiveIndex((prev) => Math.max(0, prev - 1));
+    } else if (info.offset.x < -100) {
+      setActiveIndex((prev) => Math.min(VIDEO_IDS.length - 1, prev + 1));
+    }
+  };
+
   return (
     <section id="media" className="py-20 md:py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            {t('media.title')} <span className="text-lg text-muted-foreground ml-2">{t('media.subtitle')}</span>
+            {t('media.title')} 
+            {t('media.subtitle') && <span className="text-lg text-muted-foreground ml-2">{t('media.subtitle')}</span>}
           </h2>
         </div>
 
@@ -70,19 +79,26 @@ function MediaSection() {
                    rotateY: offset * 25,
                    zIndex: isActive ? 20 : 10 - Math.abs(offset)
                  }}
+                 drag={isActive ? "x" : false}
+                 dragConstraints={{ left: 0, right: 0 }}
+                 dragElastic={0.2}
+                 onDragEnd={handleDragEnd}
                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                  onClick={() => setActiveIndex(index)}
                >
-                 <iframe
-                   width="100%"
-                   height="100%"
-                   src={`https://www.youtube.com/embed/${id}?modestbranding=1&rel=0`}
-                   title="YouTube video player"
-                   frameBorder="0"
-                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                   allowFullScreen
-                   className="w-full h-full pointer-events-auto bg-black"
-                 />
+                 <div className="w-full h-full relative pointer-events-none">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${id}?modestbranding=1&rel=0&controls=1`}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full bg-black pointer-events-auto"
+                    />
+                    {/* Overlay for drag interaction on non-active videos or if we want custom controls */}
+                 </div>
                </motion.div>
              );
            })}
