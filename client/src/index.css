@@ -10,39 +10,39 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-  /* Light, White & Gold Theme (Elegant, ethereal, pure) */
+  /* Purple & Gold Floral Theme */
   --color-background: transparent;
-  --color-foreground: hsl(30 10% 15%); /* Darker, higher contrast grey */
+  --color-foreground: hsl(270 40% 20%); /* Deep Purple Grey */
 
-  --color-card: hsl(0 0% 100% / 0.85); /* More opaque white for better text readability */
-  --color-card-foreground: hsl(30 10% 15%);
+  --color-card: hsl(0 0% 100% / 0.85);
+  --color-card-foreground: hsl(270 40% 20%);
 
   --color-popover: hsl(0 0% 100% / 0.95);
-  --color-popover-foreground: hsl(30 10% 15%);
+  --color-popover-foreground: hsl(270 40% 20%);
 
-  /* Primary: Luxurious Gold */
-  --color-primary: hsl(45 90% 30%); /* Much darker gold/bronze for high contrast */
+  /* Primary: Royal Purple */
+  --color-primary: hsl(270 60% 40%); 
   --color-primary-foreground: hsl(0 0% 100%);
 
-  /* Secondary: Soft Gold/Cream */
-  --color-secondary: hsl(45 30% 90%);
-  --color-secondary-foreground: hsl(30 10% 15%);
+  /* Secondary: Soft Lavender */
+  --color-secondary: hsl(270 30% 96%);
+  --color-secondary-foreground: hsl(270 40% 20%);
   
-  --color-muted: hsl(30 10% 94%);
-  --color-muted-foreground: hsl(30 5% 30%); /* Darker muted text for readability */
+  --color-muted: hsl(270 20% 96%);
+  --color-muted-foreground: hsl(270 10% 40%);
 
-  --color-accent: hsl(45 90% 40%);
+  --color-accent: hsl(45 100% 45%); /* Gold Accent */
   --color-accent-foreground: hsl(0 0% 100%);
 
-  --color-border: hsl(45 40% 60%); /* Darker gold borders */
+  --color-border: hsl(270 20% 80%);
   --color-input: hsl(0 0% 100% / 0.5);
-  --color-ring: hsl(45 90% 45%);
+  --color-ring: hsl(270 60% 60%);
 
-  --radius: 0rem; /* Sharp, elegant corners */
+  --radius: 0rem;
   
   /* Typography - Only Serif */
   --font-serif: 'Noto Serif TC', serif;
-  --font-sans: 'Noto Serif TC', serif; /* Force Serif */
+  --font-sans: 'Noto Serif TC', serif; 
   --font-display: 'Noto Serif TC', serif;
 }
 
@@ -52,89 +52,28 @@
   }
   body {
     @apply font-serif antialiased bg-background text-foreground tracking-wide leading-loose;
-    background-image: url('/silk-bg-high-res.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    /* Background handled in Layout.tsx */
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-medium tracking-wider;
+    @apply font-serif font-medium tracking-wider text-primary;
   }
 }
 
 /* Custom Utilities */
 @layer utilities {
   .text-gold {
-    color: hsl(45 100% 35%); /* Even darker gold for text */
-    text-shadow: none; /* Removed text shadow for cleaner look on light background */
+    color: hsl(45 100% 35%); 
   }
   .bg-gold {
-    background-color: hsl(45 80% 50%);
-    background-image: linear-gradient(135deg, hsl(45 70% 50%) 0%, hsl(45 90% 70%) 50%, hsl(45 70% 50%) 100%);
+    background-color: hsl(45 100% 45%);
+    background-image: linear-gradient(135deg, hsl(45 80% 40%) 0%, hsl(45 100% 60%) 50%, hsl(45 80% 40%) 100%);
   }
   
   .glass-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 8px 32px rgba(100, 100, 100, 0.1);
-  }
-  
-  .text-glow {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(147, 51, 234, 0.2); /* Purple tint border */
+    box-shadow: 0 8px 32px rgba(100, 100, 100, 0.05);
   }
 
-  /* Stars / Sparkles Animation - Made subtle gold */
-  .stars-bg {
-    background-color: transparent;
-    background-image: 
-      radial-gradient(rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.2) 1px, transparent 2px),
-      radial-gradient(rgba(212, 175, 55, 0.5), rgba(212, 175, 55, 0.1) 1px, transparent 2px);
-    background-size: 550px 550px, 350px 350px;
-    background-position: 0 0, 40px 60px;
-    animation: stars-move 60s linear infinite;
-  }
-  
-  @keyframes stars-move {
-    from { background-position: 0 0, 40px 60px; }
-    to { background-position: 550px 550px, 390px 410px; }
-  }
-
-  /* Silky Aurora Animation - Removed purple, kept gold/white flow */
-  .silk-aurora-bg {
-    background: linear-gradient(
-      45deg, 
-      hsla(45, 30%, 95%, 0.5) 0%, 
-      hsla(45, 50%, 90%, 0.5) 25%, 
-      hsla(45, 70%, 85%, 0.3) 50%, 
-      hsla(45, 50%, 90%, 0.5) 75%, 
-      hsla(45, 30%, 95%, 0.5) 100%
-    );
-    background-size: 400% 400%;
-    animation: aurora-flow 15s ease infinite;
-    position: absolute;
-    inset: 0;
-    opacity: 0.6;
-  }
-
-  .silk-overlay {
-    background-image: 
-      radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.2) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 50%);
-    filter: blur(40px);
-    mix-blend-mode: overlay;
-    animation: silk-pulse 8s ease-in-out infinite alternate;
-  }
-
-  @keyframes aurora-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  @keyframes silk-pulse {
-    0% { opacity: 0.5; transform: scale(1); }
-    100% { opacity: 0.8; transform: scale(1.1); }
-  }
 }
