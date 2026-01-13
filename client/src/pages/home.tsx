@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import aboutImage from '@assets/dr_1765436654368.jpg';
 
 // Import stock images - Korean Beauty Aesthetic
-import hormoneImage from '@assets/stock_images/medical_consultation_81ea05e7.jpg';
+import hormoneImage from '@assets/45929f8a2037869e03c18122262e0c49_1768282187112.jpg';
 import naturalImage from '@assets/stock_images/asian_woman_natural__430ba22f.jpg';
 import autonomicImage from '@assets/stock_images/korean_woman_sleepin_f6960c38.jpg';
 import boneImage from '@assets/stock_images/asian_woman_elegant__843c4603.jpg';
