@@ -192,10 +192,16 @@ export default function Home() {
                   身心棲息的<br/>
                   <span className="italic text-primary">靜謐綠洲</span>
                 </h2>
-                <p className="text-foreground/80 leading-loose text-justify font-medium">
-                  在這個繁忙的時代，我們希望打造的不只是一間診所，而是一個能讓您暫時放下重擔、傾聽身體聲音的空間。
-                  <br/><br/>
-                  邱文瑾醫師深信，更年期照護不應止於藥物，更需要全人的關懷。從生理數據的精密判讀，到心理壓力的溫柔承接，我們在這裡，陪您找回身心的平衡與自在。
+                <p className="text-foreground/80 leading-loose font-medium text-center md:text-left">
+                  更年期不只是月經停止，<br/>
+                  而是一段影響生理與心理的調整期。<br/><br/>
+                  荷爾蒙變化，可能牽動<br/>
+                  睡眠、情緒、代謝、骨骼、心血管<br/>
+                  以及女性對自我狀態的感受，<br/>
+                  因此更年期治療，<br/>
+                  不該只著眼於單一症狀，<br/><br/>
+                  而是從「整體平衡」出發，<br/>
+                  為每一位女性「量身規劃」合適療程。
                 </p>
                 <Link href="/about" className="inline-flex items-center text-foreground hover:text-primary transition-colors border-b border-foreground/30 hover:border-primary pb-1 mt-4 font-semibold">
                      閱讀更多關於醫師 <ArrowRight className="w-4 h-4 ml-2" />
