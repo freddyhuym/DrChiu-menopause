@@ -202,11 +202,11 @@ export default function Home() {
                 </Link>
               </div>
               <div className="relative">
-                 <div className="aspect-[4/5] overflow-hidden relative z-10 border border-primary/20 shadow-xl rounded-sm">
+                 <div className="aspect-[9/16] md:aspect-[2/3] overflow-hidden relative z-10 border border-primary/20 shadow-xl rounded-sm bg-white/50">
                     <img 
                       src={drChiuFullBody} 
                       alt="Dr. Chiu" 
-                      className="w-full h-full object-cover opacity-95 hover:opacity-100 transition-opacity duration-700 object-top" 
+                      className="w-full h-full object-contain opacity-95 hover:opacity-100 transition-opacity duration-700" 
                     />
                  </div>
                  {/* Decorative Frame */}
