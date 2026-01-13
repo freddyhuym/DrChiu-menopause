@@ -205,7 +205,7 @@ export default function Contact() {
                        style={{ border: 0 }}
                        loading="lazy"
                        allowFullScreen
-                       src="https://maps.google.com/maps?q=新竹市東區關新東路272號&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                       src="https://maps.google.com/maps?q=新竹市東區關新東路272號&hl=zh-TW&t=&z=15&ie=UTF8&iwloc=&output=embed"
                        title="Hsinchu Clinic Map"
                     ></iframe>
                  </div>
@@ -226,7 +226,7 @@ export default function Contact() {
                        style={{ border: 0 }}
                        loading="lazy"
                        allowFullScreen
-                       src="https://maps.google.com/maps?q=新竹縣竹北市文興路一段273號&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                       src="https://maps.google.com/maps?q=新竹縣竹北市文興路一段273號&hl=zh-TW&t=&z=15&ie=UTF8&iwloc=&output=embed"
                        title="Zhubei Clinic Map"
                     ></iframe>
                  </div>
