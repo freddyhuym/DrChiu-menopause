@@ -8,7 +8,7 @@ import hormoneImage from '@assets/45929f8a2037869e03c18122262e0c49_1768282187112
 import naturalImage from '@assets/stock_images/asian_woman_natural__430ba22f.jpg';
 import autonomicImage from '@assets/stock_images/korean_woman_sleepin_f6960c38.jpg';
 import boneImage from '@assets/stock_images/asian_woman_elegant__843c4603.jpg';
-import cardioImage from '@assets/stock_images/asian_woman_face_hea_03d46dd1.jpg';
+import cardioImage from '@assets/07d4fa835366862c7bacd3d0bf58e39d_1768282274248.jpg';
 import balanceImage from '@assets/stock_images/korean_woman_meditat_0c8b7f71.jpg';
 
 export default function Home() {
