@@ -135,7 +135,7 @@ export default function Home() {
                   <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed">
                     專業為本，溫柔為心
                   </h3>
-                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed pl-8 md:pl-16">
+                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed pl-8 md:pl-16 whitespace-nowrap">
                     陪伴女性走過每一段轉變
                   </h3>
                 </div>
