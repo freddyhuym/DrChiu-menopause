@@ -10,6 +10,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+import mapPlaceholder from '@assets/stock_images/clean_minimalist_map_cfeb8676.jpg';
+
 export default function Contact() {
   const { toast } = useToast();
   
@@ -192,22 +194,38 @@ export default function Contact() {
                  <div className="flex flex-col items-center">
                     <MapPin className="w-8 h-8 text-primary mb-4" />
                     <h4 className="font-bold text-xl text-primary mb-2">新竹館</h4>
-                    <p className="text-foreground/80 font-medium leading-loose">
+                    <p className="text-foreground/80 font-medium leading-loose mb-4">
                       新竹市東區關新東路272號<br/>
                       03-666-2961
                     </p>
-                    <a href="https://maps.google.com" target="_blank" className="text-xs text-primary/60 border-b border-primary/30 mt-2 hover:text-primary transition-colors">GOOGLE MAP</a>
+                    <a href="https://maps.app.goo.gl/JV28DDYZgQFDoM4EA" target="_blank" className="block w-full max-w-[280px] h-40 relative rounded-lg overflow-hidden border border-primary/20 shadow-md group">
+                       <img src={mapPlaceholder} alt="Google Map" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                       <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
+                       <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-primary shadow-sm tracking-widest flex items-center gap-2 transform group-hover:-translate-y-1 transition-transform">
+                             <MapPin size={12} /> GOOGLE MAP
+                          </div>
+                       </div>
+                    </a>
                  </div>
               </div>
               <div className="space-y-4">
                  <div className="flex flex-col items-center">
                     <MapPin className="w-8 h-8 text-primary mb-4" />
                     <h4 className="font-bold text-xl text-primary mb-2">竹北館</h4>
-                    <p className="text-foreground/80 font-medium leading-loose">
+                    <p className="text-foreground/80 font-medium leading-loose mb-4">
                       新竹縣竹北市文興路一段273號<br/>
                       03-668-8858
                     </p>
-                    <a href="https://maps.google.com" target="_blank" className="text-xs text-primary/60 border-b border-primary/30 mt-2 hover:text-primary transition-colors">GOOGLE MAP</a>
+                    <a href="https://maps.app.goo.gl/6thL83nKViiJodwP8" target="_blank" className="block w-full max-w-[280px] h-40 relative rounded-lg overflow-hidden border border-primary/20 shadow-md group">
+                       <img src={mapPlaceholder} alt="Google Map" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                       <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
+                       <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-primary shadow-sm tracking-widest flex items-center gap-2 transform group-hover:-translate-y-1 transition-transform">
+                             <MapPin size={12} /> GOOGLE MAP
+                          </div>
+                       </div>
+                    </a>
                  </div>
               </div>
            </div>
