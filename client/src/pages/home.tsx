@@ -3,13 +3,13 @@ import { ArrowRight, Sparkles, User, FileText, Stethoscope, Video, Mail, Play } 
 import { Link } from "wouter";
 import aboutImage from '@assets/dr_1765436654368.jpg';
 
-// Import stock images
-import hormoneImage from '@assets/stock_images/abstract_feminine_he_bfdfdb16.jpg';
-import naturalImage from '@assets/stock_images/herbal_natural_holis_f6ddcdbd.jpg';
-import autonomicImage from '@assets/stock_images/calm_mind_abstract_n_9c6b6d02.jpg';
-import boneImage from '@assets/stock_images/active_healthy_woman_a6151a41.jpg';
-import cardioImage from '@assets/stock_images/abstract_heart_healt_d15bf212.jpg';
-import balanceImage from '@assets/stock_images/meditation_yoga_suns_caba5536.jpg';
+// Import stock images - Korean Beauty Aesthetic
+import hormoneImage from '@assets/stock_images/korean_woman_glowing_8a842a11.jpg';
+import naturalImage from '@assets/stock_images/asian_woman_natural__430ba22f.jpg';
+import autonomicImage from '@assets/stock_images/korean_woman_sleepin_f6960c38.jpg';
+import boneImage from '@assets/stock_images/asian_woman_elegant__843c4603.jpg';
+import cardioImage from '@assets/stock_images/asian_woman_healthy__11fa4fb5.jpg';
+import balanceImage from '@assets/stock_images/korean_woman_meditat_0c8b7f71.jpg';
 
 export default function Home() {
   const treatments = [
@@ -141,13 +141,13 @@ export default function Home() {
              {treatments.map((item, idx) => (
                <Link key={idx} href={item.link}>
                  <a className="group block border-r border-b border-white/10 relative overflow-hidden h-80">
-                    {/* Background Image with Zoom Effect */}
+                    {/* Background Image with Zoom Effect - Brighter Overlay */}
                     <div className="absolute inset-0 overflow-hidden">
                        <div 
-                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-60"
+                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-90"
                          style={{ backgroundImage: `url(${item.image})` }}
                        />
-                       <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
+                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
                     </div>
 
                     <div className="relative z-10 p-12 h-full flex flex-col justify-between">
