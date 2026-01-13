@@ -24,8 +24,8 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16 md:mb-24 space-y-4">
-            <h3 className="text-gold tracking-[0.2em] text-sm uppercase">Dean's Profile</h3>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">關於 <span className="text-gold">邱文瑾 院長</span></h1>
+            <h3 className="text-gold tracking-[0.2em] text-sm uppercase font-bold">Dean's Profile</h3>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">關於 <span className="text-gold">邱文瑾 院長</span></h1>
             <div className="w-20 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
           </div>
 
@@ -37,14 +37,14 @@ export default function About() {
               transition={{ duration: 0.8 }}
               className="w-full md:w-5/12 shrink-0"
             >
-              <div className="relative rounded-lg overflow-hidden glass-card p-3">
-                <div className="aspect-[3/4] overflow-hidden bg-black/20 relative rounded">
+              <div className="relative rounded-lg overflow-hidden glass-card p-3 shadow-xl">
+                <div className="aspect-[3/4] overflow-hidden bg-white/20 relative rounded">
                    <img 
                       src={aboutImage} 
                       alt="邱文瑾院長" 
                       className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-all duration-700 hover:scale-105"
                     />
-                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent opacity-60" />
                 </div>
               </div>
             </motion.div>
@@ -58,12 +58,12 @@ export default function About() {
             >
               {/* Philosophy */}
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                <h2 className="text-2xl font-bold text-foreground flex items-center gap-3">
                   <Sparkles className="w-5 h-5 text-gold" />
                   醫療理念
                 </h2>
-                <div className="p-6 border-l-2 border-gold bg-white/5 rounded-r-lg backdrop-blur-sm">
-                  <p className="text-muted-foreground text-lg leading-loose text-justify font-light">
+                <div className="p-6 border-l-2 border-gold bg-white/40 rounded-r-lg backdrop-blur-sm shadow-sm">
+                  <p className="text-foreground/80 text-lg leading-loose text-justify font-medium">
                     「更年期不是一種病，而是身體在說話。」<br/><br/>
                     我深信，醫療不只是冰冷的診斷與藥物，更是人與人之間溫暖的連結。
                     在我的診間裡，我希望能成為妳最安心的傾聽者。透過長時間的陪伴與專業照護，
@@ -75,10 +75,10 @@ export default function About() {
               <div className="grid sm:grid-cols-2 gap-8">
                 {/* Qualifications */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-gold flex items-center gap-2 border-b border-white/10 pb-3">
+                  <h3 className="text-xl font-bold text-gold flex items-center gap-2 border-b border-gold/30 pb-3">
                     <Award className="w-5 h-5" /> 專科資格
                   </h3>
-                  <ul className="space-y-3 text-muted-foreground">
+                  <ul className="space-y-3 text-foreground/80 font-medium">
                     <li className="flex gap-3 items-center group">
                       <span className="w-1.5 h-1.5 rounded-full bg-gold group-hover:scale-150 transition-transform" />
                       中華民國專科醫師證書
@@ -96,10 +96,10 @@ export default function About() {
 
                 {/* Education */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold text-gold flex items-center gap-2 border-b border-white/10 pb-3">
+                  <h3 className="text-xl font-bold text-gold flex items-center gap-2 border-b border-gold/30 pb-3">
                     <GraduationCap className="w-5 h-5" /> 學歷
                   </h3>
-                  <ul className="space-y-3 text-muted-foreground">
+                  <ul className="space-y-3 text-foreground/80 font-medium">
                     <li className="flex gap-3 items-center group">
                       <span className="w-1.5 h-1.5 rounded-full bg-gold group-hover:scale-150 transition-transform" />
                       國立國防大學醫學系 醫學士
@@ -117,18 +117,18 @@ export default function About() {
               </div>
 
               {/* Expertise */}
-              <div className="glass-card p-8 rounded-lg">
-                 <h3 className="text-xl font-bold text-white flex items-center gap-2 mb-6">
+              <div className="glass-card p-8 rounded-lg shadow-lg bg-white/30 border border-white/50">
+                 <h3 className="text-xl font-bold text-foreground flex items-center gap-2 mb-6">
                     <Stethoscope className="w-5 h-5 text-gold" /> 專長領域
                   </h3>
-                  <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8 text-muted-foreground">
+                  <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8 text-foreground/80 font-medium">
                     {[
                       "更年期整合照護", "女性荷爾蒙調理", "私密處健康保養",
                       "代謝症候群治療", "骨質疏鬆預防", "身心壓力調適"
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3 group">
                         <span className="w-2 h-px bg-gold group-hover:w-4 transition-all" />
-                        <span className="group-hover:text-white transition-colors">{item}</span>
+                        <span className="group-hover:text-gold transition-colors">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -142,26 +142,26 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="space-y-12 border-t border-white/10 pt-20"
+            className="space-y-12 border-t border-gold/20 pt-20"
           >
              <div className="text-center space-y-4">
-                <h3 className="text-gold tracking-[0.2em] text-sm uppercase">Professional Certification</h3>
-                <h2 className="text-3xl font-bold text-white">專業認證</h2>
+                <h3 className="text-gold tracking-[0.2em] text-sm uppercase font-bold">Professional Certification</h3>
+                <h2 className="text-3xl font-bold text-foreground">專業認證</h2>
              </div>
              
              <div className="grid md:grid-cols-3 gap-6">
                 {certificates.map((cert, idx) => (
-                  <div key={idx} className="group relative overflow-hidden rounded-lg bg-white/5 border border-white/10 p-2 hover:border-gold/50 transition-all duration-500">
-                    <div className="aspect-[4/3] overflow-hidden rounded bg-black/40 relative">
+                  <div key={idx} className="group relative overflow-hidden rounded-lg bg-white/40 border border-white/60 shadow-md p-2 hover:border-gold/50 transition-all duration-500">
+                    <div className="aspect-[4/3] overflow-hidden rounded bg-white/50 relative">
                        <img 
                          src={cert.src} 
                          alt={cert.alt} 
-                         className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+                         className="w-full h-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
                        />
-                       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+                       <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                     </div>
                     <div className="mt-3 text-center">
-                       <p className="text-xs text-muted-foreground group-hover:text-gold transition-colors">{cert.alt}</p>
+                       <p className="text-xs text-foreground/70 group-hover:text-gold transition-colors font-semibold">{cert.alt}</p>
                     </div>
                   </div>
                 ))}

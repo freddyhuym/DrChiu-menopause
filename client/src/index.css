@@ -10,33 +10,33 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-  /* Deep Purple & Gold Theme (Regal, Night, Sparkle) */
-  --color-background: transparent; /* Transparent to show the silk body background */
-  --color-foreground: hsl(45 20% 90%); /* Cream/White text */
+  /* Light, White & Gold Theme (Elegant, ethereal, pure) */
+  --color-background: transparent;
+  --color-foreground: hsl(270 10% 20%); /* Dark gray/purple text for readability */
 
-  --color-card: hsl(270 40% 10% / 0.7); /* Translucent dark purple for cards */
-  --color-card-foreground: hsl(45 20% 90%);
+  --color-card: hsl(0 0% 100% / 0.6); /* Translucent white for cards */
+  --color-card-foreground: hsl(270 10% 20%);
 
-  --color-popover: hsl(270 40% 10% / 0.9);
-  --color-popover-foreground: hsl(45 20% 90%);
+  --color-popover: hsl(0 0% 100% / 0.8);
+  --color-popover-foreground: hsl(270 10% 20%);
 
-  /* Primary: Luxurious Gold */
-  --color-primary: hsl(45 70% 50%); 
-  --color-primary-foreground: hsl(270 50% 10%);
+  /* Primary: Luxurious Gold (slightly darker for contrast on white) */
+  --color-primary: hsl(45 80% 45%); 
+  --color-primary-foreground: hsl(0 0% 100%);
 
-  /* Secondary: Rich Purple */
-  --color-secondary: hsl(270 60% 25%);
-  --color-secondary-foreground: hsl(45 20% 90%);
+  /* Secondary: Soft Gold/Cream */
+  --color-secondary: hsl(45 30% 90%);
+  --color-secondary-foreground: hsl(270 10% 20%);
   
-  --color-muted: hsl(270 30% 20%);
-  --color-muted-foreground: hsl(270 20% 70%);
+  --color-muted: hsl(270 10% 90%);
+  --color-muted-foreground: hsl(270 10% 40%);
 
-  --color-accent: hsl(45 70% 50%);
-  --color-accent-foreground: hsl(270 50% 10%);
+  --color-accent: hsl(45 80% 45%);
+  --color-accent-foreground: hsl(0 0% 100%);
 
-  --color-border: hsl(45 40% 30%); /* Gold/Bronze borders */
-  --color-input: hsl(270 30% 20%);
-  --color-ring: hsl(45 70% 50%);
+  --color-border: hsl(45 50% 80%); /* Light gold borders */
+  --color-input: hsl(0 0% 100% / 0.5);
+  --color-ring: hsl(45 80% 50%);
 
   --radius: 0rem; /* Sharp, elegant corners */
   
@@ -52,9 +52,9 @@
   }
   body {
     @apply font-serif antialiased bg-background text-foreground tracking-wide leading-loose;
-    background-image: url('/silk-bg-hd.jpg');
+    background-image: url('/white-silk-bg.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-attachment: fixed;
     background-repeat: no-repeat;
   }

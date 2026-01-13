@@ -26,25 +26,12 @@ export default function Home() {
       
       {/* 1. Hero Section - Full Screen Video/Image Vibe */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Silky Aurora Background */}
-        <div className="silk-aurora-bg opacity-50" />
-        <div className="absolute inset-0 silk-overlay w-full h-full" />
-        <div className="absolute inset-0 w-full h-full stars-bg opacity-40 mix-blend-screen" />
-        
-        {/* Floating Silk Elements (Simulated with blurry gradients) */}
-        <motion.div 
-          animate={{ x: [0, 50, 0], y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen"
-        />
-        <motion.div 
-          animate={{ x: [0, -40, 0], y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gold/20 rounded-full blur-[80px] mix-blend-screen"
-        />
+        {/* Silky Aurora Background - Adjusted for Light Theme */}
+        {/* We keep the structure but make it very subtle gold/white */}
+        <div className="absolute inset-0 bg-white/20 z-0" />
         
         {/* Gold Accent Waves */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white/80 to-transparent z-10" />
         
         <div className="container mx-auto px-4 relative z-20 text-center">
           <motion.div
@@ -53,23 +40,23 @@ export default function Home() {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="space-y-8"
           >
-            <h2 className="text-gold tracking-[0.3em] uppercase text-sm md:text-base mb-4 font-light">
+            <h2 className="text-gold tracking-[0.3em] uppercase text-sm md:text-base mb-4 font-bold">
               Menopause Sanctuary
             </h2>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider text-white mb-6 text-glow">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider text-primary mb-6 drop-shadow-sm">
               擁抱蛻變<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gold to-white font-light italic">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-600 to-gold font-light italic">
                 優雅重生
               </span>
             </h1>
-            <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground font-light leading-relaxed tracking-wide">
+            <p className="max-w-xl mx-auto text-lg md:text-xl text-foreground/80 font-medium leading-relaxed tracking-wide">
               專屬女性的靜謐綠洲，結合專業醫學與溫柔陪伴，<br/>
               讓更年期成為生命中最美麗的轉折。
             </p>
             
             <div className="pt-12">
                <Link href="/contact">
-                 <a className="inline-flex items-center gap-3 border border-gold text-gold px-10 py-4 hover:bg-gold hover:text-black transition-all duration-500 tracking-[0.2em] text-sm uppercase">
+                 <a className="inline-flex items-center gap-3 border border-gold text-gold px-10 py-4 hover:bg-gold hover:text-white transition-all duration-500 tracking-[0.2em] text-sm uppercase font-semibold">
                    預約諮詢 <ArrowRight className="w-4 h-4" />
                  </a>
                </Link>
@@ -81,7 +68,7 @@ export default function Home() {
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gold/50"
         >
           <div className="w-px h-16 bg-gradient-to-b from-transparent via-gold to-transparent" />
         </motion.div>
@@ -92,29 +79,29 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
            <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="space-y-8 relative">
-                <div className="absolute -top-20 -left-20 text-[200px] text-white/5 font-serif font-bold leading-none select-none -z-10">
+                <div className="absolute -top-20 -left-20 text-[200px] text-foreground/5 font-serif font-bold leading-none select-none -z-10">
                   OASIS
                 </div>
-                <h3 className="text-gold tracking-[0.2em] text-sm uppercase border-l-2 border-gold pl-4">
+                <h3 className="text-gold tracking-[0.2em] text-sm uppercase border-l-2 border-gold pl-4 font-bold">
                   Our Philosophy
                 </h3>
-                <h2 className="text-4xl md:text-5xl font-bold leading-tight text-white">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight text-foreground">
                   身心棲息的<br/>
                   <span className="italic text-gold">靜謐綠洲</span>
                 </h2>
-                <p className="text-muted-foreground leading-loose text-justify">
+                <p className="text-foreground/80 leading-loose text-justify font-medium">
                   在這個繁忙的時代，我們希望打造的不只是一間診所，而是一個能讓您暫時放下重擔、傾聽身體聲音的空間。
                   <br/><br/>
                   邱文瑾醫師深信，更年期照護不應止於藥物，更需要全人的關懷。從生理數據的精密判讀，到心理壓力的溫柔承接，我們在這裡，陪您找回身心的平衡與自在。
                 </p>
                 <Link href="/about">
-                   <a className="inline-flex items-center text-white hover:text-gold transition-colors border-b border-white/30 hover:border-gold pb-1 mt-4">
+                   <a className="inline-flex items-center text-foreground hover:text-gold transition-colors border-b border-foreground/30 hover:border-gold pb-1 mt-4 font-semibold">
                      閱讀更多關於醫師 <ArrowRight className="w-4 h-4 ml-2" />
                    </a>
                 </Link>
               </div>
               <div className="relative">
-                 <div className="aspect-[4/5] overflow-hidden relative z-10 border border-white/10">
+                 <div className="aspect-[4/5] overflow-hidden relative z-10 border border-white/40 shadow-xl">
                     <img 
                       src={aboutImage} 
                       alt="Dr. Chiu" 
@@ -129,39 +116,39 @@ export default function Home() {
       </section>
 
       {/* 3. Services Grid - High End Clinic Style */}
-      <section className="py-32 bg-secondary/20 relative">
+      <section className="py-32 bg-white/40 backdrop-blur-sm relative">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-20 space-y-4">
-            <h3 className="text-gold tracking-[0.2em] text-sm uppercase">Medical Services</h3>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">全方位更年期照護</h2>
+            <h3 className="text-gold tracking-[0.2em] text-sm uppercase font-bold">Medical Services</h3>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">全方位更年期照護</h2>
             <div className="w-12 h-1 bg-gold mx-auto mt-6" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-gold/20 shadow-lg bg-white/20">
              {treatments.map((item, idx) => (
                <Link key={idx} href={item.link}>
-                 <a className="group block border-r border-b border-white/10 relative overflow-hidden h-80">
+                 <a className="group block border-r border-b border-gold/20 relative overflow-hidden h-80">
                     {/* Background Image with Zoom Effect - Brighter Overlay */}
                     <div className="absolute inset-0 overflow-hidden">
                        <div 
                          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-90"
                          style={{ backgroundImage: `url(${item.image})` }}
                        />
-                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
+                       <div className="absolute inset-0 bg-white/20 group-hover:bg-white/0 transition-colors duration-500" />
                     </div>
 
                     <div className="relative z-10 p-12 h-full flex flex-col justify-between">
                        <div className="space-y-6">
-                         <div className="text-gold/50 font-serif text-5xl font-light group-hover:text-gold transition-colors duration-500">
+                         <div className="text-white drop-shadow-md font-serif text-5xl font-light group-hover:text-gold transition-colors duration-500">
                            0{idx + 1}
                          </div>
                          <div>
-                           <h4 className="text-xl font-bold text-white mb-2 tracking-wide group-hover:tracking-widest transition-all duration-500 text-shadow-sm">{item.name}</h4>
-                           <p className="text-xs text-muted-foreground tracking-widest uppercase group-hover:text-white/80 transition-colors">{item.en}</p>
+                           <h4 className="text-xl font-bold text-white drop-shadow-md mb-2 tracking-wide group-hover:tracking-widest transition-all duration-500 text-shadow-sm">{item.name}</h4>
+                           <p className="text-xs text-white/90 drop-shadow-md font-semibold tracking-widest uppercase group-hover:text-white transition-colors">{item.en}</p>
                          </div>
                        </div>
                        
-                       <div className="w-8 h-px bg-white/20 group-hover:w-full group-hover:bg-gold transition-all duration-500" />
+                       <div className="w-8 h-px bg-white/60 group-hover:w-full group-hover:bg-gold transition-all duration-500" />
                     </div>
                     
                     {/* Hover Glow Overlay */}
@@ -173,7 +160,7 @@ export default function Home() {
           
           <div className="text-center mt-16">
              <Link href="/treatments">
-               <a className="inline-block px-12 py-4 border border-white/20 hover:border-gold hover:text-gold text-white transition-all duration-300 tracking-widest text-sm uppercase">
+               <a className="inline-block px-12 py-4 border border-gold/50 text-foreground hover:bg-gold hover:text-white transition-all duration-300 tracking-widest text-sm uppercase font-semibold">
                  查看完整療程說明
                </a>
              </Link>
@@ -184,13 +171,13 @@ export default function Home() {
       {/* 4. Latest News / Column Preview */}
       <section className="py-32">
         <div className="container mx-auto px-4 md:px-6">
-           <div className="flex justify-between items-end mb-16 border-b border-white/10 pb-6">
+           <div className="flex justify-between items-end mb-16 border-b border-gold/30 pb-6">
               <div>
-                <h3 className="text-gold tracking-[0.2em] text-sm uppercase mb-2">Knowledge</h3>
-                <h2 className="text-3xl md:text-4xl font-bold text-white">美學與健康專欄</h2>
+                <h3 className="text-gold tracking-[0.2em] text-sm uppercase mb-2 font-bold">Knowledge</h3>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">美學與健康專欄</h2>
               </div>
               <Link href="/articles">
-                <a className="hidden md:flex items-center text-sm tracking-widest text-muted-foreground hover:text-white transition-colors">
+                <a className="hidden md:flex items-center text-sm tracking-widest text-foreground/60 hover:text-foreground transition-colors font-semibold">
                   VIEW ALL <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
               </Link>
@@ -199,24 +186,24 @@ export default function Home() {
            <div className="grid md:grid-cols-3 gap-8">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="group cursor-pointer">
-                   <div className="aspect-[4/3] bg-white/5 mb-6 overflow-hidden relative">
-                      <div className="absolute inset-0 bg-secondary/50 group-hover:bg-transparent transition-colors duration-500" />
-                      <div className="absolute top-4 left-4 bg-gold text-black text-xs font-bold px-3 py-1">
+                   <div className="aspect-[4/3] bg-white/40 mb-6 overflow-hidden relative shadow-md rounded-sm">
+                      <div className="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors duration-500" />
+                      <div className="absolute top-4 left-4 bg-gold text-white text-xs font-bold px-3 py-1 shadow-sm">
                         NEWS
                       </div>
                    </div>
                    <div className="space-y-3">
-                      <div className="text-xs text-gold/80 tracking-widest">2026.01.{10+i}</div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-gold transition-colors line-clamp-2">
+                      <div className="text-xs text-gold font-bold tracking-widest">2026.01.{10+i}</div>
+                      <h3 className="text-lg font-bold text-foreground group-hover:text-gold transition-colors line-clamp-2">
                         {i === 1 ? "更年期熱潮紅如何改善？醫師教妳3招緩解不適" : 
                          i === 2 ? "荷爾蒙補充療法安全嗎？破解常見迷思" :
                          "失眠睡不好？從自律神經調節開始"}
                       </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
+                      <p className="text-sm text-foreground/70 line-clamp-2 font-medium">
                         進入更年期後，許多女性會面臨身體與心理的巨大轉變，透過專業的醫療協助...
                       </p>
                       <div className="pt-4">
-                        <span className="text-xs border-b border-gold/50 text-gold pb-0.5 group-hover:border-gold transition-all">READ MORE</span>
+                        <span className="text-xs border-b border-gold/50 text-gold pb-0.5 group-hover:border-gold transition-all font-bold">READ MORE</span>
                       </div>
                    </div>
                 </div>
