@@ -29,10 +29,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
           <Link href="/">
             <a className="flex flex-col group">
-              <span className="text-2xl md:text-3xl font-bold text-gold tracking-widest group-hover:text-white transition-colors duration-500">
+              <span className="text-2xl md:text-3xl font-extrabold text-primary tracking-widest transition-colors duration-500">
                 邱文瑾醫師
               </span>
-              <span className="text-xs md:text-sm text-muted-foreground tracking-[0.2em] group-hover:text-gold transition-colors duration-500">
+              <span className="text-xs md:text-sm text-foreground/70 font-semibold tracking-[0.2em] transition-colors duration-500">
                 DR. CHIU MENOPAUSE CLINIC
               </span>
             </a>
@@ -42,11 +42,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
-                <a className={`text-sm font-medium transition-all duration-300 relative group py-2 tracking-widest hover:text-white ${
-                  location === link.path ? "text-gold" : "text-muted-foreground"
+                <a className={`text-sm font-bold transition-all duration-300 relative group py-2 tracking-widest hover:text-primary ${
+                  location === link.path ? "text-primary" : "text-foreground/80"
                 }`}>
                   {link.name}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-px bg-gold transition-all duration-500 ${
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500 ${
                     location === link.path ? "w-full" : "w-0 group-hover:w-full"
                   }`} />
                 </a>

@@ -12,31 +12,31 @@
   
   /* Light, White & Gold Theme (Elegant, ethereal, pure) */
   --color-background: transparent;
-  --color-foreground: hsl(30 10% 10%); /* Warm dark grey/brown for readability */
+  --color-foreground: hsl(30 10% 15%); /* Darker, higher contrast grey */
 
-  --color-card: hsl(0 0% 100% / 0.7); /* Translucent white for cards */
-  --color-card-foreground: hsl(30 10% 10%);
+  --color-card: hsl(0 0% 100% / 0.85); /* More opaque white for better text readability */
+  --color-card-foreground: hsl(30 10% 15%);
 
-  --color-popover: hsl(0 0% 100% / 0.9);
-  --color-popover-foreground: hsl(30 10% 10%);
+  --color-popover: hsl(0 0% 100% / 0.95);
+  --color-popover-foreground: hsl(30 10% 15%);
 
   /* Primary: Luxurious Gold */
-  --color-primary: hsl(45 90% 35%); /* Darker gold for text contrast */
+  --color-primary: hsl(45 90% 30%); /* Much darker gold/bronze for high contrast */
   --color-primary-foreground: hsl(0 0% 100%);
 
   /* Secondary: Soft Gold/Cream */
-  --color-secondary: hsl(45 30% 95%);
-  --color-secondary-foreground: hsl(30 10% 10%);
+  --color-secondary: hsl(45 30% 90%);
+  --color-secondary-foreground: hsl(30 10% 15%);
   
   --color-muted: hsl(30 10% 94%);
-  --color-muted-foreground: hsl(30 5% 35%); /* Darker muted text for readability */
+  --color-muted-foreground: hsl(30 5% 30%); /* Darker muted text for readability */
 
-  --color-accent: hsl(45 90% 45%);
+  --color-accent: hsl(45 90% 40%);
   --color-accent-foreground: hsl(0 0% 100%);
 
-  --color-border: hsl(45 40% 70%); /* Defined gold borders */
+  --color-border: hsl(45 40% 60%); /* Darker gold borders */
   --color-input: hsl(0 0% 100% / 0.5);
-  --color-ring: hsl(45 90% 50%);
+  --color-ring: hsl(45 90% 45%);
 
   --radius: 0rem; /* Sharp, elegant corners */
   
@@ -66,8 +66,8 @@
 /* Custom Utilities */
 @layer utilities {
   .text-gold {
-    color: hsl(45 90% 40%); /* Darker gold for text readability */
-    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    color: hsl(45 100% 35%); /* Even darker gold for text */
+    text-shadow: none; /* Removed text shadow for cleaner look on light background */
   }
   .bg-gold {
     background-color: hsl(45 80% 50%);
