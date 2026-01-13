@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, User, FileText, Stethoscope, Video, Mail, Play } from "lucide-react";
 import { Link } from "wouter";
-import aboutImage from '@assets/dr_1765436654368.jpg';
+import drChiuPortrait from '@assets/邱院長(2)_1768282531282.jpg';
 
 // Import stock images - Korean Beauty Aesthetic
 import hormoneImage from '@assets/45929f8a2037869e03c18122262e0c49_1768282187112.jpg';
@@ -73,37 +73,73 @@ export default function Home() {
       </section>
 
       {/* Quote Section */}
-      <section className="py-24 bg-white/40 backdrop-blur-sm relative border-y border-primary/10">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-24 bg-white/40 backdrop-blur-sm relative border-y border-primary/10 overflow-hidden">
+        <div className="container mx-auto px-4">
+           <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+             
+             {/* Dr. Photo with multiply blend mode to remove white background visually */}
+             <motion.div
+               initial={{ opacity: 0, x: -50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1 }}
+               className="relative w-64 md:w-80 flex-shrink-0"
+             >
+                <div className="relative z-10">
+                  <img 
+                    src={drChiuPortrait} 
+                    alt="Dr. Chiu" 
+                    className="w-full h-auto object-contain mix-blend-multiply filter contrast-105 drop-shadow-xl"
+                  />
+                </div>
+                {/* Decorative blob behind */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl -z-0 opacity-60" />
+             </motion.div>
+
+             {/* Handwritten Quote */}
+             <motion.div
+               initial={{ opacity: 0, x: 50 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 1, delay: 0.2 }}
+               className="max-w-xl text-center md:text-left space-y-8"
+             >
+                <div className="space-y-2">
+                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed" style={{ fontFamily: '"Ma Shan Zheng", cursive' }}>
+                    專業為本，溫柔為心
+                  </h3>
+                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed pl-8 md:pl-16" style={{ fontFamily: '"Ma Shan Zheng", cursive' }}>
+                    陪伴女性走過每一段轉變
+                  </h3>
+                </div>
+
+                <div className="w-16 h-px bg-primary/40 mx-auto md:mx-0" />
+
+                <div className="text-right pr-4 md:pr-12">
+                   <span className="text-2xl text-foreground/80" style={{ fontFamily: '"Ma Shan Zheng", cursive' }}>
+                     邱文瑾 醫師
+                   </span>
+                </div>
+             </motion.div>
+
+           </div>
+           
+           {/* Original text content below if needed, or keeping it subtle */}
            <motion.div
              initial={{ opacity: 0, y: 30 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             transition={{ duration: 1 }}
-             className="max-w-4xl mx-auto space-y-12"
+             transition={{ duration: 1, delay: 0.4 }}
+             className="max-w-4xl mx-auto mt-16 text-center space-y-8 text-lg md:text-xl leading-loose font-medium text-foreground/80 tracking-wide"
            >
-              <div className="space-y-4">
-                <h2 className="text-3xl md:text-5xl font-bold text-primary font-serif">陪伴女性，安心走過更年期</h2>
-                <h3 className="text-xl md:text-2xl text-foreground/70 font-medium tracking-wide">邱文瑾醫師｜以專業醫學，溫柔守護每一段人生轉變</h3>
-              </div>
-              
-              <div className="w-16 h-px bg-primary/40 mx-auto" />
-
-              <div className="space-y-8 text-lg md:text-xl leading-loose font-medium text-foreground/90 tracking-wide">
-                 <p>
-                   更年期，並不是結束，<br/>
-                   而是女性身體與生命節奏，悄悄轉換的一個重要階段。
-                 </p>
-                 <p>
-                   在這段期間，<br/>
-                   許多女性會面臨熱潮紅、失眠、情緒起伏、體力下降，<br/>
-                   甚至對自己產生陌生與不安的感受。
-                 </p>
-                 <p>
-                   這些改變，並不是「想太多」，<br/>
-                   而是身體真實發出的訊號，值得被理解、被傾聽。
-                 </p>
-              </div>
+              <p>
+                更年期，並不是結束，<br/>
+                而是女性身體與生命節奏，悄悄轉換的一個重要階段。
+              </p>
+              <p>
+                這些改變，並不是「想太多」，<br/>
+                而是身體真實發出的訊號，值得被理解、被傾聽。
+              </p>
            </motion.div>
         </div>
       </section>
