@@ -77,7 +77,7 @@ export default function Home() {
               <span className="block text-2xl md:text-3xl lg:text-4xl font-light mt-4 tracking-[0.2em] text-foreground/60 italic font-serif">Reborn with Grace</span>
             </h1>
             <p className="max-w-xl mx-auto text-lg md:text-xl text-foreground font-medium leading-relaxed tracking-wide">
-              專屬女性的靜謐綠洲，結合專業醫學與溫柔陪伴，<br/>
+              結合專業醫學與溫柔陪伴，<br/>
               讓更年期成為生命中最美麗的轉折。
             </p>
             
