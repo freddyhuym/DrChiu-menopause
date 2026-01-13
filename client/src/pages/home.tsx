@@ -1,127 +1,212 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, User, FileText, Stethoscope, Video, Mail } from "lucide-react";
+import { ArrowRight, Sparkles, User, FileText, Stethoscope, Video, Mail, Play } from "lucide-react";
 import { Link } from "wouter";
+import aboutImage from '@assets/dr_1765436654368.jpg';
 
 export default function Home() {
-  const sections = [
-    {
-      id: "about",
-      title: "醫師介紹",
-      desc: "專業醫學 × 溫柔照護，深入了解邱文瑾醫師的醫療理念。",
-      icon: <User className="w-6 h-6" />,
-      link: "/about"
-    },
-    {
-      id: "treatments",
-      title: "療程介紹",
-      desc: "量身打造的更年期全方位照護，從荷爾蒙到身心平衡。",
-      icon: <Stethoscope className="w-6 h-6" />,
-      link: "/treatments"
-    },
-    {
-      id: "articles",
-      title: "更年期文章",
-      desc: "專業知識分享，讓您更了解身體的變化與保養之道。",
-      icon: <FileText className="w-6 h-6" />,
-      link: "/articles"
-    },
-    {
-      id: "videos",
-      title: "影片專區",
-      desc: "醫師親自解說，深入淺出的影音衛教內容。",
-      icon: <Video className="w-6 h-6" />,
-      link: "/videos"
-    },
-    {
-      id: "contact",
-      title: "聯絡我們",
-      desc: "預約諮詢或留言，我們將竭誠為您服務。",
-      icon: <Mail className="w-6 h-6" />,
-      link: "/contact"
-    }
+  const treatments = [
+    { name: "荷爾蒙平衡", en: "Hormone", link: "/treatments" },
+    { name: "非藥物調理", en: "Natural", link: "/treatments" },
+    { name: "自律神經", en: "Autonomic", link: "/treatments" },
+    { name: "骨骼健康", en: "Bone", link: "/treatments" },
+    { name: "心血管代謝", en: "Cardio", link: "/treatments" },
+    { name: "身心平衡", en: "Balance", link: "/treatments" }
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background">
-        {/* Background Elements */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
-           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary rounded-full filter blur-[100px] opacity-60 translate-x-1/3 -translate-y-1/3" />
-           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/20 rounded-full filter blur-[80px] opacity-50 -translate-x-1/3 translate-y-1/3" />
-        </div>
-
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center py-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      
+      {/* 1. Hero Section - Full Screen Video/Image Vibe */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Galaxy Background */}
+        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary via-background to-black opacity-80" />
+        <div className="absolute inset-0 w-full h-full stars-bg opacity-50" />
+        
+        {/* Gold Accent Waves */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent z-10" />
+        
+        <div className="container mx-auto px-4 relative z-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="space-y-8 md:space-y-12"
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="space-y-8"
           >
-            <h1 className="flex flex-col gap-4 md:gap-6 font-serif tracking-widest text-foreground">
-              <span className="text-2xl md:text-3xl font-light text-muted-foreground">陪伴女性安心走過更年期</span>
-              <span className="text-4xl md:text-6xl lg:text-7xl font-medium leading-tight">
-                專業醫學 <span className="text-gold px-2">×</span> 溫柔照護
+            <h2 className="text-gold tracking-[0.3em] uppercase text-sm md:text-base mb-4 font-light">
+              Menopause Sanctuary
+            </h2>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider text-white mb-6 text-glow">
+              擁抱蛻變<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gold to-white font-light italic">
+                優雅重生
               </span>
             </h1>
+            <p className="max-w-xl mx-auto text-lg md:text-xl text-muted-foreground font-light leading-relaxed tracking-wide">
+              專屬女性的靜謐綠洲，結合專業醫學與溫柔陪伴，<br/>
+              讓更年期成為生命中最美麗的轉折。
+            </p>
             
-            <div className="max-w-xl mx-auto space-y-4">
-              <p className="text-lg md:text-xl text-muted-foreground/80 leading-relaxed font-light tracking-wide">
-                更年期是女性重要的人生階段<br/>
-                需要被理解與專業照護
-              </p>
-            </div>
-            
-             <div className="pt-8 flex justify-center">
-               <Link href="/treatments">
-                  <a className="inline-flex items-center gap-2 bg-gold text-white px-8 py-3 rounded-full hover:bg-gold/90 transition-colors tracking-wide text-lg shadow-lg shadow-gold/20">
-                    了解更多療程 <ArrowRight className="w-5 h-5" />
-                  </a>
+            <div className="pt-12">
+               <Link href="/contact">
+                 <a className="inline-flex items-center gap-3 border border-gold text-gold px-10 py-4 hover:bg-gold hover:text-black transition-all duration-500 tracking-[0.2em] text-sm uppercase">
+                   預約諮詢 <ArrowRight className="w-4 h-4" />
+                 </a>
                </Link>
-             </div>
+            </div>
           </motion.div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30"
+        >
+          <div className="w-px h-16 bg-gradient-to-b from-transparent via-gold to-transparent" />
+        </motion.div>
+      </section>
+
+      {/* 2. Philosophy / Oasis Section */}
+      <section className="py-32 relative">
+        <div className="container mx-auto px-4 md:px-6">
+           <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8 relative">
+                <div className="absolute -top-20 -left-20 text-[200px] text-white/5 font-serif font-bold leading-none select-none -z-10">
+                  OASIS
+                </div>
+                <h3 className="text-gold tracking-[0.2em] text-sm uppercase border-l-2 border-gold pl-4">
+                  Our Philosophy
+                </h3>
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight text-white">
+                  身心棲息的<br/>
+                  <span className="italic text-gold">靜謐綠洲</span>
+                </h2>
+                <p className="text-muted-foreground leading-loose text-justify">
+                  在這個繁忙的時代，我們希望打造的不只是一間診所，而是一個能讓您暫時放下重擔、傾聽身體聲音的空間。
+                  <br/><br/>
+                  邱文瑾醫師深信，更年期照護不應止於藥物，更需要全人的關懷。從生理數據的精密判讀，到心理壓力的溫柔承接，我們在這裡，陪您找回身心的平衡與自在。
+                </p>
+                <Link href="/about">
+                   <a className="inline-flex items-center text-white hover:text-gold transition-colors border-b border-white/30 hover:border-gold pb-1 mt-4">
+                     閱讀更多關於醫師 <ArrowRight className="w-4 h-4 ml-2" />
+                   </a>
+                </Link>
+              </div>
+              <div className="relative">
+                 <div className="aspect-[4/5] overflow-hidden relative z-10 border border-white/10">
+                    <img 
+                      src={aboutImage} 
+                      alt="Dr. Chiu" 
+                      className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-700" 
+                    />
+                 </div>
+                 {/* Decorative Frame */}
+                 <div className="absolute -bottom-6 -right-6 w-full h-full border border-gold/30 -z-0" />
+              </div>
+           </div>
         </div>
       </section>
 
-      {/* Philosophy Brief */}
-      <section className="py-24 bg-white">
+      {/* 3. Services Grid - High End Clinic Style */}
+      <section className="py-32 bg-secondary/20 relative">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <Sparkles className="w-8 h-8 text-gold mx-auto opacity-60" />
-            <p className="text-xl md:text-2xl leading-loose text-muted-foreground font-light text-justify md:text-center">
-              我們相信，每一位女性都值得擁有優雅、自在的更年期生活。<br className="hidden md:block"/>
-              透過全方位的專業評估與個人化調理，<br className="hidden md:block"/>
-              讓身心重回平衡，綻放自信光采。
-            </p>
+          <div className="text-center mb-20 space-y-4">
+            <h3 className="text-gold tracking-[0.2em] text-sm uppercase">Medical Services</h3>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">全方位更年期照護</h2>
+            <div className="w-12 h-1 bg-gold mx-auto mt-6" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
+             {treatments.map((item, idx) => (
+               <Link key={idx} href={item.link}>
+                 <a className="group block border-r border-b border-white/10 p-12 hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
+                    <div className="relative z-10 space-y-6">
+                       <div className="text-gold/50 font-serif text-5xl font-light group-hover:text-gold transition-colors duration-500">
+                         0{idx + 1}
+                       </div>
+                       <div>
+                         <h4 className="text-xl font-bold text-white mb-2 group-hover:tracking-widest transition-all duration-500">{item.name}</h4>
+                         <p className="text-xs text-muted-foreground tracking-widest uppercase">{item.en}</p>
+                       </div>
+                       <div className="w-8 h-px bg-white/20 group-hover:w-16 group-hover:bg-gold transition-all duration-500" />
+                    </div>
+                    {/* Hover Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                 </a>
+               </Link>
+             ))}
+          </div>
+          
+          <div className="text-center mt-16">
+             <Link href="/treatments">
+               <a className="inline-block px-12 py-4 border border-white/20 hover:border-gold hover:text-gold text-white transition-all duration-300 tracking-widest text-sm uppercase">
+                 查看完整療程說明
+               </a>
+             </Link>
           </div>
         </div>
       </section>
-      
-      {/* Sections Navigation */}
-      <section className="py-20 bg-secondary/10">
+
+      {/* 4. Latest News / Column Preview */}
+      <section className="py-32">
         <div className="container mx-auto px-4 md:px-6">
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {sections.map((section, idx) => (
-                <Link key={section.id} href={section.link}>
-                  <a className="group bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-gold/30 block h-full">
-                    <div className="flex flex-col h-full gap-4">
-                      <div className="w-12 h-12 bg-secondary/30 rounded-full flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-colors duration-300">
-                        {section.icon}
+           <div className="flex justify-between items-end mb-16 border-b border-white/10 pb-6">
+              <div>
+                <h3 className="text-gold tracking-[0.2em] text-sm uppercase mb-2">Knowledge</h3>
+                <h2 className="text-3xl md:text-4xl font-bold text-white">美學與健康專欄</h2>
+              </div>
+              <Link href="/articles">
+                <a className="hidden md:flex items-center text-sm tracking-widest text-muted-foreground hover:text-white transition-colors">
+                  VIEW ALL <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </Link>
+           </div>
+
+           <div className="grid md:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="group cursor-pointer">
+                   <div className="aspect-[4/3] bg-white/5 mb-6 overflow-hidden relative">
+                      <div className="absolute inset-0 bg-secondary/50 group-hover:bg-transparent transition-colors duration-500" />
+                      <div className="absolute top-4 left-4 bg-gold text-black text-xs font-bold px-3 py-1">
+                        NEWS
                       </div>
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-gold transition-colors">{section.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed flex-grow">
-                        {section.desc}
+                   </div>
+                   <div className="space-y-3">
+                      <div className="text-xs text-gold/80 tracking-widest">2026.01.{10+i}</div>
+                      <h3 className="text-lg font-bold text-white group-hover:text-gold transition-colors line-clamp-2">
+                        {i === 1 ? "更年期熱潮紅如何改善？醫師教妳3招緩解不適" : 
+                         i === 2 ? "荷爾蒙補充療法安全嗎？破解常見迷思" :
+                         "失眠睡不好？從自律神經調節開始"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        進入更年期後，許多女性會面臨身體與心理的巨大轉變，透過專業的醫療協助...
                       </p>
-                      <div className="flex items-center text-gold text-sm font-medium pt-2 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
-                        前往頁面 <ArrowRight className="w-4 h-4 ml-1" />
+                      <div className="pt-4">
+                        <span className="text-xs border-b border-gold/50 text-gold pb-0.5 group-hover:border-gold transition-all">READ MORE</span>
                       </div>
-                    </div>
-                  </a>
-                </Link>
+                   </div>
+                </div>
               ))}
            </div>
         </div>
       </section>
+
+      {/* 5. Contact CTA */}
+      <section className="py-20 bg-gold text-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+           <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">Ready to start your journey?</h2>
+           <p className="text-lg md:text-xl mb-10 opacity-80 max-w-2xl mx-auto">
+             給自己一個重新愛上生活的機會，立即預約專屬諮詢。
+           </p>
+           <Link href="/contact">
+             <a className="inline-block bg-black text-white px-12 py-4 hover:bg-white hover:text-black transition-all duration-300 tracking-widest shadow-2xl">
+               CONTACT US
+             </a>
+           </Link>
+        </div>
+      </section>
+      
     </div>
   );
 }
