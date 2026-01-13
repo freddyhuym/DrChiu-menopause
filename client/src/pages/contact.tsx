@@ -32,39 +32,90 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Contact Info */}
             <div className="space-y-10 bg-secondary/10 p-10 rounded-sm">
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold tracking-wide text-foreground/80 mb-8">診所資訊</h3>
+              <div className="space-y-8">
+                <h3 className="text-2xl font-bold tracking-wide text-foreground/80 mb-6">診所資訊</h3>
                 
+                {/* Locations */}
                 <div className="flex items-start gap-5 group">
-                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-gold group-hover:bg-gold group-hover:text-white transition-colors">
+                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                     <MapPin size={20} />
                    </div>
-                   <div className="space-y-1">
-                     <p className="font-bold text-foreground/80">地址</p>
-                     <p className="text-muted-foreground tracking-wide">台北市大安區信義路四段 123 號 2 樓</p>
+                   <div className="space-y-3 w-full">
+                     <p className="font-bold text-foreground/80 text-lg">地址</p>
+                     <div className="grid gap-2 text-muted-foreground tracking-wide">
+                        <div>
+                          <span className="font-bold text-primary mr-2">新竹館</span>
+                          新竹市東區關新東路272號
+                        </div>
+                        <div>
+                          <span className="font-bold text-primary mr-2">竹北館</span>
+                          新竹縣竹北市文興路一段273號
+                        </div>
+                     </div>
                    </div>
                 </div>
 
+                {/* Phone */}
                 <div className="flex items-start gap-5 group">
-                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-gold group-hover:bg-gold group-hover:text-white transition-colors">
+                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                     <Phone size={20} />
                    </div>
-                   <div className="space-y-1">
-                     <p className="font-bold text-foreground/80">聯絡電話</p>
-                     <p className="text-muted-foreground tracking-wider">02-2345-6789</p>
+                   <div className="space-y-3 w-full">
+                     <p className="font-bold text-foreground/80 text-lg">聯絡電話</p>
+                     <div className="grid gap-2 text-muted-foreground tracking-wide">
+                        <div>
+                          <span className="font-bold text-primary mr-2">新竹館</span>
+                          03-666-2961
+                        </div>
+                        <div>
+                          <span className="font-bold text-primary mr-2">竹北館</span>
+                          03-668-8858
+                        </div>
+                     </div>
                    </div>
                 </div>
 
+                {/* Email */}
                 <div className="flex items-start gap-5 group">
-                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-gold group-hover:bg-gold group-hover:text-white transition-colors">
+                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                    <Mail size={20} />
+                   </div>
+                   <div className="space-y-3 w-full">
+                     <p className="font-bold text-foreground/80 text-lg">電子信箱</p>
+                     <p className="text-muted-foreground tracking-wide">carebeautyclinic2016@gmail.com</p>
+                   </div>
+                </div>
+
+                {/* Hours */}
+                <div className="flex items-start gap-5 group">
+                   <div className="mt-1 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                     <Clock size={20} />
                    </div>
-                   <div className="space-y-1">
-                     <p className="font-bold text-foreground/80">門診時間</p>
-                     <div className="text-muted-foreground tracking-wide space-y-1">
-                       <p>週一至週五：10:00 - 20:00</p>
-                       <p>週六：10:00 - 17:00</p>
-                       <p className="text-sm opacity-80">（週日及國定假日休診）</p>
+                   <div className="space-y-3 w-full">
+                     <p className="font-bold text-foreground/80 text-lg">門診時間</p>
+                     <div className="grid md:grid-cols-2 gap-6 text-sm text-muted-foreground tracking-wide">
+                       <div>
+                         <p className="font-bold text-primary mb-2 text-base">新竹館</p>
+                         <ul className="space-y-1">
+                           <li>週一：10:00-19:00</li>
+                           <li>週二：10:00-21:00</li>
+                           <li>週三：12:00-21:00</li>
+                           <li>週四：12:00-21:00</li>
+                           <li>週五：12:00-21:00</li>
+                           <li>週六：10:00-18:00</li>
+                         </ul>
+                       </div>
+                       <div>
+                         <p className="font-bold text-primary mb-2 text-base">竹北館</p>
+                         <ul className="space-y-1">
+                           <li>週一：10:00-19:00</li>
+                           <li>週二：12:00-21:00</li>
+                           <li>週三：12:00-21:00</li>
+                           <li>週四：12:00-21:00</li>
+                           <li>週五：10:00-19:00</li>
+                           <li>週六：10:00-18:00</li>
+                         </ul>
+                       </div>
                      </div>
                    </div>
                 </div>
@@ -96,7 +147,7 @@ export default function Contact() {
                 <Textarea required className="min-h-[150px] bg-background border-border focus:border-gold/50 resize-none leading-relaxed" placeholder="請簡述您的需求或預約時段..." />
               </div>
 
-              <Button type="submit" className="w-full h-12 text-lg bg-gold hover:bg-gold/90 text-white rounded-sm tracking-widest transition-all">
+              <Button type="submit" className="w-full h-12 text-lg bg-primary hover:bg-primary/90 text-white rounded-sm tracking-widest transition-all">
                 送出訊息
               </Button>
             </form>
