@@ -131,24 +131,24 @@ export default function Home() {
                     {/* Background Image with Zoom Effect - Brighter Overlay */}
                     <div className="absolute inset-0 overflow-hidden">
                        <div 
-                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-90"
+                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-60"
                          style={{ backgroundImage: `url(${item.image})` }}
                        />
-                       <div className="absolute inset-0 bg-white/20 group-hover:bg-white/0 transition-colors duration-500" />
+                       <div className="absolute inset-0 bg-white/60 group-hover:bg-white/40 transition-colors duration-500" />
                     </div>
 
                     <div className="relative z-10 p-12 h-full flex flex-col justify-between">
                        <div className="space-y-6">
-                         <div className="text-white drop-shadow-md font-serif text-5xl font-light group-hover:text-gold transition-colors duration-500">
+                         <div className="text-primary font-serif text-5xl font-light group-hover:text-foreground transition-colors duration-500">
                            0{idx + 1}
                          </div>
                          <div>
-                           <h4 className="text-xl font-bold text-white drop-shadow-md mb-2 tracking-wide group-hover:tracking-widest transition-all duration-500 text-shadow-sm">{item.name}</h4>
-                           <p className="text-xs text-white/90 drop-shadow-md font-semibold tracking-widest uppercase group-hover:text-white transition-colors">{item.en}</p>
+                           <h4 className="text-xl font-bold text-foreground mb-2 tracking-wide group-hover:tracking-widest transition-all duration-500">{item.name}</h4>
+                           <p className="text-xs text-muted-foreground font-semibold tracking-widest uppercase group-hover:text-foreground transition-colors">{item.en}</p>
                          </div>
                        </div>
                        
-                       <div className="w-8 h-px bg-white/60 group-hover:w-full group-hover:bg-gold transition-all duration-500" />
+                       <div className="w-8 h-px bg-primary/60 group-hover:w-full group-hover:bg-primary transition-all duration-500" />
                     </div>
                     
                     {/* Hover Glow Overlay */}
