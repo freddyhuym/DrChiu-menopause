@@ -12,7 +12,7 @@ import cardioImage from '@assets/07d4fa835366862c7bacd3d0bf58e39d_1768282274248.
 import balanceImage from '@assets/stock_images/korean_woman_meditat_0c8b7f71.jpg';
 
 // Import news images
-import newsHotFlashImage from '@assets/stock_images/asian_woman_drinking_b6e9c2f3.jpg';
+import newsHotFlashImage from '@assets/bdd5fd56a5427ac179c94570cd77fbd4_1768283348085.jpg';
 import newsHormoneImage from '@assets/stock_images/medical_consultation_57767c57.jpg';
 import newsSleepImage from '@assets/stock_images/asian_woman_sleeping_21c5b768.jpg';
 
