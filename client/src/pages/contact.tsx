@@ -10,8 +10,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-import mapPlaceholder from '@assets/stock_images/clean_minimalist_map_cfeb8676.jpg';
-
 export default function Contact() {
   const { toast } = useToast();
   
@@ -188,44 +186,49 @@ export default function Contact() {
         <div className="w-full h-px bg-primary/10 max-w-4xl mx-auto mb-20" />
 
         {/* Footer Info */}
-        <div className="max-w-4xl mx-auto text-center space-y-12">
-           <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-4">
-                 <div className="flex flex-col items-center">
-                    <MapPin className="w-8 h-8 text-primary mb-4" />
-                    <h4 className="font-bold text-xl text-primary mb-2">新竹館</h4>
-                    <p className="text-foreground/80 font-medium leading-loose mb-4">
-                      新竹市東區關新東路272號<br/>
-                      03-666-2961
-                    </p>
-                    <a href="https://maps.app.goo.gl/JV28DDYZgQFDoM4EA" target="_blank" className="block w-full max-w-[280px] h-40 relative rounded-lg overflow-hidden border border-primary/20 shadow-md group">
-                       <img src={mapPlaceholder} alt="Google Map" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                       <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
-                       <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-primary shadow-sm tracking-widest flex items-center gap-2 transform group-hover:-translate-y-1 transition-transform">
-                             <MapPin size={12} /> GOOGLE MAP
-                          </div>
-                       </div>
-                    </a>
+        <div className="max-w-5xl mx-auto space-y-16">
+           
+           {/* Map Section - Stacked Cards */}
+           <div className="space-y-12">
+              {/* Hsinchu Map Card */}
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-border/50">
+                 <div className="mb-6 text-left">
+                    <h4 className="font-bold text-2xl text-foreground mb-2 flex items-center gap-2">
+                      <MapPin className="text-primary w-6 h-6" /> 新竹館
+                    </h4>
+                    <p className="text-muted-foreground pl-8">新竹市東區關新東路272號</p>
+                 </div>
+                 <div className="w-full h-[400px] rounded-md overflow-hidden bg-gray-100 relative">
+                    <iframe 
+                       width="100%" 
+                       height="100%" 
+                       style={{ border: 0 }}
+                       loading="lazy"
+                       allowFullScreen
+                       src="https://maps.google.com/maps?q=新竹市東區關新東路272號&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                       title="Hsinchu Clinic Map"
+                    ></iframe>
                  </div>
               </div>
-              <div className="space-y-4">
-                 <div className="flex flex-col items-center">
-                    <MapPin className="w-8 h-8 text-primary mb-4" />
-                    <h4 className="font-bold text-xl text-primary mb-2">竹北館</h4>
-                    <p className="text-foreground/80 font-medium leading-loose mb-4">
-                      新竹縣竹北市文興路一段273號<br/>
-                      03-668-8858
-                    </p>
-                    <a href="https://maps.app.goo.gl/6thL83nKViiJodwP8" target="_blank" className="block w-full max-w-[280px] h-40 relative rounded-lg overflow-hidden border border-primary/20 shadow-md group">
-                       <img src={mapPlaceholder} alt="Google Map" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                       <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
-                       <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-primary shadow-sm tracking-widest flex items-center gap-2 transform group-hover:-translate-y-1 transition-transform">
-                             <MapPin size={12} /> GOOGLE MAP
-                          </div>
-                       </div>
-                    </a>
+
+              {/* Zhubei Map Card */}
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-border/50">
+                 <div className="mb-6 text-left">
+                    <h4 className="font-bold text-2xl text-foreground mb-2 flex items-center gap-2">
+                      <MapPin className="text-primary w-6 h-6" /> 竹北館
+                    </h4>
+                    <p className="text-muted-foreground pl-8">新竹縣竹北市文興路一段273號</p>
+                 </div>
+                 <div className="w-full h-[400px] rounded-md overflow-hidden bg-gray-100 relative">
+                    <iframe 
+                       width="100%" 
+                       height="100%" 
+                       style={{ border: 0 }}
+                       loading="lazy"
+                       allowFullScreen
+                       src="https://maps.google.com/maps?q=新竹縣竹北市文興路一段273號&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                       title="Zhubei Clinic Map"
+                    ></iframe>
                  </div>
               </div>
            </div>
