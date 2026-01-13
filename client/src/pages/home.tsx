@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, User, FileText, Stethoscope, Video, Mail, Play } from "lucide-react";
 import { Link } from "wouter";
 import drChiuPortrait from '@assets/邱院長(2)_1768282531282.jpg';
+import drChiuFullBody from '@assets/dr_1768288195115.jpg';
 
 // Import stock images - Korean Beauty Aesthetic
 import hormoneImage from '@assets/45929f8a2037869e03c18122262e0c49_1768282187112.jpg';
@@ -203,9 +204,9 @@ export default function Home() {
               <div className="relative">
                  <div className="aspect-[4/5] overflow-hidden relative z-10 border border-primary/20 shadow-xl rounded-sm">
                     <img 
-                      src={drChiuPortrait} 
+                      src={drChiuFullBody} 
                       alt="Dr. Chiu" 
-                      className="w-full h-full object-cover opacity-95 hover:opacity-100 transition-opacity duration-700" 
+                      className="w-full h-full object-cover opacity-95 hover:opacity-100 transition-opacity duration-700 object-top" 
                     />
                  </div>
                  {/* Decorative Frame */}
