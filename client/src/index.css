@@ -52,7 +52,7 @@
   }
   body {
     @apply font-serif antialiased bg-background text-foreground tracking-wide leading-loose;
-    background-image: url('/silk-bg.jpg');
+    background-image: url('/silk-bg-hd.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
