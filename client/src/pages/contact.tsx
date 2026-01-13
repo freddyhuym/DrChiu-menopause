@@ -212,27 +212,35 @@ export default function Contact() {
               </div>
            </div>
 
-           <div className="bg-secondary/10 p-8 rounded-lg inline-block text-left mx-auto max-w-2xl">
-              <h5 className="font-bold text-primary mb-4 flex items-center justify-center">
-                 <Clock className="w-5 h-5 mr-2" /> 門診時間
-              </h5>
-              <div className="grid md:grid-cols-2 gap-8 text-sm text-foreground/70">
-                 <div>
-                    <span className="font-bold block text-foreground mb-2">新竹館</span>
-                    <ul className="space-y-1">
-                      <li>週一、二、三、四、五：需預約</li>
-                      <li>週六：10:00 - 18:00</li>
-                    </ul>
-                 </div>
-                 <div>
-                    <span className="font-bold block text-foreground mb-2">竹北館</span>
-                    <ul className="space-y-1">
-                      <li>週一至週五：需預約</li>
-                      <li>週六：10:00 - 18:00</li>
-                    </ul>
-                 </div>
-              </div>
-           </div>
+             <div className="bg-secondary/10 p-8 rounded-lg inline-block text-left mx-auto max-w-4xl w-full">
+                <h5 className="font-bold text-primary mb-6 flex items-center justify-center text-xl tracking-widest">
+                   <Clock className="w-6 h-6 mr-2" /> 門診時間
+                </h5>
+                <div className="grid md:grid-cols-2 gap-12 text-sm text-foreground/80 tracking-wide leading-loose">
+                   <div>
+                      <span className="font-bold block text-foreground mb-4 text-lg border-b border-primary/20 pb-2">新竹館</span>
+                      <ul className="space-y-2">
+                        <li className="flex justify-between"><span>週一</span> <span>10:00 - 19:00</span></li>
+                        <li className="flex justify-between"><span>週二</span> <span>10:00 - 21:00</span></li>
+                        <li className="flex justify-between"><span>週三</span> <span>12:00 - 21:00</span></li>
+                        <li className="flex justify-between"><span>週四</span> <span>12:00 - 21:00</span></li>
+                        <li className="flex justify-between"><span>週五</span> <span>12:00 - 21:00</span></li>
+                        <li className="flex justify-between text-primary font-bold"><span>週六</span> <span>10:00 - 18:00</span></li>
+                      </ul>
+                   </div>
+                   <div>
+                      <span className="font-bold block text-foreground mb-4 text-lg border-b border-primary/20 pb-2">竹北館</span>
+                      <ul className="space-y-2">
+                        <li className="flex justify-between"><span>週一</span> <span>10:00 - 19:00</span></li>
+                        <li className="flex justify-between"><span>週二</span> <span>12:00 - 21:00</span></li>
+                        <li className="flex justify-between"><span>週三</span> <span>12:00 - 21:00</span></li>
+                        <li className="flex justify-between"><span>週四</span> <span>12:00 - 21:00</span></li>
+                        <li className="flex justify-between"><span>週五</span> <span>10:00 - 19:00</span></li>
+                        <li className="flex justify-between text-primary font-bold"><span>週六</span> <span>10:00 - 18:00</span></li>
+                      </ul>
+                   </div>
+                </div>
+             </div>
         </div>
 
       </div>
