@@ -67,10 +67,11 @@ export default function Treatments() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
+            <h3 className="text-primary tracking-[0.2em] text-sm uppercase mb-2 font-bold">Treatments</h3>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-widest mb-6">療程介紹</h1>
-            <div className="w-16 h-1 bg-gold mx-auto opacity-50 mb-8" />
+            <div className="w-16 h-1 bg-primary mx-auto opacity-50 mb-8" />
             <div className="space-y-6 max-w-3xl mx-auto">
-               <h2 className="text-2xl font-serif text-gold">更年期，是全身性的轉變</h2>
+               <h2 className="text-2xl font-serif text-primary">更年期，是全身性的轉變</h2>
                <p className="text-muted-foreground text-lg leading-loose">
                   更年期並不只是月經停止，而是一段影響全身的生理與心理調整期。<br/>
                   荷爾蒙變化，可能牽動睡眠、情緒、代謝、骨骼、心血管，以及女性對自我狀態的感受。<br/>

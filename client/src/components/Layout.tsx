@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Facebook, Instagram, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import floralBg from '@assets/generated_images/elegant_roses_lavender_hydrangea_background.png';
 
@@ -106,41 +106,77 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white/80 text-foreground py-16 border-t border-primary/20 mt-auto relative z-10">
+      <footer className="bg-white/90 text-foreground py-16 border-t border-primary/20 mt-auto relative z-10 backdrop-blur-sm">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-3 gap-12 mb-12">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold tracking-widest text-primary">邱文瑾醫師</h3>
-              <p className="text-foreground/80 leading-loose tracking-wide font-medium">
-                以溫柔與專業，陪伴每一位女性<br/>
-                優雅地度過生命中的轉變
-              </p>
-            </div>
             
-            <div className="space-y-4">
-              <h4 className="font-bold tracking-widest text-lg text-primary">快速連結</h4>
-              <div className="flex flex-col gap-3">
-                {navLinks.map(link => (
-                  <Link key={link.path} href={link.path}>
-                    <a className="text-foreground/80 hover:text-primary transition-colors tracking-wide w-fit font-medium">
-                      {link.name}
-                    </a>
-                  </Link>
-                ))}
+            {/* Opening Hours */}
+            <div className="space-y-6">
+              <h4 className="font-bold tracking-widest text-lg text-primary">營業時間</h4>
+              <div className="space-y-4 text-sm tracking-wide text-foreground/80">
+                <div>
+                  <p className="font-bold mb-1 text-primary">新竹館</p>
+                  <p>週一：10:00-19:00</p>
+                  <p>週二：10:00-21:00</p>
+                  <p>週三：12:00-21:00</p>
+                  <p>週四：12:00-21:00</p>
+                  <p>週五：12:00-21:00</p>
+                  <p>週六：10:00-18:00</p>
+                </div>
+                <div>
+                  <p className="font-bold mb-1 text-primary">竹北館</p>
+                  <p>週一：10:00-19:00</p>
+                  <p>週二：12:00-21:00</p>
+                  <p>週三：12:00-21:00</p>
+                  <p>週四：12:00-21:00</p>
+                  <p>週五：10:00-19:00</p>
+                  <p>週六：10:00-18:00</p>
+                </div>
               </div>
             </div>
             
-            <div className="space-y-4">
+            {/* Contact Info */}
+            <div className="space-y-6">
               <h4 className="font-bold tracking-widest text-lg text-primary">聯絡資訊</h4>
-              <div className="space-y-3 text-foreground/80 tracking-wide font-medium">
-                <p>台北市大安區信義路四段 123 號 2 樓</p>
-                <p>02-2345-6789</p>
-                <p className="text-sm">
-                  週一至週五：10:00 - 20:00<br/>
-                  週六：10:00 - 17:00
-                </p>
+              <div className="space-y-4 text-sm tracking-wide text-foreground/80">
+                <div className="flex gap-2">
+                  <span className="text-primary mt-0.5">📍</span>
+                  <div>
+                    <p>新竹館：新竹市東區關新東路272號</p>
+                    <p>竹北館：新竹縣竹北市文興路一段273號</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <span className="text-primary mt-0.5">📞</span>
+                  <div>
+                    <p>新竹館：03-666-2961</p>
+                    <p>竹北館：03-668-8858</p>
+                  </div>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <span className="text-primary">✉️</span>
+                  <p>carebeautyclinic2016@gmail.com</p>
+                </div>
               </div>
             </div>
+            
+            {/* Follow Us */}
+            <div className="space-y-6">
+              <h4 className="font-bold tracking-widest text-lg text-primary">關注我們</h4>
+              <p className="text-xs text-foreground/60 mb-4">追蹤最新訊息</p>
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+                  <MessageCircle size={20} />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+                  <Facebook size={20} />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+                  <Instagram size={20} />
+                </a>
+              </div>
+            </div>
+
           </div>
           
           <div className="pt-8 border-t border-primary/10 text-center text-foreground/60 text-sm tracking-widest font-medium">
