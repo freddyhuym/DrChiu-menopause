@@ -114,36 +114,23 @@ export default function Contact() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
-             {/* Name & Title */}
-             <div className="grid md:grid-cols-3 gap-6">
-                <div className="md:col-span-2 space-y-2">
+             {/* Name */}
+             <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
                   <label className="text-sm font-bold text-foreground/80 tracking-widest">姓名 NAME</label>
                   <Input required className="bg-white border-primary/20 h-12" placeholder="請輸入您的姓名" />
                 </div>
-                <div className="space-y-2">
-                   <label className="text-sm font-bold text-foreground/80 tracking-widest">稱謂 TITLE</label>
-                   <Select>
-                      <SelectTrigger className="bg-white border-primary/20 h-12">
-                        <SelectValue placeholder="小姐/先生" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="ms">小姐</SelectItem>
-                        <SelectItem value="mr">先生</SelectItem>
-                      </SelectContent>
-                   </Select>
-                </div>
-             </div>
-
-             {/* Phone & DOB */}
-             <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-foreground/80 tracking-widest">聯繫電話 PHONE</label>
-                  <Input required className="bg-white border-primary/20 h-12" placeholder="09xx-xxx-xxx" />
-                </div>
+                {/* Removed Title as requested */}
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-foreground/80 tracking-widest">出生日期 BIRTH DATE</label>
                   <Input type="date" className="bg-white border-primary/20 h-12" />
                 </div>
+             </div>
+
+             {/* Phone */}
+             <div className="space-y-2">
+               <label className="text-sm font-bold text-foreground/80 tracking-widest">聯繫電話 PHONE</label>
+               <Input required className="bg-white border-primary/20 h-12" placeholder="09xx-xxx-xxx" />
              </div>
 
              {/* Preferred Time */}
