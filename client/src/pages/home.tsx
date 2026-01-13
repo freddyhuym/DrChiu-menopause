@@ -14,7 +14,7 @@ import balanceImage from '@assets/stock_images/korean_woman_meditat_0c8b7f71.jpg
 // Import news images
 import newsHotFlashImage from '@assets/bdd5fd56a5427ac179c94570cd77fbd4_1768283348085.jpg';
 import newsHormoneImage from '@assets/下載_1768283536111.png';
-import newsSleepImage from '@assets/stock_images/asian_woman_sleeping_21c5b768.jpg';
+import newsSleepImage from '@assets/e64ca0cfbc7c3c80213708df4ccd9831_1768283569643.jpg';
 
 export default function Home() {
   const treatments = [
