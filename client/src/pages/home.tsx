@@ -25,9 +25,9 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       
       {/* 1. Hero Section - Full Screen Video/Image Vibe */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#1a0524]">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Silky Aurora Background */}
-        <div className="silk-aurora-bg" />
+        <div className="silk-aurora-bg opacity-50" />
         <div className="absolute inset-0 silk-overlay w-full h-full" />
         <div className="absolute inset-0 w-full h-full stars-bg opacity-40 mix-blend-screen" />
         

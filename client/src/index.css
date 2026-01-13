@@ -11,13 +11,13 @@
   --radius-xl: calc(var(--radius) + 4px);
   
   /* Deep Purple & Gold Theme (Regal, Night, Sparkle) */
-  --color-background: hsl(270 50% 10%); /* Deep Violet/Black background */
+  --color-background: transparent; /* Transparent to show the silk body background */
   --color-foreground: hsl(45 20% 90%); /* Cream/White text */
 
-  --color-card: hsl(270 40% 15%); /* Slightly lighter purple for cards */
+  --color-card: hsl(270 40% 10% / 0.7); /* Translucent dark purple for cards */
   --color-card-foreground: hsl(45 20% 90%);
 
-  --color-popover: hsl(270 40% 15%);
+  --color-popover: hsl(270 40% 10% / 0.9);
   --color-popover-foreground: hsl(45 20% 90%);
 
   /* Primary: Luxurious Gold */
@@ -52,10 +52,11 @@
   }
   body {
     @apply font-serif antialiased bg-background text-foreground tracking-wide leading-loose;
-    background-image: 
-      radial-gradient(circle at 15% 50%, rgba(87, 10, 87, 0.15) 0%, transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 25%);
+    background-image: url('/silk-bg.jpg');
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-medium tracking-wider;
