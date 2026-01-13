@@ -17,10 +17,23 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       
       {/* 1. Hero Section - Full Screen Video/Image Vibe */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated Galaxy Background */}
-        <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary via-background to-black opacity-80" />
-        <div className="absolute inset-0 w-full h-full stars-bg opacity-50" />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#1a0524]">
+        {/* Silky Aurora Background */}
+        <div className="silk-aurora-bg" />
+        <div className="absolute inset-0 silk-overlay w-full h-full" />
+        <div className="absolute inset-0 w-full h-full stars-bg opacity-40 mix-blend-screen" />
+        
+        {/* Floating Silk Elements (Simulated with blurry gradients) */}
+        <motion.div 
+          animate={{ x: [0, 50, 0], y: [0, -30, 0], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen"
+        />
+        <motion.div 
+          animate={{ x: [0, -40, 0], y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gold/20 rounded-full blur-[80px] mix-blend-screen"
+        />
         
         {/* Gold Accent Waves */}
         <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent z-10" />
