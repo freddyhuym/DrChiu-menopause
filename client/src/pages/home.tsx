@@ -53,10 +53,8 @@ export default function Home() {
             </p>
             
             <div className="pt-12">
-               <Link href="/contact">
-                 <a className="inline-flex items-center gap-3 border border-primary text-primary px-10 py-4 hover:bg-primary hover:text-white transition-all duration-500 tracking-[0.2em] text-sm uppercase font-bold">
+               <Link href="/contact" className="inline-flex items-center gap-3 border border-primary text-primary px-10 py-4 hover:bg-primary hover:text-white transition-all duration-500 tracking-[0.2em] text-sm uppercase font-bold">
                    預約諮詢 <ArrowRight className="w-4 h-4" />
-                 </a>
                </Link>
             </div>
           </motion.div>
@@ -164,16 +162,14 @@ export default function Home() {
                   <br/><br/>
                   邱文瑾醫師深信，更年期照護不應止於藥物，更需要全人的關懷。從生理數據的精密判讀，到心理壓力的溫柔承接，我們在這裡，陪您找回身心的平衡與自在。
                 </p>
-                <Link href="/about">
-                   <a className="inline-flex items-center text-foreground hover:text-primary transition-colors border-b border-foreground/30 hover:border-primary pb-1 mt-4 font-semibold">
+                <Link href="/about" className="inline-flex items-center text-foreground hover:text-primary transition-colors border-b border-foreground/30 hover:border-primary pb-1 mt-4 font-semibold">
                      閱讀更多關於醫師 <ArrowRight className="w-4 h-4 ml-2" />
-                   </a>
                 </Link>
               </div>
               <div className="relative">
                  <div className="aspect-[4/5] overflow-hidden relative z-10 border border-primary/20 shadow-xl rounded-sm">
                     <img 
-                      src={aboutImage} 
+                      src={drChiuPortrait} 
                       alt="Dr. Chiu" 
                       className="w-full h-full object-cover opacity-95 hover:opacity-100 transition-opacity duration-700" 
                     />
@@ -199,8 +195,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-primary/20 shadow-lg bg-white/40">
              {treatments.map((item, idx) => (
-               <Link key={idx} href={item.link}>
-                 <a className="group block border-r border-b border-primary/20 relative overflow-hidden h-80">
+               <Link key={idx} href={item.link} className="group block border-r border-b border-primary/20 relative overflow-hidden h-80">
                     {/* Background Image with Zoom Effect - Brighter Overlay */}
                     <div className="absolute inset-0 overflow-hidden">
                        <div 
@@ -226,16 +221,13 @@ export default function Home() {
                     
                     {/* Hover Glow Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                 </a>
                </Link>
              ))}
           </div>
           
           <div className="text-center mt-16">
-             <Link href="/treatments">
-               <a className="inline-block px-12 py-4 border border-primary/50 text-foreground hover:bg-primary hover:text-white transition-all duration-300 tracking-widest text-sm uppercase font-semibold">
+             <Link href="/treatments" className="inline-block px-12 py-4 border border-primary/50 text-foreground hover:bg-primary hover:text-white transition-all duration-300 tracking-widest text-sm uppercase font-semibold">
                  查看完整療程說明
-               </a>
              </Link>
           </div>
         </div>
@@ -252,10 +244,8 @@ export default function Home() {
                   美學與健康專欄
                 </h2>
               </div>
-              <Link href="/articles">
-                <a className="hidden md:flex items-center text-sm tracking-widest text-foreground/60 hover:text-foreground transition-colors font-semibold">
+              <Link href="/articles" className="hidden md:flex items-center text-sm tracking-widest text-foreground/60 hover:text-foreground transition-colors font-semibold">
                   VIEW ALL <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
               </Link>
            </div>
 
@@ -297,10 +287,8 @@ export default function Home() {
            <p className="text-lg md:text-xl mb-10 text-foreground/80 max-w-2xl mx-auto font-medium">
              給自己一個重新愛上生活的機會，立即預約專屬諮詢。
            </p>
-           <Link href="/contact">
-             <a className="inline-block bg-primary text-white px-12 py-4 hover:bg-primary/90 transition-all duration-300 tracking-widest shadow-lg font-bold">
+           <Link href="/contact" className="inline-block bg-primary text-white px-12 py-4 hover:bg-primary/90 transition-all duration-300 tracking-widest shadow-lg font-bold">
                CONTACT US
-             </a>
            </Link>
         </div>
       </section>
