@@ -72,6 +72,42 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Quote Section */}
+      <section className="py-24 bg-white/40 backdrop-blur-sm relative border-y border-primary/10">
+        <div className="container mx-auto px-4 text-center">
+           <motion.div
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 1 }}
+             className="max-w-4xl mx-auto space-y-12"
+           >
+              <div className="space-y-4">
+                <h2 className="text-3xl md:text-5xl font-bold text-primary font-serif">陪伴女性，安心走過更年期</h2>
+                <h3 className="text-xl md:text-2xl text-foreground/70 font-medium tracking-wide">邱文瑾醫師｜以專業醫學，溫柔守護每一段人生轉變</h3>
+              </div>
+              
+              <div className="w-16 h-px bg-primary/40 mx-auto" />
+
+              <div className="space-y-8 text-lg md:text-xl leading-loose font-medium text-foreground/90 tracking-wide">
+                 <p>
+                   更年期，並不是結束，<br/>
+                   而是女性身體與生命節奏，悄悄轉換的一個重要階段。
+                 </p>
+                 <p>
+                   在這段期間，<br/>
+                   許多女性會面臨熱潮紅、失眠、情緒起伏、體力下降，<br/>
+                   甚至對自己產生陌生與不安的感受。
+                 </p>
+                 <p>
+                   這些改變，並不是「想太多」，<br/>
+                   而是身體真實發出的訊號，值得被理解、被傾聽。
+                 </p>
+              </div>
+           </motion.div>
+        </div>
+      </section>
+
       {/* 2. Philosophy / Oasis Section */}
       <section className="py-32 relative">
         <div className="container mx-auto px-4 md:px-6">
