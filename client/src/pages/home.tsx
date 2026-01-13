@@ -129,13 +129,13 @@ export default function Home() {
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
                transition={{ duration: 1, delay: 0.2 }}
-               className="max-w-xl text-center md:text-left space-y-8"
+               className="max-w-xl text-center space-y-8"
              >
                 <div className="space-y-2">
                   <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed">
                     專業為本，溫柔為心
                   </h3>
-                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed pl-8 md:pl-16 whitespace-nowrap">
+                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed whitespace-nowrap">
                     陪伴女性走過每一段轉變
                   </h3>
                 </div>
