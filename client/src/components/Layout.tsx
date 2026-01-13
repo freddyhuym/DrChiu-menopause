@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import floralBg from '@assets/generated_images/elegant_purple_floral_website_background.png';
+import floralBg from '@assets/generated_images/elegant_roses_lavender_hydrangea_background.png';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

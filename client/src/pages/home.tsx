@@ -39,11 +39,13 @@ export default function Home() {
             <h2 className="text-primary tracking-[0.3em] uppercase text-sm md:text-base mb-4 font-bold">
               Menopause Sanctuary
             </h2>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider text-primary mb-6 drop-shadow-sm">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider text-primary mb-6 drop-shadow-sm leading-tight">
+              <span className="block text-2xl md:text-3xl lg:text-4xl font-light mb-2 tracking-[0.2em] text-foreground/60">EMBRACE CHANGE</span>
               擁抱蛻變<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-primary font-light italic">
                 優雅重生
               </span>
+              <span className="block text-2xl md:text-3xl lg:text-4xl font-light mt-4 tracking-[0.2em] text-foreground/60 italic font-serif">Reborn with Grace</span>
             </h1>
             <p className="max-w-xl mx-auto text-lg md:text-xl text-foreground font-medium leading-relaxed tracking-wide">
               專屬女性的靜謐綠洲，結合專業醫學與溫柔陪伴，<br/>
@@ -116,7 +118,10 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-20 space-y-4">
             <h3 className="text-primary tracking-[0.2em] text-sm uppercase font-bold">Medical Services</h3>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">全方位更年期照護</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              <span className="block text-lg font-light text-primary/60 mb-2 tracking-widest uppercase">Comprehensive Care</span>
+              全方位更年期照護
+            </h2>
             <div className="w-12 h-1 bg-primary mx-auto mt-6" />
           </div>
 
@@ -170,7 +175,10 @@ export default function Home() {
            <div className="flex justify-between items-end mb-16 border-b border-primary/30 pb-6">
               <div>
                 <h3 className="text-primary tracking-[0.2em] text-sm uppercase mb-2 font-bold">Knowledge</h3>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">美學與健康專欄</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                  <span className="block text-lg font-light text-primary/60 mb-2 tracking-widest uppercase">Health & Aesthetics</span>
+                  美學與健康專欄
+                </h2>
               </div>
               <Link href="/articles">
                 <a className="hidden md:flex items-center text-sm tracking-widest text-foreground/60 hover:text-foreground transition-colors font-semibold">
@@ -209,15 +217,16 @@ export default function Home() {
       </section>
 
       {/* 5. Contact CTA */}
-      <section className="py-20 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20" />
+      <section className="py-20 bg-white/60 backdrop-blur-md relative overflow-hidden border-t border-primary/20">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 z-0" />
         <div className="container mx-auto px-4 text-center relative z-10">
-           <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif">Ready to start your journey?</h2>
-           <p className="text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto">
+           <h3 className="text-primary tracking-[0.2em] text-sm uppercase mb-4 font-bold">Start Your Journey</h3>
+           <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif text-primary">Ready to start your journey?</h2>
+           <p className="text-lg md:text-xl mb-10 text-foreground/80 max-w-2xl mx-auto font-medium">
              給自己一個重新愛上生活的機會，立即預約專屬諮詢。
            </p>
            <Link href="/contact">
-             <a className="inline-block bg-white text-primary px-12 py-4 hover:bg-black hover:text-white transition-all duration-300 tracking-widest shadow-2xl">
+             <a className="inline-block bg-primary text-white px-12 py-4 hover:bg-primary/90 transition-all duration-300 tracking-widest shadow-lg font-bold">
                CONTACT US
              </a>
            </Link>
