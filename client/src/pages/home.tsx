@@ -30,7 +30,7 @@ export default function Home() {
     {
       id: 1,
       date: "2026.01.11",
-      title: "更年期熱潮紅如何改善？醫師教妳3招緩解不適",
+      title: "更年期熱潮紅如何改善？3招緩解不適",
       desc: "進入更年期後，許多女性會面臨身體與心理的巨大轉變，透過專業的醫療協助，我們能有效緩解潮紅帶來的不適感，重拾生活品質。",
       image: newsHotFlashImage
     },
