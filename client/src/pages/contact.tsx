@@ -135,7 +135,7 @@ export default function Contact() {
 
              {/* Preferred Time */}
              <div className="space-y-4">
-                <label className="text-sm font-bold text-foreground/80 tracking-widest">希望預約時段 PREFERRED TIME</label>
+                <label className="text-sm font-bold text-foreground/80 tracking-widest">方便聯繫時段 PREFERRED TIME</label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                    {["10:00-12:00", "12:00-14:00", "14:00-16:00", "16:00-18:00", "18:00-20:00", "週六時段"].map((time, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
