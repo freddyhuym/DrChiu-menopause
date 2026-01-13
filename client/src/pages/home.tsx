@@ -3,14 +3,22 @@ import { ArrowRight, Sparkles, User, FileText, Stethoscope, Video, Mail, Play } 
 import { Link } from "wouter";
 import aboutImage from '@assets/dr_1765436654368.jpg';
 
+// Import stock images
+import hormoneImage from '@assets/stock_images/abstract_feminine_he_bfdfdb16.jpg';
+import naturalImage from '@assets/stock_images/herbal_natural_holis_f6ddcdbd.jpg';
+import autonomicImage from '@assets/stock_images/calm_mind_abstract_n_9c6b6d02.jpg';
+import boneImage from '@assets/stock_images/active_healthy_woman_a6151a41.jpg';
+import cardioImage from '@assets/stock_images/abstract_heart_healt_d15bf212.jpg';
+import balanceImage from '@assets/stock_images/meditation_yoga_suns_caba5536.jpg';
+
 export default function Home() {
   const treatments = [
-    { name: "荷爾蒙平衡", en: "Hormone", link: "/treatments" },
-    { name: "非藥物調理", en: "Natural", link: "/treatments" },
-    { name: "自律神經", en: "Autonomic", link: "/treatments" },
-    { name: "骨骼健康", en: "Bone", link: "/treatments" },
-    { name: "心血管代謝", en: "Cardio", link: "/treatments" },
-    { name: "身心平衡", en: "Balance", link: "/treatments" }
+    { name: "荷爾蒙平衡", en: "Hormone", link: "/treatments", image: hormoneImage },
+    { name: "非藥物調理", en: "Natural", link: "/treatments", image: naturalImage },
+    { name: "自律神經", en: "Autonomic", link: "/treatments", image: autonomicImage },
+    { name: "骨骼健康", en: "Bone", link: "/treatments", image: boneImage },
+    { name: "心血管代謝", en: "Cardio", link: "/treatments", image: cardioImage },
+    { name: "身心平衡", en: "Balance", link: "/treatments", image: balanceImage }
   ];
 
   return (
@@ -132,19 +140,32 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-white/10">
              {treatments.map((item, idx) => (
                <Link key={idx} href={item.link}>
-                 <a className="group block border-r border-b border-white/10 p-12 hover:bg-white/5 transition-all duration-500 relative overflow-hidden">
-                    <div className="relative z-10 space-y-6">
-                       <div className="text-gold/50 font-serif text-5xl font-light group-hover:text-gold transition-colors duration-500">
-                         0{idx + 1}
-                       </div>
-                       <div>
-                         <h4 className="text-xl font-bold text-white mb-2 group-hover:tracking-widest transition-all duration-500">{item.name}</h4>
-                         <p className="text-xs text-muted-foreground tracking-widest uppercase">{item.en}</p>
-                       </div>
-                       <div className="w-8 h-px bg-white/20 group-hover:w-16 group-hover:bg-gold transition-all duration-500" />
+                 <a className="group block border-r border-b border-white/10 relative overflow-hidden h-80">
+                    {/* Background Image with Zoom Effect */}
+                    <div className="absolute inset-0 overflow-hidden">
+                       <div 
+                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-60"
+                         style={{ backgroundImage: `url(${item.image})` }}
+                       />
+                       <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
                     </div>
-                    {/* Hover Glow */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="relative z-10 p-12 h-full flex flex-col justify-between">
+                       <div className="space-y-6">
+                         <div className="text-gold/50 font-serif text-5xl font-light group-hover:text-gold transition-colors duration-500">
+                           0{idx + 1}
+                         </div>
+                         <div>
+                           <h4 className="text-xl font-bold text-white mb-2 tracking-wide group-hover:tracking-widest transition-all duration-500 text-shadow-sm">{item.name}</h4>
+                           <p className="text-xs text-muted-foreground tracking-widest uppercase group-hover:text-white/80 transition-colors">{item.en}</p>
+                         </div>
+                       </div>
+                       
+                       <div className="w-8 h-px bg-white/20 group-hover:w-full group-hover:bg-gold transition-all duration-500" />
+                    </div>
+                    
+                    {/* Hover Glow Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                  </a>
                </Link>
              ))}
