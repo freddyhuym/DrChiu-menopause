@@ -9,6 +9,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -97,10 +104,82 @@ export default function Contact() {
            </div>
            
            <div className="mt-12 text-center">
-              <Button className="bg-[#00c300] hover:bg-[#00c300]/90 text-white px-8 py-6 rounded-full text-lg font-bold tracking-widest shadow-lg transition-transform hover:scale-105">
-                 <MessageCircle className="w-6 h-6 mr-2" /> 
-                 立即加入 LINE 好友諮詢
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="bg-[#00c300] hover:bg-[#00c300]/90 text-white px-8 py-6 rounded-full text-lg font-bold tracking-widest shadow-lg transition-transform hover:scale-105">
+                     <MessageCircle className="w-6 h-6 mr-2" /> 
+                     立即加入 LINE 好友諮詢
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl bg-white/95 backdrop-blur-sm border-primary/20 p-8">
+                  <DialogHeader className="mb-6">
+                    <DialogTitle className="text-2xl font-bold text-center text-foreground tracking-widest">
+                      請選擇欲諮詢的診所
+                    </DialogTitle>
+                    <p className="text-center text-muted-foreground mt-2">Choose your preferred clinic location</p>
+                  </DialogHeader>
+                  
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Hsinchu Clinic */}
+                    <div className="bg-white border border-primary/10 rounded-lg p-6 hover:shadow-md transition-shadow flex flex-col items-center text-center space-y-4">
+                       <h3 className="text-2xl font-bold text-primary">新竹館</h3>
+                       <div className="w-full h-px bg-primary/20" />
+                       
+                       <div className="space-y-2 text-sm text-foreground/80 leading-relaxed">
+                          <p className="font-bold flex items-center justify-center gap-2">
+                            <MapPin className="w-4 h-4 text-primary" /> 新竹市東區關新東路272號
+                          </p>
+                          <div className="pt-2 text-left bg-secondary/10 p-4 rounded-md w-full">
+                            <p className="text-xs font-bold text-primary mb-2 text-center">門診時間</p>
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+                              <span>週一：10:00-19:00</span>
+                              <span>週二：10:00-21:00</span>
+                              <span>週三：12:00-21:00</span>
+                              <span>週四：12:00-21:00</span>
+                              <span>週五：12:00-21:00</span>
+                              <span className="text-primary font-bold">週六：10:00-18:00</span>
+                            </div>
+                          </div>
+                       </div>
+                       
+                       <Button asChild className="w-full bg-[#00c300] hover:bg-[#00c300]/90 text-white font-bold tracking-widest mt-auto">
+                         <a href="https://line.me/R/ti/p/@564qkktb" target="_blank" rel="noopener noreferrer">
+                           <MessageCircle className="w-4 h-4 mr-2" /> 加入新竹館 LINE
+                         </a>
+                       </Button>
+                    </div>
+
+                    {/* Zhubei Clinic */}
+                    <div className="bg-white border border-primary/10 rounded-lg p-6 hover:shadow-md transition-shadow flex flex-col items-center text-center space-y-4">
+                       <h3 className="text-2xl font-bold text-primary">竹北館</h3>
+                       <div className="w-full h-px bg-primary/20" />
+                       
+                       <div className="space-y-2 text-sm text-foreground/80 leading-relaxed">
+                          <p className="font-bold flex items-center justify-center gap-2">
+                            <MapPin className="w-4 h-4 text-primary" /> 新竹縣竹北市文興路一段273號
+                          </p>
+                          <div className="pt-2 text-left bg-secondary/10 p-4 rounded-md w-full">
+                            <p className="text-xs font-bold text-primary mb-2 text-center">門診時間</p>
+                            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+                              <span>週一：10:00-19:00</span>
+                              <span>週二：12:00-21:00</span>
+                              <span>週三：12:00-21:00</span>
+                              <span>週四：12:00-21:00</span>
+                              <span>週五：10:00-19:00</span>
+                              <span className="text-primary font-bold">週六：10:00-18:00</span>
+                            </div>
+                          </div>
+                       </div>
+                       
+                       <Button asChild className="w-full bg-[#00c300] hover:bg-[#00c300]/90 text-white font-bold tracking-widest mt-auto">
+                         <a href="#" target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); alert("竹北館 LINE 連結確認中"); }}>
+                           <MessageCircle className="w-4 h-4 mr-2" /> 加入竹北館 LINE
+                         </a>
+                       </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
            </div>
         </div>
 
