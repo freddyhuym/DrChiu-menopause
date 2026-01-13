@@ -11,6 +11,11 @@ import boneImage from '@assets/stock_images/asian_woman_elegant__843c4603.jpg';
 import cardioImage from '@assets/07d4fa835366862c7bacd3d0bf58e39d_1768282274248.jpg';
 import balanceImage from '@assets/stock_images/korean_woman_meditat_0c8b7f71.jpg';
 
+// Import news images
+import newsHotFlashImage from '@assets/stock_images/asian_woman_drinking_b6e9c2f3.jpg';
+import newsHormoneImage from '@assets/stock_images/medical_consultation_57767c57.jpg';
+import newsSleepImage from '@assets/stock_images/asian_woman_sleeping_21c5b768.jpg';
+
 export default function Home() {
   const treatments = [
     { name: "荷爾蒙平衡", en: "Hormone", link: "/treatments", image: hormoneImage },
@@ -19,6 +24,30 @@ export default function Home() {
     { name: "骨骼健康", en: "Bone", link: "/treatments", image: boneImage },
     { name: "心血管代謝", en: "Cardio", link: "/treatments", image: cardioImage },
     { name: "身心平衡", en: "Balance", link: "/treatments", image: balanceImage }
+  ];
+
+  const newsItems = [
+    {
+      id: 1,
+      date: "2026.01.11",
+      title: "更年期熱潮紅如何改善？醫師教妳3招緩解不適",
+      desc: "進入更年期後，許多女性會面臨身體與心理的巨大轉變，透過專業的醫療協助，我們能有效緩解潮紅帶來的不適感，重拾生活品質。",
+      image: newsHotFlashImage
+    },
+    {
+      id: 2,
+      date: "2026.01.12",
+      title: "荷爾蒙補充療法安全嗎？破解常見迷思",
+      desc: "許多人對荷爾蒙療法存有疑慮，其實在專業醫師評估與監控下，適度補充能大幅改善更年期症狀，並降低骨質疏鬆風險。",
+      image: newsHormoneImage
+    },
+    {
+      id: 3,
+      date: "2026.01.13",
+      title: "失眠睡不好？從自律神經調節開始",
+      desc: "更年期失眠往往與自律神經失調有關。除了藥物，我們更重視透過生活作息調整與非藥物療法，助您找回深層睡眠。",
+      image: newsSleepImage
+    }
   ];
 
   return (
@@ -250,23 +279,24 @@ export default function Home() {
            </div>
 
            <div className="grid md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="group cursor-pointer">
+              {newsItems.map((item) => (
+                <div key={item.id} className="group cursor-pointer">
                    <div className="aspect-[4/3] bg-white/50 mb-6 overflow-hidden relative shadow-md rounded-sm border border-primary/10">
-                      <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500" />
-                      <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 shadow-sm">
+                      <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
+                           style={{ backgroundImage: `url(${item.image})` }} 
+                      />
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                      <div className="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 shadow-sm z-10">
                         NEWS
                       </div>
                    </div>
                    <div className="space-y-3">
-                      <div className="text-xs text-primary font-bold tracking-widest">2026.01.{10+i}</div>
+                      <div className="text-xs text-primary font-bold tracking-widest">{item.date}</div>
                       <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                        {i === 1 ? "更年期熱潮紅如何改善？醫師教妳3招緩解不適" : 
-                         i === 2 ? "荷爾蒙補充療法安全嗎？破解常見迷思" :
-                         "失眠睡不好？從自律神經調節開始"}
+                        {item.title}
                       </h3>
                       <p className="text-sm text-foreground/70 line-clamp-2 font-medium">
-                        進入更年期後，許多女性會面臨身體與心理的巨大轉變，透過專業的醫療協助...
+                        {item.desc}
                       </p>
                       <div className="pt-4">
                         <span className="text-xs border-b border-primary/50 text-primary pb-0.5 group-hover:border-primary transition-all font-bold">READ MORE</span>
