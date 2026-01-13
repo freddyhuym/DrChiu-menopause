@@ -132,10 +132,10 @@ export default function Home() {
                className="max-w-xl text-center md:text-left space-y-8"
              >
                 <div className="space-y-2">
-                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed" style={{ fontFamily: '"Ma Shan Zheng", cursive' }}>
+                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed">
                     專業為本，溫柔為心
                   </h3>
-                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed pl-8 md:pl-16" style={{ fontFamily: '"Ma Shan Zheng", cursive' }}>
+                  <h3 className="text-3xl md:text-4xl text-primary font-serif leading-relaxed pl-8 md:pl-16">
                     陪伴女性走過每一段轉變
                   </h3>
                 </div>
@@ -143,8 +143,11 @@ export default function Home() {
                 <div className="w-16 h-px bg-primary/40 mx-auto md:mx-0" />
 
                 <div className="text-right pr-4 md:pr-12">
-                   <span className="text-2xl text-foreground/80" style={{ fontFamily: '"Ma Shan Zheng", cursive' }}>
-                     邱文瑾 醫師
+                   <span className="text-2xl text-foreground/80" style={{ fontFamily: '"Long Cang", cursive' }}>
+                     邱文瑾
+                   </span>
+                   <span className="text-xl text-foreground/80 ml-2 font-serif">
+                     醫師
                    </span>
                 </div>
              </motion.div>
