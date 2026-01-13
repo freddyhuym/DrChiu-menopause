@@ -169,7 +169,8 @@ export default function Home() {
               </p>
               <p>
                 這些改變，並不是「想太多」，<br/>
-                而是身體真實發出的訊號，值得被理解、被傾聽。
+                而是身體真實發出的訊號，<br/>
+                值得被理解、被傾聽。
               </p>
            </motion.div>
         </div>
