@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -9,40 +10,40 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-  /* Elegant Pink, White, Gold Theme */
-  --color-background: hsl(350 30% 98%); /* Very light pink/white */
-  --color-foreground: hsl(350 10% 20%); /* Dark brownish grey for text */
+  /* Elegant Theme: Ivory, Pale Purple, Soft Rose, Low-Sat Gold */
+  --color-background: hsl(40 20% 98%); /* Ivory/Off-white */
+  --color-foreground: hsl(0 0% 25%); /* Soft Black/Grey */
 
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(350 10% 20%);
+  --color-card: hsl(40 20% 99%);
+  --color-card-foreground: hsl(0 0% 25%);
 
-  --color-popover: hsl(0 0% 100%);
-  --color-popover-foreground: hsl(350 10% 20%);
+  --color-popover: hsl(40 20% 99%);
+  --color-popover-foreground: hsl(0 0% 25%);
 
-  /* Primary: Elegant Gold - Brighter and shinier */
-  --color-primary: hsl(38 80% 50%); 
+  /* Primary: Low Saturation Gold (Matte) */
+  --color-primary: hsl(45 25% 65%); 
   --color-primary-foreground: hsl(0 0% 100%);
 
-  /* Secondary: Soft Pink */
-  --color-secondary: hsl(350 60% 95%);
-  --color-secondary-foreground: hsl(350 40% 30%);
-
-  --color-muted: hsl(350 20% 98%);
-  --color-muted-foreground: hsl(350 10% 40%);
-
-  --color-accent: hsl(45 60% 95%); /* Lighter Gold/Cream */
-  --color-accent-foreground: hsl(38 80% 35%);
-
-  --color-border: hsl(38 60% 85%);
-  --color-input: hsl(38 60% 85%);
-  --color-ring: hsl(38 80% 50%);
-
-  --radius: 0.5rem;
+  /* Secondary: Pale Purple / Soft Rose Mix */
+  --color-secondary: hsl(350 20% 94%);
+  --color-secondary-foreground: hsl(350 20% 30%);
   
-  /* Typography */
+  --color-muted: hsl(40 10% 90%);
+  --color-muted-foreground: hsl(0 0% 50%);
+
+  --color-accent: hsl(45 30% 90%);
+  --color-accent-foreground: hsl(45 30% 40%);
+
+  --color-border: hsl(45 15% 85%);
+  --color-input: hsl(45 15% 85%);
+  --color-ring: hsl(45 25% 65%);
+
+  --radius: 0.2rem; /* Sharper corners for elegance */
+  
+  /* Typography - Only Serif */
   --font-serif: 'Noto Serif TC', serif;
-  --font-sans: 'Noto Serif TC', serif;
-  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Noto Serif TC', serif; /* Force Serif */
+  --font-display: 'Noto Serif TC', serif;
 }
 
 @layer base {
@@ -50,100 +51,19 @@
     @apply border-border;
   }
   body {
-    @apply font-serif antialiased bg-background text-foreground;
+    @apply font-serif antialiased bg-background text-foreground tracking-wide leading-loose;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold tracking-wide;
+    @apply font-serif font-medium tracking-wider;
   }
 }
 
-/* Custom Utilities for Polish */
+/* Custom Utilities */
 @layer utilities {
   .text-gold {
-    color: hsl(38 80% 50%);
+    color: hsl(45 30% 60%);
   }
   .bg-gold {
-    background-color: hsl(38 80% 50%);
-  }
-  .border-gold {
-    border-color: hsl(38 80% 50%);
-  }
-  
-  .text-gold-gradient {
-    background: linear-gradient(135deg, hsl(38 80% 45%) 0%, hsl(45 90% 60%) 50%, hsl(38 80% 45%) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-  
-  .bg-gold-gradient {
-    background: linear-gradient(135deg, hsl(38 80% 50%) 0%, hsl(48 90% 70%) 50%, hsl(38 80% 50%) 100%);
-    transition: all 0.3s ease;
-  }
-  
-  .bg-gold-gradient:hover {
-    background: linear-gradient(135deg, hsl(48 90% 70%) 0%, hsl(38 80% 50%) 50%, hsl(48 90% 70%) 100%);
-    box-shadow: 0 0 15px hsla(38, 80%, 50%, 0.4);
-  }
-
-  .text-pink-dark {
-    color: hsl(350 40% 40%);
-  }
-  
-  .bg-soft-gradient {
-    background: linear-gradient(135deg, #fffcf5 0%, #fff0f5 100%);
-  }
-  
-  .glass-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 8px 32px rgba(198, 163, 85, 0.1);
-  }
-  
-  .shimmer-border {
-    position: relative;
-  }
-  
-  .shimmer-border::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, transparent, hsl(45 90% 70%), transparent);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
+    background-color: hsl(45 30% 60%);
   }
 }
