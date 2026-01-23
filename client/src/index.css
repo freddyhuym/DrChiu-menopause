@@ -10,37 +10,37 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   
-  /* Purple & Gold Floral Theme */
-  --color-background: transparent;
-  --color-foreground: hsl(270 40% 20%); /* Deep Purple Grey */
+  /* Metalife Modern Blue Theme */
+  --color-background: hsl(0 0% 100%); /* Pure White */
+  --color-foreground: hsl(215 20% 20%); /* Slate Black */
 
-  --color-card: hsl(0 0% 100% / 0.85);
-  --color-card-foreground: hsl(270 40% 20%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(215 20% 20%);
 
-  --color-popover: hsl(0 0% 100% / 0.95);
-  --color-popover-foreground: hsl(270 40% 20%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(215 20% 20%);
 
-  /* Primary: Royal Purple */
-  --color-primary: hsl(270 60% 40%); 
+  /* Primary: Modern Medical Blue */
+  --color-primary: hsl(210 100% 45%); 
   --color-primary-foreground: hsl(0 0% 100%);
 
-  /* Secondary: Soft Lavender */
-  --color-secondary: hsl(270 30% 96%);
-  --color-secondary-foreground: hsl(270 40% 20%);
+  /* Secondary: Light Blue Grey */
+  --color-secondary: hsl(210 20% 96%);
+  --color-secondary-foreground: hsl(215 20% 20%);
   
-  --color-muted: hsl(270 20% 96%);
-  --color-muted-foreground: hsl(270 10% 40%);
+  --color-muted: hsl(210 20% 96%);
+  --color-muted-foreground: hsl(215 10% 40%);
 
-  --color-accent: hsl(45 100% 45%); /* Gold Accent */
+  --color-accent: hsl(210 100% 45%); 
   --color-accent-foreground: hsl(0 0% 100%);
 
-  --color-border: hsl(270 20% 80%);
-  --color-input: hsl(0 0% 100% / 0.5);
-  --color-ring: hsl(270 60% 60%);
+  --color-border: hsl(210 20% 90%);
+  --color-input: hsl(210 20% 90%);
+  --color-ring: hsl(210 100% 45%);
 
-  --radius: 0rem;
+  --radius: 0.5rem;
   
-  /* Typography - Only Serif */
+  /* Typography - Noto Serif TC */
   --font-serif: 'Noto Serif TC', serif;
   --font-sans: 'Noto Serif TC', serif; 
   --font-display: 'Noto Serif TC', serif;
@@ -51,29 +51,24 @@
     @apply border-border;
   }
   body {
-    @apply font-serif antialiased bg-background text-foreground tracking-wide leading-loose;
-    /* Background handled in Layout.tsx */
+    @apply font-serif antialiased bg-background text-foreground tracking-wide leading-relaxed;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-medium tracking-wider text-primary;
+    @apply font-serif font-bold text-foreground;
   }
 }
 
-/* Custom Utilities */
 @layer utilities {
-  .text-gold {
-    color: hsl(45 100% 35%); 
-  }
-  .bg-gold {
-    background-color: hsl(45 100% 45%);
-    background-image: linear-gradient(135deg, hsl(45 80% 40%) 0%, hsl(45 100% 60%) 50%, hsl(45 80% 40%) 100%);
+  .text-blue-gradient {
+    background-image: linear-gradient(135deg, hsl(210 100% 45%) 0%, hsl(190 100% 50%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .glass-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(147, 51, 234, 0.2); /* Purple tint border */
-    box-shadow: 0 8px 32px rgba(100, 100, 100, 0.05);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
-
 }

@@ -1,267 +1,88 @@
+import { Mail, FileText, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Phone, MapPin, Clock, Mail, MessageCircle, Calendar, Stethoscope, UserCheck, ChevronDown } from "lucide-react";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 export default function Contact() {
-  const { toast } = useToast();
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "訊息已送出",
-      description: "我們會盡快與您聯繫，謝謝。",
-    });
-  };
-
-  const steps = [
-    {
-      step: "STEP 1",
-      title: "點擊加入",
-      subtitle: "官方LINE帳號",
-      icon: <MessageCircle className="w-12 h-12 text-primary" />,
-      desc: "Join our official LINE"
-    },
-    {
-      step: "STEP 2",
-      title: "線上初步諮詢",
-      subtitle: "預約療程時間",
-      icon: <Calendar className="w-12 h-12 text-primary" />,
-      desc: "Online consultation & Booking"
-    },
-    {
-      step: "STEP 3",
-      title: "治療前醫師",
-      subtitle: "專業評估、規劃",
-      icon: <Stethoscope className="w-12 h-12 text-primary" />,
-      desc: "Professional Assessment"
-    },
-    {
-      step: "STEP 4",
-      title: "邱文瑾醫師",
-      subtitle: "親自操作療程",
-      icon: <UserCheck className="w-12 h-12 text-primary" />,
-      desc: "Treatment by Dr. Chiu"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background pt-24 pb-20">
+    <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4 md:px-6">
         
-        {/* Header - Simple Text */}
-        <div className="text-center mb-24 space-y-4">
-          <h1 className="text-sm font-bold tracking-[0.3em] text-primary uppercase">Contact</h1>
-          <h2 className="text-3xl md:text-5xl font-serif text-foreground tracking-widest">
-            邱文瑾醫師<br/>
-            <span className="text-xl md:text-2xl mt-4 block text-foreground/60 font-sans font-light">女性更年期特別門診</span>
-          </h2>
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-primary mb-4">聯絡與授權</h1>
+          <p className="text-xl text-muted-foreground">Media Contact & Licensing</p>
         </div>
 
-        {/* Online Consultation Room Section */}
-        <div className="max-w-4xl mx-auto mb-32">
-           <div className="text-center mb-16 space-y-2">
-             <h3 className="text-2xl md:text-3xl font-bold text-foreground">線上專屬諮詢室</h3>
-             <p className="text-primary font-serif italic text-lg">Online exclusive consultation room</p>
-           </div>
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          
+          {/* Media Contact */}
+          <div className="bg-white p-8 rounded-xl border border-border shadow-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold">媒體接洽</h2>
+                <p className="text-sm text-muted-foreground">採訪邀約、新聞稿發布</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              若您有採訪需求，或希望邀請我們的醫學顧問團隊進行專業對談，請填寫右側表單，或直接來信。我們將由專屬公關團隊與您聯繫。
+            </p>
+            <div className="bg-gray-50 p-4 rounded-lg text-sm font-medium">
+              Email: <a href="mailto:press@metalife.pro" className="text-primary hover:underline">press@metalife.pro</a>
+            </div>
+          </div>
 
-           <div className="grid md:grid-cols-4 gap-8 relative">
-              {/* Connecting Line (Desktop) */}
-              <div className="hidden md:block absolute top-16 left-0 w-full h-px bg-primary/20 -z-10" />
+          {/* Licensing */}
+          <div className="bg-white p-8 rounded-xl border border-border shadow-sm">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                <FileText className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold">內容授權</h2>
+                <p className="text-sm text-muted-foreground">轉載申請、合作提案</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Metalife.pro 的所有內容皆受著作權法保護。若您希望轉載、引用或進行內容合作，請務必事先取得書面授權。我們歡迎學術引用與公益推廣。
+            </p>
+            <div className="bg-gray-50 p-4 rounded-lg text-sm font-medium">
+              Email: <a href="mailto:licensing@metalife.pro" className="text-primary hover:underline">licensing@metalife.pro</a>
+            </div>
+          </div>
 
-              {steps.map((item, idx) => (
-                <motion.div 
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-background flex flex-col items-center text-center space-y-4 group"
-                >
-                   <div className="w-32 h-32 rounded-full border border-primary/20 bg-white flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:border-primary/50 transition-all duration-300">
-                      {item.icon}
-                   </div>
-                   <div className="space-y-1">
-                      <p className="text-primary font-bold text-sm tracking-widest">{item.step}</p>
-                      <h4 className="font-bold text-lg text-foreground">{item.title}</h4>
-                      <p className="text-foreground/80 font-medium">{item.subtitle}</p>
-                   </div>
-                </motion.div>
-              ))}
-           </div>
-           
-           <div className="mt-12 text-center">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button className="bg-[#00c300] hover:bg-[#00c300]/90 text-white px-8 py-6 rounded-full text-lg font-bold tracking-widest shadow-lg transition-transform hover:scale-105">
-                     <MessageCircle className="w-6 h-6 mr-2" /> 
-                     立即加入 LINE 好友諮詢
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl bg-white/95 backdrop-blur-sm border-primary/20 p-8">
-                  <DialogHeader className="mb-6">
-                    <DialogTitle className="text-2xl font-bold text-center text-foreground tracking-widest">
-                      請選擇欲諮詢的診所
-                    </DialogTitle>
-                    <p className="text-center text-muted-foreground mt-2">Choose your preferred clinic location</p>
-                  </DialogHeader>
-                  
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {/* Hsinchu Clinic */}
-                    <div className="bg-white border border-primary/10 rounded-lg p-6 hover:shadow-md transition-shadow flex flex-col items-center text-center space-y-4">
-                       <h3 className="text-2xl font-bold text-primary">新竹館</h3>
-                       <div className="w-full h-px bg-primary/20" />
-                       
-                       <div className="space-y-2 text-sm text-foreground/80 leading-relaxed">
-                          <p className="font-bold flex items-center justify-center gap-2">
-                            <MapPin className="w-4 h-4 text-primary" /> 新竹市東區關新東路272號
-                          </p>
-                          <div className="pt-2 text-left bg-secondary/10 p-4 rounded-md w-full">
-                            <p className="text-xs font-bold text-primary mb-2 text-center">門診時間</p>
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
-                              <span>週一：10:00-19:00</span>
-                              <span>週二：10:00-21:00</span>
-                              <span>週三：12:00-21:00</span>
-                              <span>週四：12:00-21:00</span>
-                              <span>週五：12:00-21:00</span>
-                              <span className="text-primary font-bold">週六：10:00-18:00</span>
-                            </div>
-                          </div>
-                       </div>
-                       
-                       <Button asChild className="w-full bg-[#00c300] hover:bg-[#00c300]/90 text-white font-bold tracking-widest mt-auto">
-                         <a href="https://line.me/R/ti/p/@564qkktb" target="_blank" rel="noopener noreferrer">
-                           <MessageCircle className="w-4 h-4 mr-2" /> 加入新竹館 LINE
-                         </a>
-                       </Button>
-                    </div>
-
-                    {/* Zhubei Clinic */}
-                    <div className="bg-white border border-primary/10 rounded-lg p-6 hover:shadow-md transition-shadow flex flex-col items-center text-center space-y-4">
-                       <h3 className="text-2xl font-bold text-primary">竹北館</h3>
-                       <div className="w-full h-px bg-primary/20" />
-                       
-                       <div className="space-y-2 text-sm text-foreground/80 leading-relaxed">
-                          <p className="font-bold flex items-center justify-center gap-2">
-                            <MapPin className="w-4 h-4 text-primary" /> 新竹縣竹北市文興路一段273號
-                          </p>
-                          <div className="pt-2 text-left bg-secondary/10 p-4 rounded-md w-full">
-                            <p className="text-xs font-bold text-primary mb-2 text-center">門診時間</p>
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
-                              <span>週一：10:00-19:00</span>
-                              <span>週二：12:00-21:00</span>
-                              <span>週三：12:00-21:00</span>
-                              <span>週四：12:00-21:00</span>
-                              <span>週五：10:00-19:00</span>
-                              <span className="text-primary font-bold">週六：10:00-18:00</span>
-                            </div>
-                          </div>
-                       </div>
-                       
-                       <Button asChild className="w-full bg-[#00c300] hover:bg-[#00c300]/90 text-white font-bold tracking-widest mt-auto">
-                         <a href="#" target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); alert("竹北館 LINE 連結確認中"); }}>
-                           <MessageCircle className="w-4 h-4 mr-2" /> 加入竹北館 LINE
-                         </a>
-                       </Button>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-           </div>
         </div>
 
-        {/* Removed Contact Form Section as requested */}
-
-        {/* Footer Info */}
-        <div className="max-w-5xl mx-auto space-y-16">
-           
-           {/* Map Section - Stacked Cards */}
-           <div className="space-y-12">
-              {/* Hsinchu Map Card */}
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-border/50">
-                 <div className="mb-6 text-left">
-                    <h4 className="font-bold text-2xl text-foreground mb-2 flex items-center gap-2">
-                      <MapPin className="text-primary w-6 h-6" /> 新竹館
-                    </h4>
-                    <p className="text-muted-foreground pl-8">新竹市東區關新東路272號</p>
-                 </div>
-                 <div className="w-full h-[400px] rounded-md overflow-hidden bg-gray-100 relative">
-                    <iframe 
-                       width="100%" 
-                       height="100%" 
-                       style={{ border: 0 }}
-                       loading="lazy"
-                       allowFullScreen
-                       src="https://maps.google.com/maps?q=新竹市東區關新東路272號&hl=zh-TW&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                       title="Hsinchu Clinic Map"
-                    ></iframe>
-                 </div>
+        {/* Simple Contact Form */}
+        <div className="max-w-2xl mx-auto mt-20 bg-white p-8 rounded-xl border border-border">
+          <h3 className="text-xl font-bold mb-6 text-center">傳送訊息給我們</h3>
+          <form className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-bold">姓名</label>
+                <Input placeholder="您的姓名" />
               </div>
-
-              {/* Zhubei Map Card */}
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-border/50">
-                 <div className="mb-6 text-left">
-                    <h4 className="font-bold text-2xl text-foreground mb-2 flex items-center gap-2">
-                      <MapPin className="text-primary w-6 h-6" /> 竹北館
-                    </h4>
-                    <p className="text-muted-foreground pl-8">新竹縣竹北市文興路一段273號</p>
-                 </div>
-                 <div className="w-full h-[400px] rounded-md overflow-hidden bg-gray-100 relative">
-                    <iframe 
-                       width="100%" 
-                       height="100%" 
-                       style={{ border: 0 }}
-                       loading="lazy"
-                       allowFullScreen
-                       src="https://maps.google.com/maps?q=新竹縣竹北市文興路一段273號&hl=zh-TW&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                       title="Zhubei Clinic Map"
-                    ></iframe>
-                 </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold">單位 / 公司</label>
+                <Input placeholder="所屬單位" />
               </div>
-           </div>
-
-             <div className="bg-secondary/10 p-8 rounded-lg inline-block text-left mx-auto max-w-4xl w-full">
-                <h5 className="font-bold text-primary mb-6 flex items-center justify-center text-xl tracking-widest">
-                   <Clock className="w-6 h-6 mr-2" /> 門診時間
-                </h5>
-                <div className="grid md:grid-cols-2 gap-12 text-sm text-foreground/80 tracking-wide leading-loose">
-                   <div>
-                      <span className="font-bold block text-foreground mb-4 text-lg border-b border-primary/20 pb-2">新竹館</span>
-                      <ul className="space-y-2">
-                        <li className="flex justify-between"><span>週一</span> <span>10:00 - 19:00</span></li>
-                        <li className="flex justify-between"><span>週二</span> <span>10:00 - 21:00</span></li>
-                        <li className="flex justify-between"><span>週三</span> <span>12:00 - 21:00</span></li>
-                        <li className="flex justify-between"><span>週四</span> <span>12:00 - 21:00</span></li>
-                        <li className="flex justify-between"><span>週五</span> <span>12:00 - 21:00</span></li>
-                        <li className="flex justify-between text-primary font-bold"><span>週六</span> <span>10:00 - 18:00</span></li>
-                      </ul>
-                   </div>
-                   <div>
-                      <span className="font-bold block text-foreground mb-4 text-lg border-b border-primary/20 pb-2">竹北館</span>
-                      <ul className="space-y-2">
-                        <li className="flex justify-between"><span>週一</span> <span>10:00 - 19:00</span></li>
-                        <li className="flex justify-between"><span>週二</span> <span>12:00 - 21:00</span></li>
-                        <li className="flex justify-between"><span>週三</span> <span>12:00 - 21:00</span></li>
-                        <li className="flex justify-between"><span>週四</span> <span>12:00 - 21:00</span></li>
-                        <li className="flex justify-between"><span>週五</span> <span>10:00 - 19:00</span></li>
-                        <li className="flex justify-between text-primary font-bold"><span>週六</span> <span>10:00 - 18:00</span></li>
-                      </ul>
-                   </div>
-                </div>
-             </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-bold">Email</label>
+              <Input type="email" placeholder="contact@example.com" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-bold">主旨</label>
+              <Input placeholder="請選擇聯絡事由（採訪、授權、其他）" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-bold">訊息內容</label>
+              <Textarea placeholder="請簡述您的需求..." className="h-32" />
+            </div>
+            <Button className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-6">送出訊息</Button>
+          </form>
         </div>
 
       </div>

@@ -1,73 +1,71 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Linkedin, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import floralBg from '@assets/generated_images/elegant_roses_lavender_hydrangea_background.png';
+import logoImage from '@assets/1295071_1769148497517.jpg';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [location] = useLocation();
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
   const navLinks = [
     { name: "首頁", path: "/" },
-    { name: "醫師介紹", path: "/about" },
-    { name: "更年期文章", path: "/articles" },
-    { name: "療程介紹", path: "/treatments" },
-    { name: "影片專區", path: "/videos" },
-    { name: "聯絡我們", path: "/contact" },
+    { name: "醫學百科", path: "/encyclopedia" },
+    { name: "Meta-News", path: "/news" },
+    { name: "Meta-Video", path: "/videos" },
+    { name: "關於我們", path: "/about" },
+    { name: "聯絡與授權", path: "/contact" },
   ];
 
   return (
-    <div className="min-h-screen font-serif text-foreground selection:bg-primary selection:text-white flex flex-col relative">
-      {/* Background Image Fixed */}
-      <div 
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${floralBg})` }}
-      />
-      {/* Background Overlay for better readability */}
-      <div className="fixed inset-0 z-[-1] bg-white/70 backdrop-blur-[2px]" />
-
+    <div className="min-h-screen font-serif text-foreground selection:bg-primary selection:text-white flex flex-col relative bg-white">
+      
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/10 shadow-sm transition-all duration-300">
-        <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
           <Link href="/">
-            <a className="flex flex-col group">
-              <span className="text-2xl md:text-3xl font-extrabold text-primary tracking-widest transition-colors duration-500">
-                邱文瑾醫師
-              </span>
-              <span className="text-xs md:text-sm text-foreground/70 font-semibold tracking-[0.2em] transition-colors duration-500">
-                DR. CHIU MENOPAUSE CLINIC
-              </span>
+            <a className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-100">
+                <img src={logoImage} alt="Metalife Logo" className="w-full h-full object-cover" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-primary tracking-wide leading-none">
+                  Metalife.pro
+                </span>
+                <span className="text-xs text-foreground/60 font-medium tracking-widest mt-1">
+                  元健康
+                </span>
+              </div>
             </a>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
-                <a className={`text-sm font-bold transition-all duration-300 relative group py-2 tracking-widest hover:text-primary ${
-                  location === link.path ? "text-primary" : "text-foreground/80"
+                <a className={`text-sm font-bold transition-colors duration-300 relative group py-2 tracking-wide ${
+                  location === link.path ? "text-primary" : "text-gray-600 hover:text-primary"
                 }`}>
                   {link.name}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500 ${
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
                     location === link.path ? "w-full" : "w-0 group-hover:w-full"
                   }`} />
                 </a>
               </Link>
             ))}
+            <button className="p-2 text-gray-500 hover:text-primary transition-colors">
+              <Search size={20} />
+            </button>
           </div>
 
           {/* Mobile Nav Toggle */}
           <button 
-            className="md:hidden p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"
+            className="lg:hidden p-2 text-primary hover:bg-gray-50 rounded-md transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle Menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -80,15 +78,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-b border-primary/20 shadow-lg overflow-hidden"
+              className="lg:hidden bg-white border-b border-gray-100 shadow-lg overflow-hidden"
             >
               <div className="flex flex-col p-4 gap-2">
                 {navLinks.map((link) => (
                   <Link key={link.path} href={link.path}>
-                    <a className={`text-left py-3 px-4 rounded-md transition-all tracking-wider ${
+                    <a className={`text-left py-3 px-4 rounded-md transition-all font-medium ${
                       location === link.path 
-                        ? "bg-primary/10 text-primary font-bold" 
-                        : "hover:bg-primary/5 text-foreground"
+                        ? "bg-primary/5 text-primary" 
+                        : "hover:bg-gray-50 text-gray-700"
                     }`}>
                       {link.name}
                     </a>
@@ -106,81 +104,54 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white/90 text-foreground py-16 border-t border-primary/20 mt-auto relative z-10 backdrop-blur-sm">
+      <footer className="bg-gray-50 text-gray-600 py-16 border-t border-gray-200 mt-auto">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-3 gap-12 mb-12">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             
-            {/* Opening Hours */}
-            <div className="space-y-6">
-              <h4 className="font-bold tracking-widest text-lg text-primary">營業時間</h4>
-              <div className="space-y-4 text-sm tracking-wide text-foreground/80">
-                <div>
-                  <p className="font-bold mb-1 text-primary">新竹館</p>
-                  <p>週一：10:00-19:00</p>
-                  <p>週二：10:00-21:00</p>
-                  <p>週三：12:00-21:00</p>
-                  <p>週四：12:00-21:00</p>
-                  <p>週五：12:00-21:00</p>
-                  <p>週六：10:00-18:00</p>
+            <div className="col-span-1 md:col-span-2 space-y-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-200">
+                  <img src={logoImage} alt="Metalife Logo" className="w-full h-full object-cover" />
                 </div>
-                <div>
-                  <p className="font-bold mb-1 text-primary">竹北館</p>
-                  <p>週一：10:00-19:00</p>
-                  <p>週二：12:00-21:00</p>
-                  <p>週三：12:00-21:00</p>
-                  <p>週四：12:00-21:00</p>
-                  <p>週五：10:00-19:00</p>
-                  <p>週六：10:00-18:00</p>
-                </div>
+                <span className="text-xl font-bold text-primary">Metalife.pro</span>
               </div>
+              <p className="text-sm leading-loose max-w-sm">
+                數據守護健康，科學引領生活。<br/>
+                我們致力於提供最權威的代謝醫學知識，協助您掌握健康自主權。
+              </p>
             </div>
             
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <h4 className="font-bold tracking-widest text-lg text-primary">聯絡資訊</h4>
-              <div className="space-y-4 text-sm tracking-wide text-foreground/80">
-                <div className="flex gap-2">
-                  <span className="text-primary mt-0.5">📍</span>
-                  <div>
-                    <p>新竹館：新竹市東區關新東路272號</p>
-                    <p>竹北館：新竹縣竹北市文興路一段273號</p>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <span className="text-primary mt-0.5">📞</span>
-                  <div>
-                    <p>新竹館：03-666-2961</p>
-                    <p>竹北館：03-668-8858</p>
-                  </div>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <span className="text-primary">✉️</span>
-                  <p>carebeautyclinic2016@gmail.com</p>
-                </div>
-              </div>
+            <div className="space-y-4">
+              <h4 className="font-bold text-gray-900 tracking-wide">快速連結</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/encyclopedia"><a className="hover:text-primary transition-colors">醫學百科</a></Link></li>
+                <li><Link href="/news"><a className="hover:text-primary transition-colors">最新消息</a></Link></li>
+                <li><Link href="/videos"><a className="hover:text-primary transition-colors">影音專區</a></Link></li>
+                <li><Link href="/about"><a className="hover:text-primary transition-colors">關於我們</a></Link></li>
+              </ul>
             </div>
             
-            {/* Follow Us */}
-            <div className="space-y-6">
-              <h4 className="font-bold tracking-widest text-lg text-primary">關注我們</h4>
-              <p className="text-xs text-foreground/60 mb-4">追蹤最新訊息</p>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300">
-                  <MessageCircle size={20} />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300">
-                  <Facebook size={20} />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors duration-300">
-                  <Instagram size={20} />
-                </a>
-              </div>
+            <div className="space-y-4">
+              <h4 className="font-bold text-gray-900 tracking-wide">聯絡我們</h4>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-center gap-2"><Facebook size={16} /> Meta-Life</li>
+                <li className="flex items-center gap-2"><Instagram size={16} /> @metalife_pro</li>
+                <li className="flex items-center gap-2"><Linkedin size={16} /> Metalife Pro</li>
+                <li className="mt-4 pt-4 border-t border-gray-200 text-xs">
+                  Email: contact@metalife.pro
+                </li>
+              </ul>
             </div>
 
           </div>
           
-          <div className="pt-8 border-t border-primary/10 text-center text-foreground/60 text-sm tracking-widest font-medium">
-            © 2026 邱文瑾醫師 女性更年期特別門診. All Rights Reserved.
+          <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+            <div>© 2026 Metalife.pro 元健康. All Rights Reserved.</div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-primary">隱私權政策</a>
+              <a href="#" className="hover:text-primary">使用條款</a>
+              <a href="#" className="hover:text-primary">免責聲明</a>
+            </div>
           </div>
         </div>
       </footer>
