@@ -29,7 +29,7 @@ export default function Home() {
       desc: "大腦健康、睡眠品質與壓力調節的科學管理。",
       details: ["深度睡眠優化", "皮質醇(壓力荷爾蒙)管理", "晝夜節律調整", "正念與冥想科學"],
       x: 50, 
-      y: 9, // Head/Brain
+      y: 13, // Head/Brain
       color: "bg-purple-500"
     },
     { 
@@ -40,7 +40,7 @@ export default function Home() {
       desc: "甲狀腺功能、女性荷爾蒙與基礎代謝率的平衡。",
       details: ["甲狀腺功能低下/亢進", "更年期荷爾蒙替代療法", "腎上腺疲勞檢測", "基礎代謝率提升"],
       x: 50, 
-      y: 35, // Center of body (Endocrine system axis)
+      y: 36, // Center of body
       color: "bg-blue-500"
     },
     { 
@@ -50,8 +50,8 @@ export default function Home() {
       icon: <Heart className="w-6 h-6" />,
       desc: "心臟健康、血壓控制與血管彈性維護。",
       details: ["高血壓精準用藥", "動脈硬化早期篩檢", "心律變異度(HRV)分析", "血脂與血管發炎指標"],
-      x: 56, 
-      y: 28, // Heart position (Left side of body, right side of view)
+      x: 54, 
+      y: 31, // Heart position
       color: "bg-red-500"
     },
     { 
@@ -61,7 +61,7 @@ export default function Home() {
       icon: <Zap className="w-6 h-6" />,
       desc: "胰島素阻抗、血糖波動與糖尿病前期預防。",
       details: ["CGM 持續血糖監測", "胰島素阻抗逆轉", "糖尿病前期飲食策略", "低GI飲食計畫"],
-      x: 54, 
+      x: 52, 
       y: 44, // Pancreas position
       color: "bg-green-500"
     },
@@ -73,7 +73,7 @@ export default function Home() {
       desc: "內臟脂肪、脂肪肝與代謝症候群的綜合治療。",
       details: ["科學減重處方", "脂肪肝逆轉療程", "內臟脂肪分析", "增肌減脂運動規劃"],
       x: 50, 
-      y: 56, // Abdomen/Belly
+      y: 50, // Abdomen/Belly (Moved up)
       color: "bg-yellow-500"
     }
   ];
@@ -200,7 +200,7 @@ export default function Home() {
                          <span className={`absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping ${zone.color} ${activeZone === zone.id ? 'opacity-75' : 'opacity-20'}`}></span>
                          
                          {/* Core Dot */}
-                         <span className={`relative inline-flex rounded-full h-4 w-4 border-2 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 ${zone.color} ${activeZone === zone.id ? 'scale-125 bg-white' : ''}`}></span>
+                         <span className={`relative inline-flex rounded-full h-4 w-4 border-2 border-white shadow-[0_0_10px_rgba(255,255,255,0.8)] transition-all duration-300 ${zone.color} ${activeZone === zone.id ? 'ring-2 ring-white/50' : ''}`}></span>
                          
                          {/* Label on Hover */}
                          <div className={`absolute left-full ml-4 whitespace-nowrap bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${activeZone === zone.id ? 'opacity-100' : ''}`}>
