@@ -90,8 +90,8 @@ export default function Encyclopedia() {
       <div className="container mx-auto px-4 h-[calc(100vh-80px)] relative z-10 flex flex-col lg:flex-row items-center justify-center gap-12">
         
         {/* Left: Interactive Body Map */}
-        <div className="relative w-full max-w-md lg:h-[80vh] flex items-center justify-center">
-          <div className="relative w-full h-full max-h-[700px] flex items-center justify-center">
+        <div className="relative w-full max-w-md h-[500px] lg:h-[80vh] flex items-center justify-center">
+          <div className="relative w-full h-full flex items-center justify-center">
             {/* Glowing Body Image */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
@@ -102,7 +102,7 @@ export default function Encyclopedia() {
                <img 
                  src={bodyImage} 
                  alt="Interactive Body Map" 
-                 className="max-h-full max-w-full object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
+                 className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
                />
                
                {/* Interactive Hotspots */}
