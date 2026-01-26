@@ -96,7 +96,7 @@ export default function Home() {
               className="md:w-1/2 space-y-8"
             >
               <div className="flex items-center gap-4 mb-2">
-                 <img src={logoBadge} alt="Metalife Logo" className="w-20 h-20 rounded-full shadow-lg border-2 border-white/50" />
+                 <img src={logoBadge} alt="Metalife Logo" className="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-white/50" />
                  <div className="inline-block px-4 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full tracking-wider">
                    Science for Better Life
                  </div>
