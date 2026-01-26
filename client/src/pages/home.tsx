@@ -292,12 +292,12 @@ export default function Home() {
       {/* 3. Latest Videos (Meta-Stream) */}
       <section className="py-24 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex justify-between items-end mb-12">
-             <div>
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-4 md:gap-0">
+             <div className="flex flex-col items-start">
                <h2 className="text-3xl font-bold mb-2">Meta-Stream 影音</h2>
                <p className="text-muted-foreground">專業醫師對談與衛教動畫</p>
              </div>
-             <Link href="/videos" className="text-primary font-bold flex items-center hover:underline">
+             <Link href="/videos" className="text-primary font-bold flex items-center hover:underline self-start md:self-auto">
                  觀看更多 <ArrowRight className="w-4 h-4 ml-1" />
              </Link>
           </div>
