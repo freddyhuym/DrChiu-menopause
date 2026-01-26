@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play, Activity, Newspaper, TrendingUp, Globe, AlertCircle, Heart, Scale, Coffee, Brain, Zap, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
-import logoImage from '@assets/1295070_1769148497518.jpg'; // Using the other logo variant for hero if needed
+import logoBadge from '@assets/1295071_1769406548918.jpg';
 import bodyImage from '@/assets/generated_images/medical_body_interface.png';
 
 interface Zone {
@@ -95,8 +95,11 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="md:w-1/2 space-y-8"
             >
-              <div className="inline-block px-4 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full tracking-wider mb-2">
-                Science for Better Life
+              <div className="flex items-center gap-4 mb-2">
+                 <img src={logoBadge} alt="Metalife Logo" className="w-20 h-20 rounded-full shadow-lg border-2 border-white/50" />
+                 <div className="inline-block px-4 py-1 bg-blue-100 text-primary text-xs font-bold rounded-full tracking-wider">
+                   Science for Better Life
+                 </div>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight">
                 數據守護健康<br/>
