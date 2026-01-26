@@ -28,8 +28,8 @@ export default function Home() {
       icon: <Coffee className="w-6 h-6" />,
       desc: "大腦健康、睡眠品質與壓力調節的科學管理。",
       details: ["深度睡眠優化", "皮質醇(壓力荷爾蒙)管理", "晝夜節律調整", "正念與冥想科學"],
-      x: 50, 
-      y: 13, // Head/Brain
+      x: 32, 
+      y: 18, // Moved to the left data viz area as requested
       color: "bg-purple-500"
     },
     { 
