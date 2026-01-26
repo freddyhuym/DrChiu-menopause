@@ -79,7 +79,7 @@ export default function Encyclopedia() {
   const currentZone = zones.find(z => z.id === activeZone) || zones[0];
 
   return (
-    <div className="min-h-screen bg-[#0a192f] text-white pt-20 overflow-hidden relative">
+    <div className="min-h-screen bg-[#0a192f] text-white pt-20 relative overflow-y-auto overflow-x-hidden">
       {/* Background Tech Mesh */}
       <div className="absolute inset-0 z-0 opacity-20" 
            style={{ 
@@ -87,7 +87,7 @@ export default function Encyclopedia() {
            }} 
       />
       
-      <div className="container mx-auto px-4 h-[calc(100vh-80px)] relative z-10 flex flex-col lg:flex-row items-center justify-center gap-12">
+      <div className="container mx-auto px-4 min-h-[calc(100vh-80px)] h-auto relative z-10 flex flex-col lg:flex-row items-center justify-center gap-12 pb-12 lg:pb-0">
         
         {/* Left: Interactive Body Map */}
         <div className="relative w-full max-w-md h-[500px] lg:h-[80vh] flex items-center justify-center">
