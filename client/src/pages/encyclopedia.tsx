@@ -87,7 +87,15 @@ export default function Encyclopedia() {
            }} 
       />
       
-      <div className="container mx-auto px-4 min-h-[calc(100vh-80px)] h-auto relative z-10 flex flex-col lg:flex-row items-center justify-center gap-12 pb-12 lg:pb-0">
+      <div className="container mx-auto px-4 min-h-[calc(100vh-80px)] h-auto relative z-10 flex flex-col items-center justify-start gap-8 py-12 lg:pb-0">
+        
+        {/* Title Section - Mobile & Desktop */}
+        <div className="text-center w-full">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 whitespace-nowrap">代謝內科百科</h1>
+          <p className="text-xl text-blue-300">Interactive Knowledge Hub</p>
+        </div>
+
+        <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-12">
         
         {/* Left: Interactive Body Map */}
         <div className="relative w-full max-w-md h-[500px] lg:h-[80vh] flex items-center justify-center">
@@ -203,6 +211,7 @@ export default function Encyclopedia() {
           </AnimatePresence>
         </div>
 
+        </div>
       </div>
     </div>
   );
