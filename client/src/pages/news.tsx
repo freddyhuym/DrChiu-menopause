@@ -23,7 +23,7 @@ export default function News() {
   return (
     <div className="py-20 container mx-auto px-4">
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-primary mb-4">Meta-Pulse 醫學動態</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4 whitespace-nowrap">Meta News 醫學動態</h1>
         <p className="text-xl text-muted-foreground">Press Center</p>
       </div>
 
