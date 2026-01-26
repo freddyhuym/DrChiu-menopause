@@ -30,15 +30,11 @@ export default function Home() {
                 Metalife.pro 匯集權威代謝內科醫師團隊，為您解讀全球最新醫學實證，打造最值得信賴的健康知識庫。
               </p>
               <div className="flex gap-4 pt-4">
-                <Link href="/encyclopedia">
-                  <a className="bg-primary text-white px-8 py-3 rounded-md font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+                <Link href="/encyclopedia" className="bg-primary text-white px-8 py-3 rounded-md font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
                     探索醫學百科
-                  </a>
                 </Link>
-                <Link href="/about">
-                  <a className="border border-gray-300 text-foreground px-8 py-3 rounded-md font-bold hover:bg-gray-50 transition-colors">
+                <Link href="/about" className="border border-gray-300 text-foreground px-8 py-3 rounded-md font-bold hover:bg-gray-50 transition-colors">
                     了解我們
-                  </a>
                 </Link>
               </div>
             </motion.div>
@@ -94,13 +90,11 @@ export default function Home() {
               { title: "三高與肥胖", icon: <TrendingUp />, bg: "bg-yellow-50", text: "text-yellow-600" },
               { title: "生活處方箋", icon: <Coffee />, bg: "bg-purple-50", text: "text-purple-600" },
             ].map((item, idx) => (
-              <Link key={idx} href="/encyclopedia">
-                <a className="flex flex-col items-center p-6 rounded-xl hover:shadow-lg transition-all border border-gray-100 group bg-white hover:-translate-y-1">
+              <Link key={idx} href="/encyclopedia" className="flex flex-col items-center p-6 rounded-xl hover:shadow-lg transition-all border border-gray-100 group bg-white hover:-translate-y-1">
                   <div className={`w-14 h-14 rounded-full ${item.bg} ${item.text} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     {item.icon}
                   </div>
                   <span className="font-bold text-gray-800">{item.title}</span>
-                </a>
               </Link>
             ))}
           </div>
@@ -115,10 +109,8 @@ export default function Home() {
                <h2 className="text-3xl font-bold mb-2">Meta-Stream 影音</h2>
                <p className="text-muted-foreground">專業醫師對談與衛教動畫</p>
              </div>
-             <Link href="/videos">
-               <a className="text-primary font-bold flex items-center hover:underline">
+             <Link href="/videos" className="text-primary font-bold flex items-center hover:underline">
                  觀看更多 <ArrowRight className="w-4 h-4 ml-1" />
-               </a>
              </Link>
           </div>
 
@@ -171,19 +163,19 @@ export default function Home() {
                 <Globe className="w-10 h-10 text-primary mb-6" />
                 <h3 className="text-xl font-bold mb-3">全球研究摘要</h3>
                 <p className="text-muted-foreground mb-6">同步翻譯並解讀 NEJM、Lancet 等國際期刊的最新研究。</p>
-                <Link href="/news"><a className="text-primary font-bold flex items-center text-sm group-hover:underline">前往專區 <ArrowRight className="w-4 h-4 ml-1" /></a></Link>
+                <Link href="/news" className="text-primary font-bold flex items-center text-sm group-hover:underline">前往專區 <ArrowRight className="w-4 h-4 ml-1" /></Link>
              </div>
              <div className="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-xl transition-all group">
                 <TrendingUp className="w-10 h-10 text-green-600 mb-6" />
                 <h3 className="text-xl font-bold mb-3">產業新聞</h3>
                 <p className="text-muted-foreground mb-6">新藥上市資訊、新型醫療儀器發展、健保政策更新。</p>
-                <Link href="/news"><a className="text-green-600 font-bold flex items-center text-sm group-hover:underline">前往專區 <ArrowRight className="w-4 h-4 ml-1" /></a></Link>
+                <Link href="/news" className="text-green-600 font-bold flex items-center text-sm group-hover:underline">前往專區 <ArrowRight className="w-4 h-4 ml-1" /></Link>
              </div>
              <div className="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-xl transition-all group">
                 <AlertCircle className="w-10 h-10 text-red-500 mb-6" />
                 <h3 className="text-xl font-bold mb-3">聲明與澄清</h3>
                 <p className="text-muted-foreground mb-6">針對社群媒體流傳的錯誤健康資訊，以專業角度發布正式澄清稿。</p>
-                <Link href="/news"><a className="text-red-500 font-bold flex items-center text-sm group-hover:underline">前往專區 <ArrowRight className="w-4 h-4 ml-1" /></a></Link>
+                <Link href="/news" className="text-red-500 font-bold flex items-center text-sm group-hover:underline">前往專區 <ArrowRight className="w-4 h-4 ml-1" /></Link>
              </div>
           </div>
         </div>

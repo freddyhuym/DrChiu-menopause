@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Activity, Heart, Scale, Coffee, Brain, ChevronRight, Zap } from "lucide-react";
-import bodyImage from '@assets/generated_images/medical_body_interface.png';
+import bodyImage from '@/assets/generated_images/medical_body_interface.png';
 
 interface Zone {
   id: string;
