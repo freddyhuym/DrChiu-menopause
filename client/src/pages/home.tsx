@@ -337,7 +337,7 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Meta-Pulse 醫學動態</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 whitespace-nowrap">Meta-Pulse 醫學動態</h2>
             <p className="text-muted-foreground">掌握全球醫療最前線</p>
           </div>
 
