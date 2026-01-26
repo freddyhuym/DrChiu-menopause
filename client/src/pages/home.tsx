@@ -183,7 +183,7 @@ export default function Home() {
                    <img 
                      src={bodyImage} 
                      alt="Interactive Body Map" 
-                     className="h-full w-auto object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]" 
+                     className="w-full h-full object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]" 
                    />
                    
                    {/* Interactive Hotspots */}
