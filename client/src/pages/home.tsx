@@ -170,7 +170,7 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24">
             
             {/* Left: Interactive Body Map */}
-            <div className="relative w-full max-w-sm lg:h-[600px] flex items-center justify-center">
+            <div className="relative w-full max-w-sm h-[500px] lg:h-[600px] flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
                 {/* Glowing Body Image */}
                 <motion.div 
@@ -183,7 +183,7 @@ export default function Home() {
                    <img 
                      src={bodyImage} 
                      alt="Interactive Body Map" 
-                     className="max-h-[500px] w-auto object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]" 
+                     className="h-full w-auto object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.6)]" 
                    />
                    
                    {/* Interactive Hotspots */}
