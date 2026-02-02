@@ -1,7 +1,28 @@
 import { motion } from "framer-motion";
-import { Newspaper, ArrowRight, Globe, TrendingUp, AlertCircle } from "lucide-react";
+import { Newspaper, ArrowRight, Globe, TrendingUp, AlertCircle, Calendar } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "wouter";
+import { normalizeMediaUrl } from "@/lib/media";
+import { format } from "date-fns";
+import { zhTW } from "date-fns/locale";
+
+interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  featuredImageUrl?: string;
+  heroImage?: any;
+  publishedAt?: string;
+  articleCategory: string;
+}
 
 export default function News() {
+  // 從 API 獲取資料
+  const { data: posts = [], isLoading } = useQuery<Post[]>({
+    queryKey: ["/api/posts/by-category/menopause-articles"],
+  });
+
   const categories = [
     {
       title: "全球研究摘要",
@@ -27,6 +48,7 @@ export default function News() {
         <p className="text-xl text-muted-foreground">Press Center</p>
       </div>
 
+      {/* 分類卡片 */}
       <div className="grid md:grid-cols-3 gap-8 mb-16">
         {categories.map((cat, idx) => (
           <div key={idx} className="bg-primary/5 p-6 rounded-lg border border-primary/10">
@@ -39,22 +61,53 @@ export default function News() {
         ))}
       </div>
 
+      {/* 新聞列表區塊 */}
       <div className="space-y-8">
-        {[1, 2, 3].map((item) => (
-          <div key={item} className="flex flex-col md:flex-row gap-8 items-start border-b border-border pb-8">
-            <div className="w-full md:w-64 aspect-video bg-muted rounded-lg shrink-0"></div>
-            <div className="flex-1 space-y-3">
-              <div className="text-sm text-primary font-bold">2026.01.23 | 全球研究</div>
-              <h3 className="text-2xl font-bold text-foreground">最新代謝醫學研究突破：關於胰島素阻抗的新發現</h3>
-              <p className="text-muted-foreground line-clamp-2">
-                本週 NEJM 發表的最新研究顯示，透過特定的生活型態介入，可以有效逆轉早期的胰島素阻抗現象...
-              </p>
-              <button className="text-primary font-bold text-sm flex items-center mt-2">
-                閱讀全文 <ArrowRight className="w-4 h-4 ml-1" />
-              </button>
-            </div>
+        {isLoading ? (
+          <div className="text-center py-10 text-muted-foreground">正在從資料庫載入最新消息...</div>
+        ) : posts.length === 0 ? (
+          <div className="text-center py-20 text-muted-foreground bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
+            <Newspaper className="w-12 h-12 mx-auto mb-4 opacity-20" />
+            <p className="text-lg font-medium">目前資料庫中尚無醫學動態文章</p>
+            <p className="text-sm opacity-60 mt-2">請至後台新增分類為「metalife文章」的內容</p>
           </div>
-        ))}
+        ) : (
+          posts.map((post) => {
+            const rawImageUrl = post.featuredImageUrl || (post.heroImage && typeof post.heroImage === 'object' ? post.heroImage.url : null);
+            const imageUrl = normalizeMediaUrl(rawImageUrl);
+            const formattedDate = post.publishedAt 
+              ? format(new Date(post.publishedAt), "yyyy.MM.dd") 
+              : "資料確認中";
+
+            return (
+              <div key={post.id} className="flex flex-col md:flex-row gap-8 items-start border-b border-border pb-8 group">
+                {imageUrl ? (
+                  <div className="w-full md:w-64 aspect-video overflow-hidden rounded-lg shrink-0 shadow-sm group-hover:shadow-md transition-shadow">
+                    <img src={imageUrl} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  </div>
+                ) : (
+                  <div className="w-full md:w-64 aspect-video bg-muted rounded-lg shrink-0 flex items-center justify-center">
+                    <Newspaper className="w-10 h-10 text-muted-foreground/20" />
+                  </div>
+                )}
+                <div className="flex-1 space-y-3">
+                  <div className="text-sm text-primary font-bold">
+                    {formattedDate} | {post.articleCategory === 'menopause-articles' ? '醫學動態' : post.articleCategory}
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{post.title}</h3>
+                  <p className="text-muted-foreground line-clamp-2 leading-relaxed">
+                    {post.excerpt || "點擊閱讀全文以獲取完整的醫療資訊與研究摘要。"}
+                  </p>
+                  <Link href={`/news/${post.slug}`}>
+                    <button className="text-primary font-bold text-sm flex items-center mt-2 group-hover:translate-x-1 transition-transform cursor-pointer">
+                      閱讀全文 <ArrowRight className="w-4 h-4 ml-1" />
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

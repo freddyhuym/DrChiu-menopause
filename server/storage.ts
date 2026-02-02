@@ -4,6 +4,37 @@ import { ObjectId } from "mongodb";
 import { eq } from "drizzle-orm";
 import { randomUUID } from "crypto";
 
+const DEFAULT_PAYLOAD_PUBLIC_URL = process.env.PAYLOAD_PUBLIC_URL || "https://cms.carebeautyclinic.com.tw";
+
+function normalizeMediaUrl(url?: string): string | undefined {
+  if (!url) return url;
+  if (url.startsWith(DEFAULT_PAYLOAD_PUBLIC_URL)) return url;
+
+  // Replace localhost with production CMS domain
+  if (url.includes("localhost")) {
+    url = url.replace(/https?:\/\/localhost(?::\d+)?/gi, DEFAULT_PAYLOAD_PUBLIC_URL);
+    url = url.replace(/localhost(?::\d+)?/gi, new URL(DEFAULT_PAYLOAD_PUBLIC_URL).hostname);
+  }
+
+  // Ensure /media/ path is correctly prefixed
+  const mediaIndex = url.indexOf("/media/");
+  if (mediaIndex >= 0) {
+    const rawFilename = url.slice(mediaIndex + "/media/".length);
+    return `${DEFAULT_PAYLOAD_PUBLIC_URL}/media/${encodeURIComponent(decodeURIComponent(rawFilename))}`;
+  }
+  return url;
+}
+
+function processContentMedia(content: any): any {
+  if (!content) return content;
+  const jsonString = JSON.stringify(content);
+  // Simple regex replacement for localhost URLs in the entire content JSON
+  const updatedJson = jsonString.replace(/https?:\/\/localhost(?::\d+)?\/media\/([^"\s>]+)/g, (match, filename) => {
+    return `${DEFAULT_PAYLOAD_PUBLIC_URL}/media/${filename}`;
+  });
+  return JSON.parse(updatedJson);
+}
+
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
@@ -38,23 +69,36 @@ class MongoStorage implements IStorage {
     return { ...insertUser, id: result.insertedId.toString() } as User;
   }
 
+  private transformPost(post: any) {
+    if (!post) return null;
+    return {
+      ...post,
+      featuredImageUrl: normalizeMediaUrl(post.featuredImageUrl || post.heroImage?.url || post.heroImage),
+      content: processContentMedia(post.content)
+    };
+  }
+
   async getPosts() {
-    return (await this.coll("posts")).find().sort({ updatedAt: -1 }).toArray();
+    const posts = await (await this.coll("posts")).find().sort({ updatedAt: -1 }).toArray();
+    return posts.map(post => this.transformPost(post));
   }
 
   async getPublishedPosts() {
-    return (await this.coll("posts")).find({ status: "published" }).sort({ publishedAt: -1 }).toArray();
+    const posts = await (await this.coll("posts")).find({ _status: "published" }).sort({ publishedAt: -1 }).toArray();
+    return posts.map(post => this.transformPost(post));
   }
 
   async getPostsByCategory(category: string) {
-    return (await this.coll("posts"))
-      .find({ articleCategory: category, status: "published" })
+    const posts = await (await this.coll("posts"))
+      .find({ articleCategory: category, _status: "published" })
       .sort({ publishedAt: -1 })
       .toArray();
+    return posts.map(post => this.transformPost(post));
   }
 
   async getPostBySlug(slug: string) {
-    return (await this.coll("posts")).findOne({ slug });
+    const post = await (await this.coll("posts")).findOne({ slug });
+    return this.transformPost(post);
   }
 }
 
@@ -77,7 +121,7 @@ class PostgresStorage implements IStorage {
     return user;
   }
 
-  async getPosts() { return []; } // 視需求實作 Postgres 的文章查詢
+  async getPosts() { return []; }
   async getPublishedPosts() { return []; }
   async getPostsByCategory(category: string) { return []; }
   async getPostBySlug(slug: string) { return null; }
