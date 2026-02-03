@@ -18,6 +18,92 @@ interface Post {
   articleCategory: string;
 }
 
+// Basic Lexical JSON Renderer
+function LexicalRenderer({ content }: { content: any }) {
+  if (!content || !content.root || !content.root.children) {
+    return <p className="text-muted-foreground italic">內容格式不正確</p>;
+  }
+
+  const renderNode = (node: any, index: number) => {
+    switch (node.type) {
+      case "paragraph":
+        return (
+          <p key={index} className="mb-4 leading-relaxed">
+            {node.children?.map((child: any, i: number) => renderText(child, i))}
+          </p>
+        );
+      case "heading":
+        const HeadingTag = node.tag || "h2";
+        return (
+          <HeadingTag key={index} className="font-bold mt-8 mb-4 text-foreground">
+            {node.children?.map((child: any, i: number) => renderText(child, i))}
+          </HeadingTag>
+        );
+      case "list":
+        const ListTag = node.listType === "number" ? "ol" : "ul";
+        return (
+          <ListTag key={index} className={`mb-6 ml-6 ${node.listType === "number" ? "list-decimal" : "list-disc"}`}>
+            {node.children?.map((item: any, i: number) => (
+              <li key={i} className="mb-2">
+                {item.children?.map((child: any, j: number) => renderNode(child, j))}
+              </li>
+            ))}
+          </ListTag>
+        );
+      case "listitem":
+        return (
+          <span key={index}>
+            {node.children?.map((child: any, i: number) => renderNode(child, i))}
+          </span>
+        );
+      case "block":
+        // Handle Media Blocks
+        if (node.fields?.blockType === "mediaBlock" || node.fields?.media) {
+          const mediaUrl = normalizeMediaUrl(node.fields?.mediaUrl || node.fields?.media);
+          if (mediaUrl) {
+            return (
+              <div key={index} className="my-8 rounded-xl overflow-hidden shadow-lg">
+                <img src={mediaUrl} alt="Article visual" className="w-full h-auto" />
+                {node.fields?.caption && (
+                  <p className="text-center text-sm text-muted-foreground mt-2">{node.fields.caption}</p>
+                )}
+              </div>
+            );
+          }
+        }
+        return null;
+      default:
+        // Generic text or unknown
+        if (node.text) return renderText(node, index);
+        return null;
+    }
+  };
+
+  const renderText = (node: any, index: number) => {
+    let element = <span key={index}>{node.text}</span>;
+    
+    // Lexical format flags: 1=Bold, 2=Italic, 8=Underline, etc.
+    if (node.format & 1) element = <strong key={index}>{element}</strong>;
+    if (node.format & 2) element = <em key={index}>{element}</em>;
+    
+    if (node.type === "link") {
+      return (
+        <a key={index} href={node.url} target="_blank" rel="noopener noreferrer" className="text-primary underline">
+          {node.children?.map((child: any, i: number) => renderText(child, i))}
+        </a>
+      );
+    }
+    
+    return element;
+  };
+
+  return (
+    <div className="lexical-content">
+      {content.root.children.map((node: any, i: number) => renderNode(node, i))}
+    </div>
+  );
+}
+
 export default function NewsDetail() {
   const [, params] = useRoute("/news/:slug");
   const slug = params?.slug;
@@ -47,8 +133,17 @@ export default function NewsDetail() {
     );
   }
 
-  const rawImageUrl = post.featuredImageUrl || (post.heroImage && typeof post.heroImage === 'object' ? post.heroImage.url : null);
-  const imageUrl = normalizeMediaUrl(rawImageUrl);
+  // Robust image URL extraction
+  const getImageUrl = () => {
+    if (post.featuredImageUrl) return normalizeMediaUrl(post.featuredImageUrl);
+    if (post.heroImage) {
+      if (typeof post.heroImage === 'string') return normalizeMediaUrl(post.heroImage);
+      if (typeof post.heroImage === 'object') return normalizeMediaUrl(post.heroImage.url || post.heroImage.filename);
+    }
+    return null;
+  };
+
+  const imageUrl = getImageUrl();
 
   return (
     <div className="min-h-screen bg-background pt-32 pb-20">
@@ -97,9 +192,7 @@ export default function NewsDetail() {
             {typeof post.content === 'string' ? (
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             ) : (
-              <div className="text-muted-foreground italic bg-muted/30 p-8 rounded-xl border border-dashed border-border">
-                <p>內容加載中或格式不支援（Lexical JSON 渲染待實作）...</p>
-              </div>
+              <LexicalRenderer content={post.content} />
             )}
           </div>
         </article>

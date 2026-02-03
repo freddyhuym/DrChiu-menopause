@@ -6,57 +6,101 @@ import { randomUUID } from "crypto";
 
 const DEFAULT_PAYLOAD_PUBLIC_URL = process.env.PAYLOAD_PUBLIC_URL || "https://cms.carebeautyclinic.com.tw";
 
-function normalizeMediaUrl(url?: string): string | undefined {
-  if (!url) return url;
-  if (url.startsWith(DEFAULT_PAYLOAD_PUBLIC_URL)) return url;
+// 🚀 核心：解析媒體 ID 為完整 URL
+async function resolveMediaUrl(mediaField: any): Promise<string | undefined> {
+  if (!mediaField) return undefined;
 
-  // Replace localhost with production CMS domain
-  if (url.includes("localhost")) {
-    url = url.replace(/https?:\/\/localhost(?::\d+)?/gi, DEFAULT_PAYLOAD_PUBLIC_URL);
-    url = url.replace(/localhost(?::\d+)?/gi, new URL(DEFAULT_PAYLOAD_PUBLIC_URL).hostname);
+  // 1. 如果已經是網址
+  if (typeof mediaField === 'string' && (mediaField.startsWith("http") || mediaField.startsWith("/"))) {
+    return normalizeMediaUrl(mediaField);
   }
 
-  // Ensure /media/ path is correctly prefixed
-  const mediaIndex = url.indexOf("/media/");
-  if (mediaIndex >= 0) {
-    const rawFilename = url.slice(mediaIndex + "/media/".length);
-    return `${DEFAULT_PAYLOAD_PUBLIC_URL}/media/${encodeURIComponent(decodeURIComponent(rawFilename))}`;
+  // 2. 如果是物件，嘗試提取 url 或 filename
+  if (typeof mediaField === 'object') {
+    const path = mediaField.url || (mediaField.filename ? `/media/${mediaField.filename}` : undefined);
+    if (path) return normalizeMediaUrl(path);
   }
-  return url;
+
+  // 3. 如果是 ID，去 MongoDB 查詢
+  if (activeDbType === "mongodb") {
+    try {
+      const db = getMongoDB();
+      let query: any = { _id: mediaField };
+      if (typeof mediaField === 'string' && ObjectId.isValid(mediaField)) {
+        query = { $or: [{ _id: new ObjectId(mediaField) }, { _id: mediaField }] };
+      }
+      
+      const mediaDoc = await db.collection("media").findOne(query);
+      if (mediaDoc) {
+        const path = mediaDoc.url || (mediaDoc.filename ? `/media/${mediaDoc.filename}` : undefined);
+        return path ? normalizeMediaUrl(path) : undefined;
+      }
+    } catch (e) {
+      console.warn(`⚠️ 無法解析媒體 ID: ${mediaField}`);
+    }
+  }
+
+  return undefined;
 }
 
-function processContentMedia(content: any): any {
-  if (!content) return content;
-  const jsonString = JSON.stringify(content);
-  // Simple regex replacement for localhost URLs in the entire content JSON
-  const updatedJson = jsonString.replace(/https?:\/\/localhost(?::\d+)?\/media\/([^"\s>]+)/g, (match, filename) => {
-    return `${DEFAULT_PAYLOAD_PUBLIC_URL}/media/${filename}`;
-  });
-  return JSON.parse(updatedJson);
+function normalizeMediaUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  let normalized = url;
+  if (normalized.includes("localhost")) {
+    normalized = normalized.replace(/https?:\/\/localhost(?::\d+)?/gi, DEFAULT_PAYLOAD_PUBLIC_URL);
+    normalized = normalized.replace(/localhost(?::\d+)?/gi, new URL(DEFAULT_PAYLOAD_PUBLIC_URL).hostname);
+  }
+  if (normalized.startsWith("/media/")) {
+    normalized = `${DEFAULT_PAYLOAD_PUBLIC_URL}${normalized}`;
+  }
+  return normalized;
+}
+
+async function processContentMedia(content: any): Promise<any> {
+  if (!content || !content.root) return content;
+  
+  const processNodes = async (nodes: any[]): Promise<any[]> => {
+    if (!nodes || !Array.isArray(nodes)) return nodes;
+    return Promise.all(nodes.map(async (node) => {
+      if (node.type === "block" && node.fields?.blockType === "mediaBlock") {
+        const mediaUrl = await resolveMediaUrl(node.fields.media);
+        return { ...node, fields: { ...node.fields, mediaUrl: normalizeMediaUrl(mediaUrl) } };
+      }
+      if (node.children) {
+        node.children = await processNodes(node.children);
+      }
+      return node;
+    }));
+  };
+
+  try {
+    const newContent = JSON.parse(JSON.stringify(content));
+    newContent.root.children = await processNodes(newContent.root.children);
+    return newContent;
+  } catch (e) {
+    return content;
+  }
 }
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  
-  // 擴充方法 (供 ClinicImageNode 共享使用)
   getPosts(): Promise<any[]>;
   getPublishedPosts(): Promise<any[]>;
   getPostsByCategory(category: string): Promise<any[]>;
   getPostBySlug(slug: string): Promise<any | null>;
 }
 
-// ---------------------------------------------------------
-// 1. MongoDB 實作
-// ---------------------------------------------------------
 class MongoStorage implements IStorage {
   private async coll(name: string) { return getMongoDB().collection(name); }
 
   async getUser(id: string) {
-    if (!ObjectId.isValid(id)) return undefined;
-    const user = await (await this.coll("users")).findOne({ _id: new ObjectId(id) });
-    return user ? { ...user, id: user._id.toString() } as User : undefined;
+    try {
+      if (!ObjectId.isValid(id)) return undefined;
+      const user = await (await this.coll("users")).findOne({ _id: new ObjectId(id) });
+      return user ? { ...user, id: user._id.toString() } as User : undefined;
+    } catch { return undefined; }
   }
 
   async getUserByUsername(username: string) {
@@ -69,70 +113,74 @@ class MongoStorage implements IStorage {
     return { ...insertUser, id: result.insertedId.toString() } as User;
   }
 
-  private transformPost(post: any) {
+  private async transformPost(post: any) {
     if (!post) return null;
-    return {
-      ...post,
-      featuredImageUrl: normalizeMediaUrl(post.featuredImageUrl || post.heroImage?.url || post.heroImage),
-      content: processContentMedia(post.content)
-    };
+    try {
+      const heroImageUrl = await resolveMediaUrl(post.heroImage);
+      return {
+        ...post,
+        id: post._id.toString(),
+        featuredImageUrl: heroImageUrl,
+        content: await processContentMedia(post.content)
+      };
+    } catch (e) {
+      console.error(`❌ 轉換文章 ${post.title} 失敗:`, e);
+      return { ...post, id: post._id.toString() };
+    }
   }
 
   async getPosts() {
     const posts = await (await this.coll("posts")).find().sort({ updatedAt: -1 }).toArray();
-    return posts.map(post => this.transformPost(post));
+    return Promise.all(posts.map(post => this.transformPost(post)));
   }
 
   async getPublishedPosts() {
-    const posts = await (await this.coll("posts")).find({ _status: "published" }).sort({ publishedAt: -1 }).toArray();
-    return posts.map(post => this.transformPost(post));
+    const posts = await (await this.coll("posts"))
+      .find({ $or: [{ _status: "published" }, { status: "published" }] })
+      .sort({ publishedAt: -1 })
+      .toArray();
+    return Promise.all(posts.map(post => this.transformPost(post)));
   }
 
   async getPostsByCategory(category: string) {
     const posts = await (await this.coll("posts"))
-      .find({ articleCategory: category, _status: "published" })
+      .find({ 
+        articleCategory: category,
+        $or: [{ _status: "published" }, { status: "published" }]
+      })
       .sort({ publishedAt: -1 })
       .toArray();
-    return posts.map(post => this.transformPost(post));
+    return Promise.all(posts.map(post => this.transformPost(post)));
   }
 
   async getPostBySlug(slug: string) {
     const post = await (await this.coll("posts")).findOne({ slug });
-    return this.transformPost(post);
+    if (!post) return null;
+    return await this.transformPost(post);
   }
 }
 
-// ---------------------------------------------------------
-// 2. PostgreSQL (Drizzle) 實作
-// ---------------------------------------------------------
 class PostgresStorage implements IStorage {
   async getUser(id: string) {
     const [user] = await getPostgresDB().select().from(users).where(eq(users.id, id));
     return user;
   }
-
   async getUserByUsername(username: string) {
     const [user] = await getPostgresDB().select().from(users).where(eq(users.username, username));
     return user;
   }
-
   async createUser(insertUser: InsertUser) {
     const [user] = await getPostgresDB().insert(users).values(insertUser).returning();
     return user;
   }
-
   async getPosts() { return []; }
   async getPublishedPosts() { return []; }
   async getPostsByCategory(category: string) { return []; }
   async getPostBySlug(slug: string) { return null; }
 }
 
-// ---------------------------------------------------------
-// 3. MemStorage (備援模式)
-// ---------------------------------------------------------
 class MemStorage implements IStorage {
   private users: Map<string, User> = new Map();
-
   async getUser(id: string) { return this.users.get(id); }
   async getUserByUsername(username: string) {
     return Array.from(this.users.values()).find(u => u.username === username);
@@ -149,20 +197,15 @@ class MemStorage implements IStorage {
   async getPostBySlug(slug: string) { return null; }
 }
 
-// ---------------------------------------------------------
-// 代理導向器 (根據連線狀態選擇實作)
-// ---------------------------------------------------------
 class StorageProxy implements IStorage {
   private instances: Record<string, IStorage> = {
     mongodb: new MongoStorage(),
     postgres: new PostgresStorage(),
     memory: new MemStorage()
   };
-
   private get current() {
     return this.instances[activeDbType] || this.instances.memory;
   }
-
   getUser(id: string) { return this.current.getUser(id); }
   getUserByUsername(username: string) { return this.current.getUserByUsername(username); }
   createUser(user: InsertUser) { return this.current.createUser(user); }

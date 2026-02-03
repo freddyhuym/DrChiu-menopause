@@ -59,9 +59,17 @@ export default function Articles() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {posts.map((post, idx) => {
-              // Extract image URL from either featuredImageUrl or heroImage.url
-              const rawImageUrl = post.featuredImageUrl || (post.heroImage && typeof post.heroImage === 'object' ? post.heroImage.url : null);
-              const imageUrl = normalizeMediaUrl(rawImageUrl);
+              // Robust image URL extraction
+              const getImageUrl = () => {
+                if (post.featuredImageUrl) return normalizeMediaUrl(post.featuredImageUrl);
+                if (post.heroImage) {
+                  if (typeof post.heroImage === 'string') return normalizeMediaUrl(post.heroImage);
+                  if (typeof post.heroImage === 'object') return normalizeMediaUrl(post.heroImage.url || post.heroImage.filename);
+                }
+                return null;
+              };
+              
+              const imageUrl = getImageUrl();
               
               return (
                 <motion.div

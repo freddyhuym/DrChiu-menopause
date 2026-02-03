@@ -27,34 +27,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-100">
-                <img src={logoImage} alt="Metalife Logo" className="w-full h-full object-cover" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-primary tracking-wide leading-none">
-                  Metalife.pro
-                </span>
-                <span className="text-xs text-foreground/60 font-medium tracking-widest mt-1">
-                  元健康
-                </span>
-              </div>
-            </a>
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-100">
+              <img src={logoImage} alt="Metalife Logo" className="w-full h-full object-cover" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-primary tracking-wide leading-none">
+                Metalife.pro
+              </span>
+              <span className="text-xs text-foreground/60 font-medium tracking-widest mt-1">
+                元健康
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.path} href={link.path}>
-                <a className={`text-sm font-bold transition-colors duration-300 relative group py-2 tracking-wide ${
-                  location === link.path ? "text-primary" : "text-gray-600 hover:text-primary"
-                }`}>
-                  {link.name}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    location === link.path ? "w-full" : "w-0 group-hover:w-full"
-                  }`} />
-                </a>
+              <Link key={link.path} href={link.path} className={`text-sm font-bold transition-colors duration-300 relative group py-2 tracking-wide ${
+                location === link.path ? "text-primary" : "text-gray-600 hover:text-primary"
+              }`}>
+                {link.name}
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                  location === link.path ? "w-full" : "w-0 group-hover:w-full"
+                }`} />
               </Link>
             ))}
             <button className="p-2 text-gray-500 hover:text-primary transition-colors">
@@ -82,14 +78,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             >
               <div className="flex flex-col p-4 gap-2">
                 {navLinks.map((link) => (
-                  <Link key={link.path} href={link.path}>
-                    <a className={`text-left py-3 px-4 rounded-md transition-all font-medium ${
-                      location === link.path 
-                        ? "bg-primary/5 text-primary" 
-                        : "hover:bg-gray-50 text-gray-700"
-                    }`}>
-                      {link.name}
-                    </a>
+                  <Link key={link.path} href={link.path} className={`text-left py-3 px-4 rounded-md transition-all font-medium ${
+                    location === link.path 
+                      ? "bg-primary/5 text-primary" 
+                      : "hover:bg-gray-50 text-gray-700"
+                  }`}>
+                    {link.name}
                   </Link>
                 ))}
               </div>
@@ -124,10 +118,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="space-y-4">
               <h4 className="font-bold text-gray-900 tracking-wide">快速連結</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/encyclopedia"><a className="hover:text-primary transition-colors">醫學百科</a></Link></li>
-                <li><Link href="/news"><a className="hover:text-primary transition-colors">最新消息</a></Link></li>
-                <li><Link href="/videos"><a className="hover:text-primary transition-colors">影音專區</a></Link></li>
-                <li><Link href="/about"><a className="hover:text-primary transition-colors">關於我們</a></Link></li>
+                <li><Link href="/encyclopedia" className="hover:text-primary transition-colors">醫學百科</Link></li>
+                <li><Link href="/news" className="hover:text-primary transition-colors">最新消息</Link></li>
+                <li><Link href="/videos" className="hover:text-primary transition-colors">影音專區</Link></li>
+                <li><Link href="/about" className="hover:text-primary transition-colors">關於我們</Link></li>
               </ul>
             </div>
             
